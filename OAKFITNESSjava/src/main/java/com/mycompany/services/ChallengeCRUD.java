@@ -51,7 +51,7 @@ public class ChallengeCRUD {
             pst.setInt(4, ch.getIdUser());
             pst.executeUpdate();
                         System.out.println("Challenge ajouté avec succés");
-s
+
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
@@ -82,5 +82,37 @@ s
         }
         return myList;
     }
+      
+      public void supprimerChallenge(int id)
+      {
+                  String req = "DELETE FROM challenge WHERE IdChallenge='"+id+"' ";
+                          PreparedStatement pst;
 
+try {
+            pst = cnxx.prepareStatement(req);
+            pst.executeUpdate();
+                        System.out.println("Challenge supprimé avec succés");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+          
+      }
+
+      
+      public void ModifierChallenge(Challenge ch, int id)
+      {
+           String req = "UPDATE challenge SET DateDebut ='"+ch.getDateDebut()+"',DateFIN ='"+ch.getDateFin()+"',Objectif ='"+ch.getObjectif()+"' WHERE idChallenge = '"+id+"'";
+          PreparedStatement pst;
+
+try {
+            pst = cnxx.prepareStatement(req);
+            pst.executeUpdate();
+                        System.out.println("Challenge modifié avec succés");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+          
+      }
 }

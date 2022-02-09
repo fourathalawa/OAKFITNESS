@@ -26,6 +26,12 @@ public class Challenge {
         this.IdUser = IdUser;
     }
 
+    public Challenge(String DateDebut, String DateFin, String Objectif) {
+        this.DateDebut = DateDebut;
+        this.DateFin = DateFin;
+        this.Objectif = Objectif;
+    }
+
     public Challenge(String DateDebut, String DateFin, String Objectif, int IdUser) {
         this.DateDebut = DateDebut;
         this.DateFin = DateFin;
