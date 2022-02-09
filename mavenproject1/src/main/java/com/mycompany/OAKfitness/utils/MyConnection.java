@@ -10,5 +10,5 @@ package com.mycompany.OAKfitness.utils;
  * @author user
  */
 public class MyConnection {
-    
+    int test;
 }
