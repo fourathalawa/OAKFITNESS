@@ -10,4 +10,12 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependencies><dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.23</version>
+</dependency></dependencies>
+
+
 </project>

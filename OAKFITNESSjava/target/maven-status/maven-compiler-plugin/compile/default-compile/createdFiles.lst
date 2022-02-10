@@ -1,0 +1,8 @@
+com\mycompany\oakfitnessjava\entities\Exercice.class
+com\mycompany\oakfitnessjava\entities\ProgrammeSportif.class
+com\mycompany\oakfitnessjava\entities\Repas.class
+com\mycompany\oakfitnessjava\entities\ProgrammeNutritionnel.class
+com\mycompany\oakfitnessjava\test\MainClass.class
+com\mycompany\oakfitnessjava\utils\MyConnection.class
+com\mycompany\oakfitnessjava\entities\Evenement.class
+com\mycompany\oakfitnessjava\services\ExerciceCRUD.class
