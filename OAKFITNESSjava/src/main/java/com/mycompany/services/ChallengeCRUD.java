@@ -24,7 +24,7 @@ public class ChallengeCRUD {
     public ChallengeCRUD() {
         cnxx= MyConnection.getInstance().getCnx();
                 }
-    public void ajouterChallenge() {
+    /*public void ajouterChallengeD() {
 
         String req = "INSERT INTO challenge (DateDebut,DateFin,Objectif,IdUser) VALUES ('02/24/2015','07/04/2015','aaaaa',17)";
 
@@ -38,8 +38,8 @@ public class ChallengeCRUD {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-    }
-      public void ajouterPersonne2(Challenge ch) {
+    }*/
+      public void ajouterChallenge(Challenge ch) {
 
         String req = "INSERT INTO challenge (DateDebut,DateFin,Objectif,IdUser) VALUES (?,?,?,?)";
         PreparedStatement pst;
