@@ -15,6 +15,9 @@ public class Evenement {
     private String DescrEvenement;
     private String AdresseEvenement;
     private String TypeEvenement;
+    
+    public Evenement(){
+    }
 
     public Evenement(int IDEvenement, String TitreEvenement, String DescrEvenement, String AdresseEvenement, String TypeEvenement) {
         this.IDEvenement = IDEvenement;
@@ -23,6 +26,14 @@ public class Evenement {
         this.AdresseEvenement = AdresseEvenement;
         this.TypeEvenement = TypeEvenement;
     }
+
+    public Evenement(String TitreEvenement, String DescrEvenement, String AdresseEvenement, String TypeEvenement) {
+        this.TitreEvenement = TitreEvenement;
+        this.DescrEvenement = DescrEvenement;
+        this.AdresseEvenement = AdresseEvenement;
+        this.TypeEvenement = TypeEvenement;
+    }
+    
 
     public int getIDEvenement() {
         return IDEvenement;
