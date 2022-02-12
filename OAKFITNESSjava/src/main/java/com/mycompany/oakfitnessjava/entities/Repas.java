@@ -15,6 +15,10 @@ public class Repas {
     private String Dej;
     private String Dinn;
     private String RestOrActive;
+    
+    public Repas() {
+        
+    }
 
     public Repas(int IDRepas, String PDej, String Dej, String Dinn, String RestOrActive) {
         this.IDRepas = IDRepas;
@@ -23,6 +27,15 @@ public class Repas {
         this.Dinn = Dinn;
         this.RestOrActive = RestOrActive;
     }
+
+    public Repas(String PDej, String Dej, String Dinn, String RestOrActive) {
+        this.PDej = PDej;
+        this.Dej = Dej;
+        this.Dinn = Dinn;
+        this.RestOrActive = RestOrActive;
+    }
+
+    
 
     public int getIDRepas() {
         return IDRepas;
