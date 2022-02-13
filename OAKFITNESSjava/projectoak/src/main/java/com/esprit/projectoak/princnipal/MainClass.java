@@ -53,5 +53,8 @@ System.out.println("**************forum************************************");
        // System.out.println(f.afficherPulication());
 System.out.println("**************rechercher************************************");
 pb.chercherPublication("mise");
+System.out.println("**************tri************************************");
+pb.triPulication();
+
     }
 }
