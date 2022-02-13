@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDateTime;  
+import java.time.format.DateTimeFormatter;  
 
 /**
  *
@@ -50,7 +52,7 @@ public class PublicationCRUD {
             pst = cnxx.prepareStatement(req);
             pst.setInt(1, p.getIDuser());
             pst.setString(2, p.getImagePublication());
-            pst.setString(3, p.getDatePublication());
+            pst.setString(3, java.time.LocalDate.now().toString());
             pst.setString(4, p.getPublication());
 
             pst.executeUpdate();

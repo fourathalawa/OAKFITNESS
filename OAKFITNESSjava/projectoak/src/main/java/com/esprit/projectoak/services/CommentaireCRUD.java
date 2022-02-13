@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDateTime;  
+import java.time.format.DateTimeFormatter;  
 /**
  *
  * @author user
@@ -49,7 +51,7 @@ public class CommentaireCRUD {
             pst.setInt(1,p.getIDPublication());
             pst.setInt(2,p.getIDUser());
             pst.setString(3, p.getCommentaire());
-            pst.setString(4, p.getDateCommentaire());
+            pst.setString(4, java.time.LocalDate.now().toString());
 
             pst.executeUpdate();
             System.out.println("commentaire ajouté avec succés");

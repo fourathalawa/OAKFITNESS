@@ -34,9 +34,9 @@ System.out.println("**************affichage reclamation*************************
  PublicationCRUD pb = new PublicationCRUD();
 ps.pourcentageCategorie();
         // pb.ajouterPulication();
-        //  Publication pu = new Publication(1, "h", "j", "k");
+         Publication pu = new Publication(1, "h", "j", "k");
         //  Publication puu = new Publication("update2","update2");
-//        pb.ajouterPulication2(pu);
+       pb.ajouterPulication2(pu);
 //        pb.supprimerPublication(2);
 //        pb.modifierPulication(1, puu);
          // CommentaireCRUD c = new CommentaireCRUD();
