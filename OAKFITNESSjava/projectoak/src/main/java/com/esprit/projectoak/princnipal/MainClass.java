@@ -40,7 +40,7 @@ ps.pourcentageCategorie();
 //        pb.supprimerPublication(2);
 //        pb.modifierPulication(1, puu);
          // CommentaireCRUD c = new CommentaireCRUD();
-System.out.println("**************forum************************************");
+System.out.println("**************forum****************************************************");
 
         System.out.println("\n"+pb.afficherPulication());
 //c.ajouterCommentaire();
@@ -51,9 +51,9 @@ System.out.println("**************forum************************************");
 //c.modifierPulication(1, cc2);
       //  ForumCRUD f = new ForumCRUD();
        // System.out.println(f.afficherPulication());
-System.out.println("**************rechercher************************************");
+System.out.println("**************rechercher************************************************");
 pb.chercherPublication("mise");
-System.out.println("**************tri************************************");
+System.out.println("**************tri*******************************************************");
 pb.triPulication();
 
     }
