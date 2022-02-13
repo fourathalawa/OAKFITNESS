@@ -48,6 +48,6 @@ ps.pourcentageCategorie();
 //c.modifierPulication(1, cc2);
       //  ForumCRUD f = new ForumCRUD();
        // System.out.println(f.afficherPulication());
-System.out.println("ccc,klccc");
+System.out.println("ccc,ccc");
     }
 }
