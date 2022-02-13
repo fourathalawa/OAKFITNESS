@@ -109,12 +109,39 @@ public class PublicationCRUD {
 
                 per.setIDpublication(rs.getInt("IDpublication"));
                 per.setIDuser(rs.getInt("IDuser"));
+                per.setImagePublication(rs.getString(3));
                 per.setDatePublication(rs.getString(4));
-                per.setImagePublication(rs.getString(2));
-                per.setPublication(rs.getString(3));
+                per.setPublication(rs.getString(5));
                 per.comm = extractComment(rs.getInt("IDpublication"));
                 myList.add(per);
             }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            //   return null;
+        }
+        return myList;
+    }
+ public List<Publication> chercherPublication(String mot) {
+        List<Publication> myList = new ArrayList();
+
+        try {
+            Statement st = cnxx.createStatement();
+            String req = "SELECT * FROM publication WHERE Publication LIKE '%"+mot+"%' ";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                Publication per = new Publication();
+
+                per.setIDpublication(rs.getInt("IDpublication"));
+                per.setIDuser(rs.getInt("IDuser"));
+                per.setImagePublication(rs.getString(3));
+                per.setDatePublication(rs.getString(4));
+                per.setPublication(rs.getString(5));
+                per.comm = extractComment(rs.getInt("IDpublication"));
+                myList.add(per);
+            }
+            System.out.println("recherche resulatat du mot:  "+mot+"  "+myList);
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
             //   return null;

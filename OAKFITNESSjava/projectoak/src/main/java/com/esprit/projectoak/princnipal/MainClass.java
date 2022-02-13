@@ -29,6 +29,7 @@ public class MainClass {
 //        // System.out.println(p.getIDReclamation());
 //        //ps.supprimerReclamation(26);
 //        ps.modifierReclamation(25, p);
+System.out.println("**************affichage reclamation************************************");
         System.out.println(ps.afficherReclamation());
  PublicationCRUD pb = new PublicationCRUD();
 ps.pourcentageCategorie();
@@ -39,6 +40,8 @@ ps.pourcentageCategorie();
 //        pb.supprimerPublication(2);
 //        pb.modifierPulication(1, puu);
          // CommentaireCRUD c = new CommentaireCRUD();
+System.out.println("**************forum************************************");
+
         System.out.println("\n"+pb.afficherPulication());
 //c.ajouterCommentaire();
 //Commentaire cc = new Commentaire(3,44,"ff","ii");
@@ -48,6 +51,7 @@ ps.pourcentageCategorie();
 //c.modifierPulication(1, cc2);
       //  ForumCRUD f = new ForumCRUD();
        // System.out.println(f.afficherPulication());
-System.out.println("ccc,ccc");
+System.out.println("**************rechercher************************************");
+pb.chercherPublication("mise");
     }
 }
