@@ -17,7 +17,7 @@ public class Exercice {
     private String DiffExercice;
     private String JusteSalleExercice;
     private String DureeExercice;
-
+    
     public Exercice() {
 
     }
@@ -41,6 +41,8 @@ public class Exercice {
         this.DureeExercice = DureeExercice;
     }
 
+    
+
     public int getIDExercice() {
         return IDExercice;
     }
@@ -48,6 +50,8 @@ public class Exercice {
     public void setIDExercice(int IDExercice) {
         this.IDExercice = IDExercice;
     }
+
+
 
     public String getTypeExercice() {
         return TypeExercice;

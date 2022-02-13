@@ -17,8 +17,20 @@ public class ProgrammeNutritionnel {
     private int Calorie;
     private String TypeProgrammeNutritionel;
 
+    public ProgrammeNutritionnel() {
+    }
+    
+
     public ProgrammeNutritionnel(int IDProgrammeNutritionnel, int IDCoach, int IDAdherent, int IDRepas, int Calorie, String TypeProgrammeNutritionel) {
         this.IDProgrammeNutritionnel = IDProgrammeNutritionnel;
+        this.IDCoach = IDCoach;
+        this.IDAdherent = IDAdherent;
+        this.IDRepas = IDRepas;
+        this.Calorie = Calorie;
+        this.TypeProgrammeNutritionel = TypeProgrammeNutritionel;
+    }
+
+    public ProgrammeNutritionnel(int IDCoach, int IDAdherent, int IDRepas, int Calorie, String TypeProgrammeNutritionel) {
         this.IDCoach = IDCoach;
         this.IDAdherent = IDAdherent;
         this.IDRepas = IDRepas;

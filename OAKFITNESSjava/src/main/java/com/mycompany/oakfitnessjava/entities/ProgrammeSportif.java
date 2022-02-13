@@ -13,18 +13,32 @@ public class ProgrammeSportif {
     private int IDProgrammeSportif;
     private int IDCoach;
     private int IDAdherent;
-    private int IDExercice;
-    private String DureeMois;
+    private int DureeMois;
     private String TypeProgrammeSportif;
+    
+    public ProgrammeSportif() {
+    }
 
-    public ProgrammeSportif(int IDProgrammeSportif, int IDCoach, int IDAdherent, int IDExercice, String DureeMois, String TypeProgrammeSportif) {
+    public ProgrammeSportif(int IDProgrammeSportif, int IDCoach, int IDAdherent, int DureeMois, String TypeProgrammeSportif) {
         this.IDProgrammeSportif = IDProgrammeSportif;
         this.IDCoach = IDCoach;
         this.IDAdherent = IDAdherent;
-        this.IDExercice = IDExercice;
         this.DureeMois = DureeMois;
         this.TypeProgrammeSportif = TypeProgrammeSportif;
     }
+
+    public ProgrammeSportif(int IDCoach, int IDAdherent, int DureeMois, String TypeProgrammeSportif) {
+        this.IDCoach = IDCoach;
+        this.IDAdherent = IDAdherent;
+        this.DureeMois = DureeMois;
+        this.TypeProgrammeSportif = TypeProgrammeSportif;
+    }
+
+    
+
+    
+
+    
 
     public int getIDProgrammeSportif() {
         return IDProgrammeSportif;
@@ -50,19 +64,12 @@ public class ProgrammeSportif {
         this.IDAdherent = IDAdherent;
     }
 
-    public int getIDExercice() {
-        return IDExercice;
-    }
 
-    public void setIDExercice(int IDExercice) {
-        this.IDExercice = IDExercice;
-    }
-
-    public String getDureeMois() {
+    public int getDureeMois() {
         return DureeMois;
     }
 
-    public void setDureeMois(String DureeMois) {
+    public void setDureeMois(int DureeMois) {
         this.DureeMois = DureeMois;
     }
 
@@ -76,7 +83,7 @@ public class ProgrammeSportif {
 
     @Override
     public String toString() {
-        return "ProgrammeSportif{" + "IDProgrammeSportif=" + IDProgrammeSportif + ", IDCoach=" + IDCoach + ", IDAdherent=" + IDAdherent + ", IDExercice=" + IDExercice + ", DureeMois=" + DureeMois + ", TypeProgrammeSportif=" + TypeProgrammeSportif + '}';
+        return "ProgrammeSportif{" + "IDProgrammeSportif=" + IDProgrammeSportif + ", IDCoach=" + IDCoach + ", IDAdherent=" + IDAdherent + ", DureeMois=" + DureeMois + ", TypeProgrammeSportif=" + TypeProgrammeSportif + '}';
     }
 
 }
