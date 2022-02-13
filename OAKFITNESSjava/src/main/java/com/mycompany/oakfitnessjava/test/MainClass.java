@@ -9,8 +9,10 @@ import com.mycompany.oakfitnessjava.entities.Repas;
 import com.mycompany.oakfitnessjava.services.EvenementCRUD;
 import com.mycompany.oakfitnessjava.services.RepasCRUD;
 import com.mycompany.oakfitnessjava.entities.Exercice;
+import com.mycompany.oakfitnessjava.entities.ProgrammeNutritionnel;
 import com.mycompany.oakfitnessjava.entities.ProgrammeSportif;
 import com.mycompany.oakfitnessjava.services.ExerciceCRUD;
+import com.mycompany.oakfitnessjava.services.ProgrammeNutritionnelCRUD;
 import com.mycompany.oakfitnessjava.services.ProgrammeSportifCRUD;
 
 /**
@@ -22,17 +24,17 @@ public class MainClass {
     public static void main(String[] args) {
         //MyConnection mc = new MyConnection();
         
-        ExerciceCRUD ecrud = new ExerciceCRUD();
-        ProgrammeSportifCRUD pscrud = new ProgrammeSportifCRUD();
-        ProgrammeSportif ps = new ProgrammeSportif(1,1,1,"test");
+       // ExerciceCRUD ecrud = new ExerciceCRUD();
+        //ProgrammeSportifCRUD pscrud = new ProgrammeSportifCRUD();
+        //ProgrammeSportif ps = new ProgrammeSportif(1,1,1,"test");
        // pscrud.ajouterProgrammeSportif2(ps); 
         //Exercice ex = new Exercice("test3","test3","test3","test3","test3","test3");
-        Exercice ex2 = new Exercice("test3","test3","test3","test3","test3","test3");
+        //Exercice ex2 = new Exercice("test3","test3","test3","test3","test3","test3");
         //ecrud.ajouterExercice2(ex2);
         //System.out.println(ex.getIDExercice());
         /*ecrud.ajouterExercice2(ex2);*/
-        ecrud.AjouterExerciceAProgramme(10,27); 
-        System.out.println(pscrud.AfficherExercicesDeProgramme(10));
+        //ecrud.AjouterExerciceAProgramme(10,27); 
+        //System.out.println(pscrud.AfficherExercicesDeProgramme(10));
        //ecrud.supprimerExerciceDeProgramme(2);
         /*System.out.println(ecrud.afficherExercice());
         Exercice ex2 = new Exercice("test4","test4","test4","test4","test4","test4");
@@ -66,6 +68,12 @@ public class MainClass {
         pscrud.ModifierProgrammeSportif(ps2,ex,2);
         //ecrud.supprimerExercice(1);
         System.out.println(pscrud.afficherProgrammeSportif());*/
-
+        RepasCRUD rcrud = new RepasCRUD();
+        Repas r = new Repas("test3","test3","test3","test3");
+        ProgrammeNutritionnelCRUD pncrud = new ProgrammeNutritionnelCRUD();
+        ProgrammeNutritionnel pn = new ProgrammeNutritionnel(1,1,100,"test2");
+        //pncrud.ajouterProgrammeNutritionnel2(pn);
+        //rcrud.AjouterRepasAProgramme(1, 2);
+       System.out.println(pncrud.AfficherRepasDeProgramme(1));
     }
 }

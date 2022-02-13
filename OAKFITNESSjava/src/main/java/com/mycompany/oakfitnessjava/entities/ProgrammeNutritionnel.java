@@ -13,7 +13,6 @@ public class ProgrammeNutritionnel {
     private int IDProgrammeNutritionnel;
     private int IDCoach;
     private int IDAdherent;
-    private int IDRepas;
     private int Calorie;
     private String TypeProgrammeNutritionel;
 
@@ -21,19 +20,17 @@ public class ProgrammeNutritionnel {
     }
     
 
-    public ProgrammeNutritionnel(int IDProgrammeNutritionnel, int IDCoach, int IDAdherent, int IDRepas, int Calorie, String TypeProgrammeNutritionel) {
+    public ProgrammeNutritionnel(int IDProgrammeNutritionnel, int IDCoach, int IDAdherent, int Calorie, String TypeProgrammeNutritionel) {
         this.IDProgrammeNutritionnel = IDProgrammeNutritionnel;
         this.IDCoach = IDCoach;
         this.IDAdherent = IDAdherent;
-        this.IDRepas = IDRepas;
         this.Calorie = Calorie;
         this.TypeProgrammeNutritionel = TypeProgrammeNutritionel;
     }
 
-    public ProgrammeNutritionnel(int IDCoach, int IDAdherent, int IDRepas, int Calorie, String TypeProgrammeNutritionel) {
+    public ProgrammeNutritionnel(int IDCoach, int IDAdherent,int Calorie, String TypeProgrammeNutritionel) {
         this.IDCoach = IDCoach;
         this.IDAdherent = IDAdherent;
-        this.IDRepas = IDRepas;
         this.Calorie = Calorie;
         this.TypeProgrammeNutritionel = TypeProgrammeNutritionel;
     }
@@ -62,14 +59,6 @@ public class ProgrammeNutritionnel {
         this.IDAdherent = IDAdherent;
     }
 
-    public int getIDRepas() {
-        return IDRepas;
-    }
-
-    public void setIDRepas(int IDRepas) {
-        this.IDRepas = IDRepas;
-    }
-
     public int getCalorie() {
         return Calorie;
     }
@@ -88,7 +77,7 @@ public class ProgrammeNutritionnel {
 
     @Override
     public String toString() {
-        return "ProgrammeNutritionnel{" + "IDProgrammeNutritionnel=" + IDProgrammeNutritionnel + ", IDCoach=" + IDCoach + ", IDAdherent=" + IDAdherent + ", IDRepas=" + IDRepas + ", Calorie=" + Calorie + ", TypeProgrammeNutritionel=" + TypeProgrammeNutritionel + '}';
+        return "ProgrammeNutritionnel{" + "IDProgrammeNutritionnel=" + IDProgrammeNutritionnel + ", IDCoach=" + IDCoach + ", IDAdherent=" + IDAdherent + ", Calorie=" + Calorie + ", TypeProgrammeNutritionel=" + TypeProgrammeNutritionel + '}';
     }
 
 }

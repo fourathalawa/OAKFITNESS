@@ -114,4 +114,34 @@ try {
         }
           
       }
+         public void AjouterRepasAProgramme(int IDR, int IDPn) {
+        String req = "INSERT INTO programmen_repas (IDProgrammeNutritionnel,IDRepas) VALUES (?,?)";
+        PreparedStatement pst;
+        try {
+            pst = cnxx.prepareStatement(req);
+
+            pst.setInt(1, IDR);
+            pst.setInt(2, IDPn);
+            pst.executeUpdate();
+            System.out.println("Repas ajouté à programme avec succés");
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+
+    public void supprimerRepasDeProgramme(int id) {
+        String Request = "DELETE FROM programmen_repas WHERE IDRepas='" + id + "' ";
+        PreparedStatement pst;
+
+        try {
+            pst = cnxx.prepareStatement(Request);
+            pst.executeUpdate();
+            System.out.println("Repas supprimé de programme avec succés");
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+
+    }
+    
 }
