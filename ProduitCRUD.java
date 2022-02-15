@@ -126,5 +126,28 @@ public List<Produit> afficherProduitTrier1() {
         }
         return myList;
     }
+
+public float calculerChiffreAffaire() {
+		float reponse=0;
+		
+		String requete="SELECT SUM(PrixProduit) As Total FROM produit where IsAvailable = 1";//limit 1
+		
+		
+		
+				
+		try {
+                        ResultSet res=null;
+			Statement st = cnxx.createStatement();
+			res = st.executeQuery(requete);
+			if(res.next()) {
+				reponse = res.getFloat("Total");
+			}
+		} catch (SQLException ex) {
+			// TODO Auto-generated catch block
+			System.err.println(ex.getMessage());
+		}
+		
+		return reponse;
+	}
 }
 

@@ -14,24 +14,71 @@ public class Transformation {
     private String DescreptionImage;
     private String ImageAvant;
     private String ImageApres;
+    private float PoidAvant;
+    private float PoidApres;
+    private float TailleAvant;
+    private float TailleApres;
     private int IdUser;
 
-    public Transformation(int IdImage, String TitreImage, String DescreptionImage, String ImageAvant, String ImageApres, int IdUser) {
+    public Transformation(int IdImage, String TitreImage, String DescreptionImage, String ImageAvant, String ImageApres, float PoidAvant, float PoidApres, float TailleAvant, float TailleApres, int IdUser) {
         this.IdImage = IdImage;
         this.TitreImage = TitreImage;
         this.DescreptionImage = DescreptionImage;
         this.ImageAvant = ImageAvant;
         this.ImageApres = ImageApres;
+        this.PoidAvant = PoidAvant;
+        this.PoidApres = PoidApres;
+        this.TailleAvant = TailleAvant;
+        this.TailleApres = TailleApres;
         this.IdUser = IdUser;
     }
 
-    public Transformation(String TitreImage, String DescreptionImage, String ImageAvant, String ImageApres, int IdUser) {
+    public Transformation(String TitreImage, String DescreptionImage, String ImageAvant, String ImageApres, float PoidAvant, float PoidApres, float TailleAvant, float TailleApres, int IdUser) {
         this.TitreImage = TitreImage;
         this.DescreptionImage = DescreptionImage;
         this.ImageAvant = ImageAvant;
         this.ImageApres = ImageApres;
+        this.PoidAvant = PoidAvant;
+        this.PoidApres = PoidApres;
+        this.TailleAvant = TailleAvant;
+        this.TailleApres = TailleApres;
         this.IdUser = IdUser;
     }
+
+    public float getPoidAvant() {
+        return PoidAvant;
+    }
+
+    public float getPoidApres() {
+        return PoidApres;
+    }
+
+    public float getTailleAvant() {
+        return TailleAvant;
+    }
+
+    public float getTailleApres() {
+        return TailleApres;
+    }
+
+    public void setPoidAvant(float PoidAvant) {
+        this.PoidAvant = PoidAvant;
+    }
+
+    public void setPoidApres(float PoidApres) {
+        this.PoidApres = PoidApres;
+    }
+
+    public void setTailleAvant(float TailleAvant) {
+        this.TailleAvant = TailleAvant;
+    }
+
+    public void setTailleApres(float TailleApres) {
+        this.TailleApres = TailleApres;
+    }
+
+
+
     
 
     public Transformation() {
@@ -87,7 +134,7 @@ public class Transformation {
 
     @Override
     public String toString() {
-        return "Transformation{" + "IdImage=" + IdImage + ", TitreImage=" + TitreImage + ", DescreptionImage=" + DescreptionImage + ", ImageAvant=" + ImageAvant + ", ImageApres=" + ImageApres + ", IdUser=" + IdUser + '}';
+        return "Transformation{" + "IdImage=" + IdImage + ", TitreImage=" + TitreImage + ", DescreptionImage=" + DescreptionImage + ", ImageAvant=" + ImageAvant + ", ImageApres=" + ImageApres + ",PoidAvant="+PoidAvant+ ",PoidApres="+PoidApres+ ",TailleAvant="+TailleAvant+ ",TailleApres="+TailleApres+", IdUser=" + IdUser + '}';
     }
     
 }
