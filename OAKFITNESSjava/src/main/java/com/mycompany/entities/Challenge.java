@@ -9,33 +9,37 @@ package com.mycompany.entities;
  * @author User
  */
 public class Challenge {
+
     private int IdChallenge;
     private String DateDebut;
     private String DateFin;
-    private String Objectif;
+    private float poidInt;
+    private float poidOb;
+    private float taille;
+    private float poidNv;
     private int IdUser;
 
     public Challenge() {
     }
 
-    public Challenge(int IdChallenge, String DateDebut, String DateFin, String Objectif, int IdUser) {
-        this.IdChallenge = IdChallenge;
-        this.DateDebut = DateDebut;
-        this.DateFin = DateFin;
-        this.Objectif = Objectif;
-        this.IdUser = IdUser;
+    public Challenge(float poidNv) {
+        this.poidNv = poidNv;
     }
 
-    public Challenge(String DateDebut, String DateFin, String Objectif) {
+    public Challenge(String DateDebut, String DateFin, float poidInt, float poidOb, float taille) {
         this.DateDebut = DateDebut;
         this.DateFin = DateFin;
-        this.Objectif = Objectif;
+        this.poidInt = poidInt;
+        this.poidOb = poidOb;
+        this.taille=taille;
     }
 
-    public Challenge(String DateDebut, String DateFin, String Objectif, int IdUser) {
+    public Challenge(String DateDebut, String DateFin, float poidInt, float poidOb, float taille, int IdUser) {
         this.DateDebut = DateDebut;
         this.DateFin = DateFin;
-        this.Objectif = Objectif;
+          this.poidInt = poidInt;
+        this.poidOb = poidOb;
+        this.taille=taille;
         this.IdUser = IdUser;
     }
 
@@ -63,14 +67,6 @@ public class Challenge {
         this.DateFin = DateFin;
     }
 
-    public String getObjectif() {
-        return Objectif;
-    }
-
-    public void setObjectif(String Objectif) {
-        this.Objectif = Objectif;
-    }
-
     public int getIdUser() {
         return IdUser;
     }
@@ -79,9 +75,42 @@ public class Challenge {
         this.IdUser = IdUser;
     }
 
+    public float getPoidInt() {
+        return poidInt;
+    }
+
+    public void setPoidInt(float poidInt) {
+        this.poidInt = poidInt;
+    }
+
+    public float getPoidOb() {
+        return poidOb;
+    }
+
+    public void setPoidOb(float poidOb) {
+        this.poidOb = poidOb;
+    }
+
+    public float getTaille() {
+        return taille;
+    }
+
+    public void setTaille(float taille) {
+        this.taille = taille;
+    }
+
+    public float getPoidNv() {
+        return poidNv;
+    }
+
+    public void setPoidNv(float poidNv) {
+        this.poidNv = poidNv;
+    }
+
     @Override
     public String toString() {
-        return "Challenge{" + "IdChallenge=" + IdChallenge + ", DateDebut=" + DateDebut + ", DateFin=" + DateFin + ", Objectif=" + Objectif + ", IdUser=" + IdUser + '}';
+        return "Challenge{" + "IdChallenge=" + IdChallenge + ", DateDebut=" + DateDebut + ", DateFin=" + DateFin + ", poidInt=" + poidInt + ", poidOb=" + poidOb + ", taille=" + taille + ", poidNv=" + poidNv + ", IdUser=" + IdUser + '}';
     }
+
     
 }

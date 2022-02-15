@@ -28,7 +28,7 @@ public class UserCRUD {
 
     public void ajouterAdmin(User user) {
 
-        String req = "INSERT INTO user (NomUser,PrenomUser,MailUser,TelephoneNumberUser,DateNaissanceUser,RoleUser) VALUES (?,?,?,?,?,?)";
+        String req = "INSERT INTO user (NomUser,PrenomUser,MailUser,TelephoneNumberUser,DateNaissanceUser,RoleUser,Password) VALUES (?,?,?,?,?,?,?)";
         PreparedStatement pst;
         try {
             pst = cnxx.prepareStatement(req);
@@ -38,6 +38,7 @@ public class UserCRUD {
             pst.setLong(4, user.getTelephone_Number());
             pst.setString(5, user.getDate_Naissance());
             pst.setInt(6, user.getRole());
+            pst.setString(9, user.encrypt(user.getPassword()));
             pst.executeUpdate();
             System.out.println("Admin ajouté avec succés");
 
@@ -49,7 +50,7 @@ public class UserCRUD {
 
     public void ajouterAdhérent(User user) {
 
-        String req = "INSERT INTO user (NomUser,PrenomUser,MailUser,TelephoneNumberUser,DateNaissanceUser,RoleUser,NumeroPackUser,DateCommance) VALUES (?,?,?,?,?,?,?,?)";
+        String req = "INSERT INTO user (NomUser,PrenomUser,MailUser,TelephoneNumberUser,DateNaissanceUser,RoleUser,NumeroPackUser,DateCommance,Password) VALUES (?,?,?,?,?,?,?,?,?)";
         PreparedStatement pst;
         try {
             pst = cnxx.prepareStatement(req);
@@ -61,6 +62,8 @@ public class UserCRUD {
             pst.setInt(6, user.getRole());
             pst.setInt(7, user.getNumero_Pack());
             pst.setString(8, user.getDate_Commance());
+            pst.setString(9, user.encrypt(user.getPassword()));
+
             pst.executeUpdate();
             System.out.println("Adherent ajouté avec succés");
 
@@ -69,11 +72,10 @@ public class UserCRUD {
         }
 
     }
-    
-    
+
     public void ajouterCoach(User user) {
 
-        String req = "INSERT INTO user (NomUser,PrenomUser,MailUser,TelephoneNumberUser,DateNaissanceUser,RoleUser,ExperienceUser,DiplomeUser) VALUES (?,?,?,?,?,?,?,?)";
+        String req = "INSERT INTO user (NomUser,PrenomUser,MailUser,TelephoneNumberUser,DateNaissanceUser,RoleUser,ExperienceUser,DiplomeUser,Password) VALUES (?,?,?,?,?,?,?,?,?)";
         PreparedStatement pst;
         try {
             pst = cnxx.prepareStatement(req);
@@ -85,6 +87,8 @@ public class UserCRUD {
             pst.setInt(6, user.getRole());
             pst.setString(7, user.getExperience());
             pst.setString(8, user.getDiplome());
+            pst.setString(9, user.encrypt(user.getPassword()));
+
             pst.executeUpdate();
             System.out.println("Coach ajouté avec succés");
 
@@ -93,10 +97,10 @@ public class UserCRUD {
         }
 
     }
-    
-      public void ajouterResponsable(User user) {
 
-        String req = "INSERT INTO user (NomUser,PrenomUser,MailUser,TelephoneNumberUser,DateNaissanceUser,RoleUser,AdresseSalleSport,MatriculeFiscale) VALUES (?,?,?,?,?,?,?,?)";
+    public void ajouterResponsable(User user) {
+
+        String req = "INSERT INTO user (NomUser,PrenomUser,MailUser,TelephoneNumberUser,DateNaissanceUser,RoleUser,AdresseSalleSport,MatriculeFiscale,Password) VALUES (?,?,?,?,?,?,?,?,?)";
         PreparedStatement pst;
         try {
             pst = cnxx.prepareStatement(req);
@@ -108,6 +112,8 @@ public class UserCRUD {
             pst.setInt(6, user.getRole());
             pst.setString(7, user.getAdresse_Salle_Sport());
             pst.setLong(8, user.getMatricule_Fiscale());
+            pst.setString(9, user.encrypt(user.getPassword()));
+
             pst.executeUpdate();
             System.out.println("Responsable ajouté avec succés");
 
@@ -116,8 +122,8 @@ public class UserCRUD {
         }
 
     }
-      
-      public List<User> afficherAdhérent() {
+
+    public List<User> afficherAdhérent() {
 
         List<User> myList = new ArrayList();
 
@@ -135,8 +141,11 @@ public class UserCRUD {
                 user.setMail(rs.getString(4));
                 user.setTelephone_Number(rs.getLong(5));
                 user.setDate_Naissance(rs.getString(6));
-               user.setNumero_Pack(rs.getInt(8));
-               user.setDate_Commance(rs.getString(9));
+                user.setRole(rs.getInt(7));
+                user.setNumero_Pack(rs.getInt(8));
+                user.setDate_Commance(rs.getString(9));
+                user.setPassword(user.decrypt(rs.getString(14)));
+
                 myList.add(user);
             }
         } catch (SQLException ex) {
@@ -145,8 +154,8 @@ public class UserCRUD {
         }
         return myList;
     }
-      
-      public List<User> afficherCoach() {
+
+    public List<User> afficherCoach() {
 
         List<User> myList = new ArrayList();
 
@@ -164,9 +173,12 @@ public class UserCRUD {
                 user.setMail(rs.getString(4));
                 user.setTelephone_Number(rs.getLong(5));
                 user.setDate_Naissance(rs.getString(6));
-               user.setExperience(rs.getString(10));
-                 user.setDiplome(rs.getString(11));
-                        myList.add(user);
+                user.setRole(rs.getInt(7));
+                user.setExperience(rs.getString(10));
+                user.setDiplome(rs.getString(11));
+                user.setPassword(user.decrypt(rs.getString(14)));
+
+                myList.add(user);
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -174,9 +186,8 @@ public class UserCRUD {
         }
         return myList;
     }
-      
-      
-       public List<User> afficherResponsable() {
+
+    public List<User> afficherResponsable() {
 
         List<User> myList = new ArrayList();
 
@@ -194,9 +205,11 @@ public class UserCRUD {
                 user.setMail(rs.getString(4));
                 user.setTelephone_Number(rs.getLong(5));
                 user.setDate_Naissance(rs.getString(6));
-               user.setAdresse_Salle_Sport(rs.getString(12));
-                 user.setMatricule_Fiscale(rs.getLong(13));
-                        myList.add(user);
+                user.setRole(rs.getInt(7));
+                user.setAdresse_Salle_Sport(rs.getString(12));
+                user.setMatricule_Fiscale(rs.getLong(13));
+                user.setPassword(user.decrypt(rs.getString(14)));
+                myList.add(user);
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -204,71 +217,90 @@ public class UserCRUD {
         }
         return myList;
     }
-       
-       
-        public void supprimerUser(int id)
-      {
-                  String req = "DELETE FROM user WHERE IdUser='"+id+"' ";
-                          PreparedStatement pst;
 
-try {
+    public void supprimerUser(int id) {
+        String req = "DELETE FROM user WHERE IdUser='" + id + "' ";
+        PreparedStatement pst;
+
+        try {
             pst = cnxx.prepareStatement(req);
             pst.executeUpdate();
-                        System.out.println("User supprimé avec succés");
+            System.out.println("User supprimé avec succés");
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-          
-      }
-        
-        
-       public void ModifierAdhrent(User user, int id)
-      {  //NomUser,PrenomUser,MailUser,TelephoneNumberUser,DateNaissanceUser,RoleUser,NumeroPackUser,DateCommance
-           String req = "UPDATE user SET NomUser ='"+user.getNom()+"',PrenomUser ='"+user.getPrenom()+"',MailUser ='"+user.getMail()+"' ,TelephoneNumberUser ='"+user.getTelephone_Number()+"',DateNaissanceUser ='"+user.getDate_Naissance()+"' ,NumeroPackUser ='"+user.getNumero_Pack()+"' ,DateCommance ='"+user.getDate_Commance()+"' WHERE idUser = '"+id+"'";
-          PreparedStatement pst;
 
-try {
+    }
+
+    public void ModifierAdhrent(User user, int id) {
+        String req = "UPDATE user SET NomUser ='" + user.getNom() + "',PrenomUser ='" + user.getPrenom() + "',MailUser ='" + user.getMail() + "' ,TelephoneNumberUser ='" + user.getTelephone_Number() + "',DateNaissanceUser ='" + user.getDate_Naissance() + "' ,NumeroPackUser ='" + user.getNumero_Pack() + "' ,DateCommance ='" + user.getDate_Commance() + "' ,Password ='" + user.encrypt(user.getPassword())+ "' WHERE idUser = '" + id + "'";
+        PreparedStatement pst;
+
+        try {
             pst = cnxx.prepareStatement(req);
             pst.executeUpdate();
-                        System.out.println("Adhérent modifié avec succés");
+            System.out.println("Adhérent modifié avec succés");
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-          
-      }
-        
-        public void ModifierCoach(User user, int id)
-      {  //NomUser,PrenomUser,MailUser,TelephoneNumberUser,DateNaissanceUser,ExperienceUser,DiplomeUser
-           String req = "UPDATE user SET NomUser ='"+user.getNom()+"',PrenomUser ='"+user.getPrenom()+"',MailUser ='"+user.getMail()+"' ,TelephoneNumberUser ='"+user.getTelephone_Number()+"',DateNaissanceUser ='"+user.getDate_Naissance()+"' ,ExperienceUser ='"+user.getExperience()+"' ,DiplomeUser ='"+user.getDiplome()+"' WHERE idUser = '"+id+"'";
-          PreparedStatement pst;
 
-try {
+    }
+
+    public void ModifierCoach(User user, int id) {  //NomUser,PrenomUser,MailUser,TelephoneNumberUser,DateNaissanceUser,ExperienceUser,DiplomeUser
+        String req = "UPDATE user SET NomUser ='" + user.getNom() + "',PrenomUser ='" + user.getPrenom() + "',MailUser ='" + user.getMail() + "' ,TelephoneNumberUser ='" + user.getTelephone_Number() + "',DateNaissanceUser ='" + user.getDate_Naissance() + "' ,ExperienceUser ='" + user.getExperience() + "' ,DiplomeUser ='" + user.getDiplome() + "' ,Password ='" + user.encrypt(user.getPassword())+ "' WHERE idUser = '" + id + "'";
+        PreparedStatement pst;
+
+        try {
             pst = cnxx.prepareStatement(req);
             pst.executeUpdate();
-                        System.out.println("Coach modifié avec succés");
+            System.out.println("Coach modifié avec succés");
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-          
-      }
-        
-        
-                public void ModifierResponsable(User user, int id)
-      {  //NomUser,PrenomUser,MailUser,TelephoneNumberUser,DateNaissanceUser,AdresseSalleSport,MatriculeFiscale
-           String req = "UPDATE user SET NomUser ='"+user.getNom()+"',PrenomUser ='"+user.getPrenom()+"',MailUser ='"+user.getMail()+"' ,TelephoneNumberUser ='"+user.getTelephone_Number()+"',DateNaissanceUser ='"+user.getDate_Naissance()+"' ,AdresseSalleSport ='"+user.getAdresse_Salle_Sport()+"' ,MatriculeFiscale ='"+user.getMatricule_Fiscale()+"' WHERE idUser = '"+id+"'";
-          PreparedStatement pst;
 
-try {
+    }
+
+    public void ModifierResponsable(User user, int id) {  //NomUser,PrenomUser,MailUser,TelephoneNumberUser,DateNaissanceUser,AdresseSalleSport,MatriculeFiscale
+        String req = "UPDATE user SET NomUser ='" + user.getNom() + "',PrenomUser ='" + user.getPrenom() + "',MailUser ='" + user.getMail() + "' ,TelephoneNumberUser ='" + user.getTelephone_Number() + "',DateNaissanceUser ='" + user.getDate_Naissance() + "' ,AdresseSalleSport ='" + user.getAdresse_Salle_Sport() + "' ,MatriculeFiscale ='" + user.getMatricule_Fiscale() + "' ,Password ='" + user.encrypt(user.getPassword()) + "' WHERE idUser = '" + id + "'";
+        PreparedStatement pst;
+
+        try {
             pst = cnxx.prepareStatement(req);
             pst.executeUpdate();
-                        System.out.println("Responsable modifié avec succés");
+            System.out.println("Responsable modifié avec succés");
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-          
-      }
+
+    }
+
+    public int authentification(User user)  {
+                int role=7;
+
+        try{
+                    Statement st = cnxx.createStatement();
+                    String req ="SELECT COUNT(*) as count,RoleUser FROM USER WHERE MailUser='"+user.getMail()+"' AND Password='"+user.encrypt(user.getPassword())+"'" ;
+         ResultSet rs;
+            rs = st.executeQuery(req);
+            int count;
+            while(rs.next()){
+        count = rs.getInt("count");
+            
+        if(count==1)
+        {
+            System.out.println("Log in verifié ");
+            role = rs.getInt(2);
+        }
+            }
+    }catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            
+        }
+        return role ;
+    }
+    
 }

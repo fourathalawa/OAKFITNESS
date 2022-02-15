@@ -23,6 +23,7 @@ public class User {
     private String Diplome;
     private String Adresse_Salle_Sport;
     private long Matricule_Fiscale;
+    private String Password;
 
     public int getId() {
         return id;
@@ -88,6 +89,14 @@ public class User {
         this.Numero_Pack = Numero_Pack;
     }
 
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String Password) {
+        this.Password = Password;
+    }
+
     public String getDate_Commance() {
         return Date_Commance;
     }
@@ -131,16 +140,17 @@ public class User {
     public User() {
     }
 //Admin
-    public User(String Nom, String Prenom, String Mail, long Telephone_Number, String Date_Naissance, int Role) {
+    public User(String Nom, String Prenom, String Mail, long Telephone_Number, String Date_Naissance, int Role,String Password) {
         this.Nom = Nom;
         this.Prenom = Prenom;
         this.Mail = Mail;
         this.Telephone_Number = Telephone_Number;
         this.Date_Naissance = Date_Naissance;
         this.Role = Role;
+        this.Password=Password;
     }
 //Adherent
-    public User(String Nom, String Prenom, String Mail, long Telephone_Number, String Date_Naissance, int Role, int Numero_Pack, String Date_Commance) {
+    public User(String Nom, String Prenom, String Mail, long Telephone_Number, String Date_Naissance, int Role, int Numero_Pack, String Date_Commance,String Password) {
         this.Nom = Nom;
         this.Prenom = Prenom;
         this.Mail = Mail;
@@ -149,9 +159,11 @@ public class User {
         this.Role = Role;
         this.Numero_Pack = Numero_Pack;
         this.Date_Commance = Date_Commance;
+        this.Password=Password;
+
     }
 //Coach
-    public User(String Nom, String Prenom, String Mail, long Telephone_Number, String Date_Naissance, int Role, String Experience, String Diplome) {
+    public User(String Nom, String Prenom, String Mail, long Telephone_Number, String Date_Naissance, int Role, String Experience, String Diplome,String Password) {
         this.Nom = Nom;
         this.Prenom = Prenom;
         this.Mail = Mail;
@@ -160,10 +172,12 @@ public class User {
         this.Role = Role;
         this.Experience = Experience;
         this.Diplome = Diplome;
+        this.Password=Password;
+
     }
     
 //Responsable
-      public User(String Nom, String Prenom, String Mail, long Telephone_Number, String Date_Naissance, String Adresse_Salle_Sport, long Matricule_Fiscale, int Role) {
+      public User(String Nom, String Prenom, String Mail, long Telephone_Number, String Date_Naissance, String Adresse_Salle_Sport, long Matricule_Fiscale, int Role,String Password) {
         this.Nom = Nom;
         this.Prenom = Prenom;
         this.Mail = Mail;
@@ -172,14 +186,35 @@ public class User {
         this.Role = Role;
         this.Adresse_Salle_Sport = Adresse_Salle_Sport;
         this.Matricule_Fiscale = Matricule_Fiscale;
+        this.Password=Password;
+
+    }
+
+    public User(String Mail, String Password) {
+        this.Mail = Mail;
+        this.Password = Password;
     }
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", Nom=" + Nom + ", Prenom=" + Prenom + ", Mail=" + Mail + ", Telephone_Number=" + Telephone_Number + ", Date_Naissance=" + Date_Naissance + ", Role=" + Role + ", Numero_Pack=" + Numero_Pack + ", Date_Commance=" + Date_Commance + ", Experience=" + Experience + ", Diplome=" + Diplome + ", Adresse_Salle_Sport=" + Adresse_Salle_Sport + ", Matricule_Fiscale=" + Matricule_Fiscale + '}';
+        return "User{" + "id=" + id + ", Nom=" + Nom + ", Prenom=" + Prenom + ", Mail=" + Mail + ", Telephone_Number=" + Telephone_Number + ", Date_Naissance=" + Date_Naissance + ", Role=" + Role + ", Numero_Pack=" + Numero_Pack + ", Date_Commance=" + Date_Commance + ", Experience=" + Experience + ", Diplome=" + Diplome + ", Adresse_Salle_Sport=" + Adresse_Salle_Sport + ", Matricule_Fiscale=" + Matricule_Fiscale +", Password "+Password+ '}';
     }
 
     
-        
-    
+        public String encrypt(String password){
+        String crypte="";
+        for (int i=0; i<password.length();i++)  {
+            int c=password.charAt(i)^48; 
+            crypte=crypte+(char)c;
+        }
+        return crypte;
+    }
+      public String decrypt(String password){
+        String aCrypter="";
+        for (int i=0; i<password.length();i++)  {
+            int c=password.charAt(i)^48; 
+            aCrypter=aCrypter+(char)c;
+        }
+        return aCrypter;
+    }
 }
