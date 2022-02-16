@@ -87,12 +87,13 @@ public class MainClass {
        System.out.println(pncrud.AfficherRepasDeProgramme(1));
        System.out.println(pscrud.AfficherExercicesDeProgramme(10));
        //System.out.println(rcrud.afficherRepas());*/
-        /*SimpleDateFormat sdf = new SimpleDateFormat(
-    "yyyy-MM-dd");*/
+        SimpleDateFormat sdf = new SimpleDateFormat(
+    "yyyy-MM-dd");
         EvenementCRUD ecrud = new EvenementCRUD();
-        //Evenement ev = new Evenement(1,sdf.parse("2022-09-12"),"test3","test3","test3","test3");
-       // ecrud.ajouterEvenement2(ev)
+        Evenement ev = new Evenement(1,sdf.parse("2023-04-02"),"test3","test3","test3","test3");
+        //ecrud.ajouterEvenement2(ev);
         System.out.println(ecrud.afficherEvenement());
+        System.out.println(ecrud.BetweenDatesEvenement(sdf.parse("2022-03-01"), sdf.parse("2022-12-31")));
        // Evenement ev2 = new Evenement(2,sdf.parse("2022-09-28"),"test4","test4","test4","test4");
     }
 }

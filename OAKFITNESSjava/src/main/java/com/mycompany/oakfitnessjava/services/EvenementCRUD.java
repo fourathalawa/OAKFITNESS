@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -120,5 +121,35 @@ try {
             System.err.println(ex.getMessage());
         }
           
+      }
+      public List<Evenement> BetweenDatesEvenement(Date D1,Date D2)
+      {
+          List<Evenement> myList = new ArrayList();
+
+        try {
+            java.sql.Date sqlDate1 = new java.sql.Date(D1.getTime());
+            java.sql.Date sqlDate2 = new java.sql.Date(D2.getTime());
+            Statement st = cnxx.createStatement();
+            String req = "SELECT * FROM `Evenement` "
+                    + "WHERE (DateEvenement BETWEEN '"+sqlDate1+"' AND '"+sqlDate2+"')";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                Evenement e = new Evenement();
+                e.setIDEvenement(rs.getInt(1));
+                e.setIDCreatorEvenement(rs.getInt(2));
+                e.setDateEvenement(rs.getDate(3));
+                e.setTitreEvenement(rs.getString(4));
+                e.setDescrEvenement(rs.getString(5));
+                e.setAdresseEvenement(rs.getString(6));
+                e.setTypeEvenement(rs.getString(7));
+                myList.add(e);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            //   return null;
+        }
+        return myList;
       }
 }
