@@ -121,18 +121,19 @@ try {
 
         try {
             Statement st = cnxx.createStatement();
-            String req = "SELECT IDCoach,IDAdherent,DureeMois,TypeProgrammeSportif from exercice WHERE IDExercice in (SELECT IDExercice FROM programmes_exercice as pse WHERE pse.IDProgrammeSportif='"+id+"')";
+            String req = "SELECT IDExercice,TypeExercice,NomExercice,DescrExercice,DiffExercice,JusteSalleExercice,DureeExercice from exercice WHERE IDExercice in (SELECT IDExercice FROM programmes_exercice as pse WHERE pse.IDProgrammeSportif='"+id+"')";
             ResultSet rs;
             rs = st.executeQuery(req);
             while (rs.next()) {
 
                 Exercice ex = new Exercice();
-                ex.setTypeExercice(rs.getString(1));
-                ex.setNomExercice(rs.getString(2));
-                ex.setDescrExercice(rs.getString(3));
-                ex.setDiffExercice(rs.getString(4));
-                ex.setJusteSalleExercice(rs.getString(5));
-                ex.setDureeExercice(rs.getString(6));
+                ex.setIDExercice(rs.getInt("IDExercice"));
+                ex.setTypeExercice(rs.getString(2));
+                ex.setNomExercice(rs.getString(3));
+                ex.setDescrExercice(rs.getString(4));
+                ex.setDiffExercice(rs.getString(5));
+                ex.setJusteSalleExercice(rs.getString(6));
+                ex.setDureeExercice(rs.getString(7));
                 myList.add(ex);
             }
         } catch (SQLException e) {

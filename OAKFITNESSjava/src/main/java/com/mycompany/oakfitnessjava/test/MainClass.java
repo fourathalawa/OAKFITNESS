@@ -14,14 +14,16 @@ import com.mycompany.oakfitnessjava.entities.ProgrammeSportif;
 import com.mycompany.oakfitnessjava.services.ExerciceCRUD;
 import com.mycompany.oakfitnessjava.services.ProgrammeNutritionnelCRUD;
 import com.mycompany.oakfitnessjava.services.ProgrammeSportifCRUD;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  *
  * @author Heni Nechi
  */
 public class MainClass {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         //MyConnection mc = new MyConnection();
         
        // ExerciceCRUD ecrud = new ExerciceCRUD();
@@ -68,12 +70,29 @@ public class MainClass {
         pscrud.ModifierProgrammeSportif(ps2,ex,2);
         //ecrud.supprimerExercice(1);
         System.out.println(pscrud.afficherProgrammeSportif());*/
-        RepasCRUD rcrud = new RepasCRUD();
-        Repas r = new Repas("test3","test3","test3","test3");
+        /*RepasCRUD rcrud = new RepasCRUD();
+        ExerciceCRUD ecrud = new ExerciceCRUD();
         ProgrammeNutritionnelCRUD pncrud = new ProgrammeNutritionnelCRUD();
-        ProgrammeNutritionnel pn = new ProgrammeNutritionnel(1,1,100,"test2");
+        ProgrammeSportifCRUD pscrud = new ProgrammeSportifCRUD();
+        
+        
+        /*ProgrammeNutritionnel pn = new ProgrammeNutritionnel(1,1,100,"test2");
+        Repas r = new Repas("test3","test3","test3","test3");
+        ProgrammeSportif ps = new ProgrammeSportif(1, 1,1, 1,"test");
+        Exercice ex = new Exercice("test28","test28","test28","test28","test28","test28");
+        ecrud.ajouterExercice2(ex);
+        ecrud.AjouterExerciceAProgramme(10, 28);
         //pncrud.ajouterProgrammeNutritionnel2(pn);
         //rcrud.AjouterRepasAProgramme(1, 2);
        System.out.println(pncrud.AfficherRepasDeProgramme(1));
+       System.out.println(pscrud.AfficherExercicesDeProgramme(10));
+       //System.out.println(rcrud.afficherRepas());*/
+        /*SimpleDateFormat sdf = new SimpleDateFormat(
+    "yyyy-MM-dd");*/
+        EvenementCRUD ecrud = new EvenementCRUD();
+        //Evenement ev = new Evenement(1,sdf.parse("2022-09-12"),"test3","test3","test3","test3");
+       // ecrud.ajouterEvenement2(ev)
+        System.out.println(ecrud.afficherEvenement());
+       // Evenement ev2 = new Evenement(2,sdf.parse("2022-09-28"),"test4","test4","test4","test4");
     }
 }

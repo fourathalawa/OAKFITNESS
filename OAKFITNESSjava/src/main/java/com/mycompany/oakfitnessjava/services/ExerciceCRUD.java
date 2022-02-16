@@ -28,7 +28,7 @@ public class ExerciceCRUD {
     }
 
     public void ajouterExercice() {
-        String Request = "INSERT INTO EXERCICE (IDProgrameSportif,TypeExercice,NomExercice,DescrExercice,DiffExercice,JusteSalleExercice,DureeExercice)"
+        String Request = "INSERT INTO EXERCICE (IDExercice,TypeExercice,NomExercice,DescrExercice,DiffExercice,JusteSalleExercice,DureeExercice)"
                 + " VALUES (1,'test','test','test','test','test','test')";
         Statement st;
         try {
@@ -126,14 +126,14 @@ public class ExerciceCRUD {
 
     }
 
-    public void AjouterExerciceAProgramme(int IDE, int IDPs) {
+    public void AjouterExerciceAProgramme(int IDPs, int IDE) {
         String req = "INSERT INTO programmes_exercice (IDProgrammeSportif,IDExercice) VALUES (?,?)";
         PreparedStatement pst;
         try {
             pst = cnxx.prepareStatement(req);
 
-            pst.setInt(1, IDE);
-            pst.setInt(2, IDPs);
+            pst.setInt(1, IDPs);
+            pst.setInt(2, IDE);
             pst.executeUpdate();
             System.out.println("Exercice ajouté à programme avec succés");
         } catch (SQLException ex) {

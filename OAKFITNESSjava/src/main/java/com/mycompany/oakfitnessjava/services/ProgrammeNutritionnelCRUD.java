@@ -122,16 +122,17 @@ try {
 
         try {
             Statement st = cnxx.createStatement();
-            String req = "SELECT PDej,Dej,Dinn,RestOrActive FROM repas WHERE IDRepas in (SELECT IDRepas FROM programmen_repas as pnr WHERE pnr.IDProgrammeNutritionnel='"+id+"')";
+            String req = "SELECT IDRepas,PDej,Dej,Dinn,RestOrActive FROM repas WHERE IDRepas in (SELECT IDRepas FROM programmen_repas as pnr WHERE pnr.IDProgrammeNutritionnel='"+id+"')";
             ResultSet rs;
             rs = st.executeQuery(req);
             while (rs.next()) {
 
                 Repas r = new Repas();
-                r.setPDej(rs.getString(1));
-                r.setDej(rs.getString(2));
-                r.setDinn(rs.getString(3));
-                r.setRestOrActive(rs.getString(4));
+                r.setIDRepas(rs.getInt("IDRepas"));
+                r.setPDej(rs.getString(2));
+                r.setDej(rs.getString(3));
+                r.setDinn(rs.getString(4));
+                r.setRestOrActive(rs.getString(5));
                 myList.add(r);
             }
         } catch (SQLException e) {

@@ -69,6 +69,7 @@ public class RepasCRUD {
             while (rs.next()) {
 
                 Repas R = new Repas();
+                R.setIDRepas(rs.getInt("IDRepas"));
                 R.setPDej(rs.getString(2));
                 R.setDej(rs.getString(3));
                 R.setDinn(rs.getString(4));

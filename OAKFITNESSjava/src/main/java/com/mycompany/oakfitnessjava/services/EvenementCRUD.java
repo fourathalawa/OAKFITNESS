@@ -27,8 +27,8 @@ public class EvenementCRUD {
     }
 
     public void ajouterEvenement() {
-        String Request = "INSERT INTO Evenement (TitreEvenement,DescrEvenement,AdresseEvenement,TypeEvenement)"
-                + " VALUES ('test','test','test','test')";
+        String Request = "INSERT INTO Evenement (IDCreatorEvenement,DateEvenement,TitreEvenement,DescrEvenement,AdresseEvenement,TypeEvenement)"
+                + " VALUES ('test','test',test','test','test','test')";
         Statement st;
         try {
             st = cnxx.createStatement();
@@ -40,16 +40,19 @@ public class EvenementCRUD {
 
     }
     public void ajouterEvenement2(Evenement E){
-    String Request = "INSERT INTO Evenement (TitreEvenement,DescrEvenement,AdresseEvenement,TypeEvenement)"
-                + " VALUES (?,?,?,?)";
+    String Request = "INSERT INTO Evenement (IDCreatorEvenement,DateEvenement,TitreEvenement,DescrEvenement,AdresseEvenement,TypeEvenement)"
+                + " VALUES (?,?,?,?,?,?)";
     
     PreparedStatement  pst;
     try {
+        java.sql.Date sqlDate = new java.sql.Date(E.getDateEvenement().getTime());
             pst = cnxx.prepareStatement(Request);
-            pst.setString(1, E.getTitreEvenement());
-            pst.setString(2, E.getDescrEvenement());
-            pst.setString(3, E.getAdresseEvenement());
-            pst.setString(4, E.getTypeEvenement());
+            pst.setInt(1, E.getIDCreatorEvenement());
+            pst.setDate(2, sqlDate);
+            pst.setString(3, E.getTitreEvenement());
+            pst.setString(4, E.getDescrEvenement());
+            pst.setString(5, E.getAdresseEvenement());
+            pst.setString(6, E.getTypeEvenement());
             pst.executeUpdate();
                         System.out.println("Evenement ajouté avec succés");
  } catch (SQLException ex) {
@@ -69,12 +72,15 @@ public class EvenementCRUD {
             rs = st.executeQuery(req);
             while (rs.next()) {
 
-                Evenement ex = new Evenement();
-                ex.setTitreEvenement(rs.getString(2));
-                ex.setDescrEvenement(rs.getString(3));
-                ex.setAdresseEvenement(rs.getString(4));
-                ex.setTypeEvenement(rs.getString(5));
-                myList.add(ex);
+                Evenement e = new Evenement();
+                e.setIDEvenement(rs.getInt(1));
+                e.setIDCreatorEvenement(rs.getInt(2));
+                e.setDateEvenement(rs.getDate(3));
+                e.setTitreEvenement(rs.getString(4));
+                e.setDescrEvenement(rs.getString(5));
+                e.setAdresseEvenement(rs.getString(6));
+                e.setTypeEvenement(rs.getString(7));
+                myList.add(e);
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -102,7 +108,7 @@ try {
       
       public void ModifierEvenement(Evenement E, int id)
       {
-           String req = "UPDATE Evenement SET TitreEvenement ='"+E.getTitreEvenement()+"',DescrEvenement ='"+E.getDescrEvenement()+"',AdresseEvenement ='"+E.getAdresseEvenement()+"', TypeEvenement ='"+E.getTypeEvenement()+"' WHERE IDEvenement = '"+id+"'";
+           String req = "UPDATE Evenement SET IDCreatorEvenement='"+E.getIDCreatorEvenement()+"' DateEvenement ='"+E.getDateEvenement()+"' TitreEvenement ='"+E.getTitreEvenement()+"',DescrEvenement ='"+E.getDescrEvenement()+"',AdresseEvenement ='"+E.getAdresseEvenement()+"', TypeEvenement ='"+E.getTypeEvenement()+"' WHERE IDEvenement = '"+id+"'";
           PreparedStatement pst;
 
 try {

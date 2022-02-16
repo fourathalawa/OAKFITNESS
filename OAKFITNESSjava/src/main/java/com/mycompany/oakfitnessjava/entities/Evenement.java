@@ -5,12 +5,16 @@
 
 package com.mycompany.oakfitnessjava.entities;
 
+import java.util.Date;
+
 /**
  *
  * @author Heni Nechi
  */
 public class Evenement {
     private int IDEvenement;
+    private int IDCreatorEvenement;
+    private Date DateEvenement;
     private String TitreEvenement;
     private String DescrEvenement;
     private String AdresseEvenement;
@@ -19,21 +23,40 @@ public class Evenement {
     public Evenement(){
     }
 
-    public Evenement(int IDEvenement, String TitreEvenement, String DescrEvenement, String AdresseEvenement, String TypeEvenement) {
+    public Evenement(int IDEvenement, int IDCreatorEvenement, Date DateEvenement, String TitreEvenement, String DescrEvenement, String AdresseEvenement, String TypeEvenement) {
         this.IDEvenement = IDEvenement;
+        this.IDCreatorEvenement = IDCreatorEvenement;
+        this.DateEvenement = DateEvenement;
         this.TitreEvenement = TitreEvenement;
         this.DescrEvenement = DescrEvenement;
         this.AdresseEvenement = AdresseEvenement;
         this.TypeEvenement = TypeEvenement;
     }
 
-    public Evenement(String TitreEvenement, String DescrEvenement, String AdresseEvenement, String TypeEvenement) {
+    public Evenement(int IDCreatorEvenement, Date DateEvenement, String TitreEvenement, String DescrEvenement, String AdresseEvenement, String TypeEvenement) {
+        this.IDCreatorEvenement = IDCreatorEvenement;
+        this.DateEvenement = DateEvenement;
         this.TitreEvenement = TitreEvenement;
         this.DescrEvenement = DescrEvenement;
         this.AdresseEvenement = AdresseEvenement;
         this.TypeEvenement = TypeEvenement;
     }
-    
+
+    public int getIDCreatorEvenement() {
+        return IDCreatorEvenement;
+    }
+
+    public void setIDCreatorEvenement(int IDCreatorEvenement) {
+        this.IDCreatorEvenement = IDCreatorEvenement;
+    }
+
+    public Date getDateEvenement() {
+        return DateEvenement;
+    }
+
+    public void setDateEvenement(Date DateEvenement) {
+        this.DateEvenement = DateEvenement;
+    }
 
     public int getIDEvenement() {
         return IDEvenement;
@@ -77,7 +100,7 @@ public class Evenement {
 
     @Override
     public String toString() {
-        return "Evenement{" + "IDEvenement=" + IDEvenement + ", TitreEvenement=" + TitreEvenement + ", DescrEvenement=" + DescrEvenement + ", AdresseEvenement=" + AdresseEvenement + ", TypeEvenement=" + TypeEvenement + '}';
+        return "Evenement{" + "IDEvenement=" + IDEvenement + ", IDCreatorEvenemnt="+ IDCreatorEvenement + ", DateEvenement=" + DateEvenement + ", TitreEvenement=" + TitreEvenement + ", DescrEvenement=" + DescrEvenement + ", AdresseEvenement=" + AdresseEvenement + ", TypeEvenement=" + TypeEvenement + '}';
     }
     
     
