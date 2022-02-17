@@ -141,8 +141,8 @@ public class ExerciceCRUD {
         }
     }
 
-    public void supprimerExerciceDeProgramme(int id) {
-        String Request = "DELETE FROM programmes_exercice WHERE IDExercice='" + id + "' ";
+    public void supprimerExerciceDeProgramme(int id,int idP) {
+        String Request = "DELETE FROM programmes_exercice WHERE IDExercice='" + id + "'AND IDProgrammeSportif='"+idP+"' ";
         PreparedStatement pst;
 
         try {

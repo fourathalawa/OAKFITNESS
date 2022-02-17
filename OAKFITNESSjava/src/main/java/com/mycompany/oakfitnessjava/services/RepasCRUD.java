@@ -26,12 +26,12 @@ public class RepasCRUD {
     }
 
     public void ajouterRepas() {
-        String Request = "INSERT INTO Repas (PDej,Dej,Dinn,RestOrActive)"
-                + " VALUES ('test','test','test','test')";
+        String Request = "INSERT INTO Repas (PDej,Dej,Dinn,Calorie,RestOrActive)"
+                + " VALUES ('test','test','test','test','test')";
         Statement st;
         try {
             st = cnxx.createStatement();
-            st.executeUpdate(Request);
+            st.executeUpdate(Request);  
             System.out.println("Repas Ajouter avec succes!");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -39,8 +39,8 @@ public class RepasCRUD {
 
     }
     public void ajouterRepas2(Repas R){
-    String Request = "INSERT INTO Repas (PDej,Dej,Dinn,RestOrActive)"
-                + " VALUES (?,?,?,?)";
+    String Request = "INSERT INTO Repas (PDej,Dej,Dinn,Calorie,RestOrActive)"
+                + " VALUES (?,?,?,?,?)";
     
     PreparedStatement  pst;
     try {
@@ -48,7 +48,8 @@ public class RepasCRUD {
             pst.setString(1, R.getPDej());
             pst.setString(2, R.getDej());
             pst.setString(3, R.getDinn());
-            pst.setString(4, R.getRestOrActive());
+            pst.setInt(4,R.getCalorie());
+            pst.setString(5, R.getRestOrActive());
             pst.executeUpdate();
                         System.out.println("Repas ajouté avec succés");
  } catch (SQLException ex) {
@@ -73,7 +74,8 @@ public class RepasCRUD {
                 R.setPDej(rs.getString(2));
                 R.setDej(rs.getString(3));
                 R.setDinn(rs.getString(4));
-                R.setRestOrActive(rs.getString(5));
+                R.setCalorie(rs.getInt(5));
+                R.setRestOrActive(rs.getString(6));
                 myList.add(R);
             }
         } catch (SQLException e) {
@@ -102,7 +104,7 @@ try {
       
       public void ModifierRepas(Repas R, int id)
       {
-           String req = "UPDATE Repas SET PDej ='"+R.getPDej()+"',Dej ='"+R.getDej()+"',Dinn ='"+R.getDinn()+"', RestOrActive ='"+R.getRestOrActive()+"' WHERE IDRepas = '"+id+"'";
+           String req = "UPDATE Repas SET PDej ='"+R.getPDej()+"',Dej ='"+R.getDej()+"',Dinn ='"+R.getDinn()+"',Calorie ='"+R.getCalorie()+"', RestOrActive ='"+R.getRestOrActive()+"' WHERE IDRepas = '"+id+"'";
           PreparedStatement pst;
 
 try {
@@ -130,8 +132,8 @@ try {
         }
     }
 
-    public void supprimerRepasDeProgramme(int id) {
-        String Request = "DELETE FROM programmen_repas WHERE IDRepas='" + id + "' ";
+    public void supprimerRepasDeProgramme(int id,int idP) {
+        String Request = "DELETE FROM programmen_repas WHERE IDRepas='" + id + "' AND IDProgrammeNutritionnel ='"+idP+"' ";
         PreparedStatement pst;
 
         try {

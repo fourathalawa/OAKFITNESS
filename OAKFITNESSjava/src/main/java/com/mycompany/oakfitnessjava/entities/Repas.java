@@ -14,26 +14,39 @@ public class Repas {
     private String PDej;
     private String Dej;
     private String Dinn;
+    private int Calorie;
     private String RestOrActive;
     
     public Repas() {
         
     }
 
-    public Repas(int IDRepas, String PDej, String Dej, String Dinn, String RestOrActive) {
+    public Repas(int IDRepas, String PDej, String Dej, String Dinn, int Calorie, String RestOrActive) {
         this.IDRepas = IDRepas;
         this.PDej = PDej;
         this.Dej = Dej;
         this.Dinn = Dinn;
+        this.Calorie = Calorie;
         this.RestOrActive = RestOrActive;
     }
 
-    public Repas(String PDej, String Dej, String Dinn, String RestOrActive) {
+    public Repas(String PDej, String Dej, String Dinn, int Calorie, String RestOrActive) {
         this.PDej = PDej;
         this.Dej = Dej;
         this.Dinn = Dinn;
+        this.Calorie = Calorie;
         this.RestOrActive = RestOrActive;
     }
+
+    public int getCalorie() {
+        return Calorie;
+    }
+
+    public void setCalorie(int Calorie) {
+        this.Calorie = Calorie;
+    }
+
+    
 
     
 
@@ -79,7 +92,9 @@ public class Repas {
 
     @Override
     public String toString() {
-        return "Repas{" + "IDRepas=" + IDRepas + ", PDej=" + PDej + ", Dej=" + Dej + ", Dinn=" + Dinn + ", RestOrActive=" + RestOrActive + '}';
+        return "Repas{" + "IDRepas=" + IDRepas + ", PDej=" + PDej + ", Dej=" + Dej + ", Dinn=" + Dinn + ", Calorie=" + Calorie + ", RestOrActive=" + RestOrActive + '}';
     }
+
+    
 
 }
