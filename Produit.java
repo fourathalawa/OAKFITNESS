@@ -16,6 +16,7 @@ public class Produit {
     private float PrixProduit;
     private int IsAvailable;
     private String ImageProduit;
+//stock
 
     public Produit(int IdProduit, String NomProduit, String CategProduit, String DescrProduit, float PrixProduit, int IsAvailable, String ImageProduit) {
         this.IdProduit = IdProduit;

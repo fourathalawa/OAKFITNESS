@@ -18,6 +18,7 @@ public class Transformation {
     private float PoidApres;
     private float TailleAvant;
     private float TailleApres;
+    private int Tlikes;
     private int IdUser;
 
     public Transformation(int IdImage, String TitreImage, String DescreptionImage, String ImageAvant, String ImageApres, float PoidAvant, float PoidApres, float TailleAvant, float TailleApres, int IdUser) {
@@ -30,6 +31,7 @@ public class Transformation {
         this.PoidApres = PoidApres;
         this.TailleAvant = TailleAvant;
         this.TailleApres = TailleApres;
+        this.Tlikes = 0;
         this.IdUser = IdUser;
     }
 
@@ -42,8 +44,28 @@ public class Transformation {
         this.PoidApres = PoidApres;
         this.TailleAvant = TailleAvant;
         this.TailleApres = TailleApres;
+        this.Tlikes = 0;
         this.IdUser = IdUser;
     }
+
+    public Transformation(int Tlikes) {
+        this.Tlikes = 0;
+    }
+    public Transformation() {
+       this.Tlikes = 0;
+    }
+
+
+
+    public int getTlikes() {
+        return Tlikes;
+    }
+
+    public void setTlikes(int Tlikes) {
+        this.Tlikes = Tlikes;
+    }
+
+
 
     public float getPoidAvant() {
         return PoidAvant;
@@ -75,13 +97,6 @@ public class Transformation {
 
     public void setTailleApres(float TailleApres) {
         this.TailleApres = TailleApres;
-    }
-
-
-
-    
-
-    public Transformation() {
     }
 
     public int getIdImage() {
@@ -134,7 +149,7 @@ public class Transformation {
 
     @Override
     public String toString() {
-        return "Transformation{" + "IdImage=" + IdImage + ", TitreImage=" + TitreImage + ", DescreptionImage=" + DescreptionImage + ", ImageAvant=" + ImageAvant + ", ImageApres=" + ImageApres + ",PoidAvant="+PoidAvant+ ",PoidApres="+PoidApres+ ",TailleAvant="+TailleAvant+ ",TailleApres="+TailleApres+", IdUser=" + IdUser + '}';
+        return "Transformation{" + "IdImage=" + IdImage + ", TitreImage=" + TitreImage + ", DescreptionImage=" + DescreptionImage + ", ImageAvant=" + ImageAvant + ", ImageApres=" + ImageApres + ",PoidAvant="+PoidAvant+ ",PoidApres="+PoidApres+ ",TailleAvant="+TailleAvant+ ",TailleApres="+TailleApres+",Likes="+Tlikes+", IdUser=" + IdUser + '}';
     }
     
 }

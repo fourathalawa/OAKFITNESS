@@ -71,6 +71,7 @@ public class TransformationCRUD {
                 per.setImageApres(rs.getString("PoidApres"));
                 per.setImageAvant(rs.getString("TailleAvant"));
                 per.setImageApres(rs.getString("TailleApres"));
+                per.setTlikes(rs.getInt("Tlike"));
                 per.setIdUser(rs.getInt("IdUser"));
                 myList.add(per);
             }
@@ -132,6 +133,7 @@ public List<Transformation> afficherTransformationTrier1() {
                 per.setPoidApres(rs.getFloat("PoidApres"));
                 per.setTailleAvant(rs.getFloat("TailleAvant"));
                 per.setTailleApres(rs.getFloat("TailleApres"));
+                per.setTlikes(rs.getInt("Tlike"));
                 per.setIdUser(rs.getInt("IdUser"));
                 myList.add(per);
             }
@@ -188,5 +190,65 @@ public float calculerApresIMC(int IdImage) {
 		
 		return reponse;
 	}
+    public void LikeTransformation(int IdImage) {
+        String req = " UPDATE transformation SET Tlike=Tlike+1 WHERE IdImage = '" + IdImage + "'";
+        PreparedStatement pst;
+
+        try {
+            pst = cnxx.prepareStatement(req);
+            pst.executeUpdate();
+            System.out.println("Transformation Like avec succés");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+    }
+public void unLikeTransformation(int IdImage) {
+        String req = " UPDATE transformation SET Tlike=Tlike-1 WHERE IdImage = '" + IdImage + "'";
+        PreparedStatement pst;
+
+        try {
+            pst = cnxx.prepareStatement(req);
+            pst.executeUpdate();
+            System.out.println("Transformation unLike avec succés");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+    }
+//
+public List<Transformation> afficherTransformationLike() {
+
+        List<Transformation> myList = new ArrayList();
+
+        try {
+            Statement st = cnxx.createStatement();
+            String req = "SELECT * FROM transformation ORDER BY Tlike DESC ";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                Transformation per = new Transformation();
+                per.setIdImage(rs.getInt("IdImage"));
+                per.setTitreImage(rs.getString("TitreImage"));
+                per.setDescreptionImage(rs.getString("DescreptionImage"));
+                per.setImageAvant(rs.getString("ImageAvant"));
+                per.setImageApres(rs.getString("ImageApres"));
+                per.setPoidAvant(rs.getFloat("PoidAvant"));
+                per.setPoidApres(rs.getFloat("PoidApres"));
+                per.setTailleAvant(rs.getFloat("TailleAvant"));
+                per.setTailleApres(rs.getFloat("TailleApres"));
+                per.setTlikes(rs.getInt("Tlike"));
+                per.setIdUser(rs.getInt("IdUser"));
+                myList.add(per);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            //   return null;
+        }
+        return myList;
+    }
 }
 

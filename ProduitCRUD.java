@@ -130,7 +130,7 @@ public List<Produit> afficherProduitTrier1() {
 public float calculerChiffreAffaire() {
 		float reponse=0;
 		
-		String requete="SELECT SUM(PrixProduit) As Total FROM produit where IsAvailable = 1";//limit 1
+		String requete="SELECT SUM(PrixProduit) As Total FROM produit where IsAvailable = 1";
 		
 		
 		
@@ -149,5 +149,7 @@ public float calculerChiffreAffaire() {
 		
 		return reponse;
 	}
+//rechereche critére 
+
 }
 

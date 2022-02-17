@@ -39,15 +39,18 @@ public class MainClass {
         Transformation t2 = new Transformation("test ", " best Test", "test.png", "test.png",80,100,180,187, 34);
         //ts.ajouterTransformation(t);
         //ts.supprimerTransformation(3);
-        ts.modifierTransformation(t,16);
+        //ts.LikeTransformation(23);
+        //ts.unLikeTransformation(22);
         System.out.println("------------LIST Transformation------------");
         System.out.println(ts.afficherTransformation());
         System.out.println("------------LIST Trier Par Titre------------");
         System.out.println(ts.afficherTransformationTrier1());
        System.out.println("------------Calculer IMC Avant ------------");
-        System.out.println(ts.calculerAvantIMC(17) );
-      System.out.println("------------Calculer IMC Apres ------------");
-        System.out.println(ts.calculerApresIMC(17) );
+        //System.out.println(ts.calculerAvantIMC(17) );
+     // System.out.println("------------Calculer IMC Apres ------------");
+        //System.out.println(ts.calculerApresIMC(17) );
+        System.out.println("---------------Image Plus Like----------------");
+        System.out.println(ts.afficherTransformationLike());
 
     }
 }
