@@ -16,7 +16,7 @@ import com.esprit.projectoak.services.ReclamationCRUD;
  * @author user
  */
 public class MainClass {
-
+//jerjerj
     public static void main(String[] args) {
 ////MyConnection mc =  MyConnection.getInstance();
         ReclamationCRUD ps = new ReclamationCRUD();

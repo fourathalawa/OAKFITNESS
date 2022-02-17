@@ -120,6 +120,7 @@ public class CommentaireCRUD {
             //   return null;
         }
         return myList;
+//test
     }
 
     public int afficherNote(int i) { //1 = + 2 = -
