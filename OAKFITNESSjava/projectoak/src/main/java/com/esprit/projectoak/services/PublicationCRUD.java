@@ -14,8 +14,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDateTime;  
-import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -123,12 +123,67 @@ public class PublicationCRUD {
         }
         return myList;
     }
-    public List<Publication> triPulication() {
+
+    public List<Publication> triPulication(int n) {
+        List<Publication> myList = new ArrayList();
+        if (n == 1) {
+            try {
+                Statement st = cnxx.createStatement();
+                String req = "SELECT * FROM publication ORDER BY DatePublication ASC";
+                ResultSet rs;
+                rs = st.executeQuery(req);
+                while (rs.next()) {
+
+                    Publication per = new Publication();
+
+                    per.setIDpublication(rs.getInt("IDpublication"));
+                    per.setIDuser(rs.getInt("IDuser"));
+                    per.setImagePublication(rs.getString(3));
+                    per.setDatePublication(rs.getString(4));
+                    per.setPublication(rs.getString(5));
+                    per.comm = extractComment(rs.getInt("IDpublication"));
+                    myList.add(per);
+                }
+                System.out.println(myList);
+            } catch (SQLException ex) {
+                System.err.println(ex.getMessage());
+                //   return null;
+            }
+        } else if (n == 2) {
+            try {
+                Statement st = cnxx.createStatement();
+                String req = "SELECT * FROM publication ORDER BY DatePublication DESC";
+                ResultSet rs;
+                rs = st.executeQuery(req);
+                while (rs.next()) {
+
+                    Publication per = new Publication();
+
+                    per.setIDpublication(rs.getInt("IDpublication"));
+                    per.setIDuser(rs.getInt("IDuser"));
+                    per.setImagePublication(rs.getString(3));
+                    per.setDatePublication(rs.getString(4));
+                    per.setPublication(rs.getString(5));
+                    per.comm = extractComment(rs.getInt("IDpublication"));
+                    myList.add(per);
+                }
+                System.out.println(myList);
+            } catch (SQLException ex) {
+                System.err.println(ex.getMessage());
+                //   return null;
+            }
+        } else {
+            System.out.println("parametre invalide!");
+        }
+        return myList;
+    }
+
+    public List<Publication> chercherPublication(String mot) {
         List<Publication> myList = new ArrayList();
 
         try {
             Statement st = cnxx.createStatement();
-            String req = "SELECT * FROM publication ORDER BY DatePublication";
+            String req = "SELECT * FROM publication WHERE Publication LIKE '%" + mot + "%' ";
             ResultSet rs;
             rs = st.executeQuery(req);
             while (rs.next()) {
@@ -143,46 +198,20 @@ public class PublicationCRUD {
                 per.comm = extractComment(rs.getInt("IDpublication"));
                 myList.add(per);
             }
-            System.out.println(myList);
+            System.out.println("recherche resulatat du mot:  " + mot + "  " + myList);
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
             //   return null;
         }
         return myList;
     }
- public List<Publication> chercherPublication(String mot) {
-        List<Publication> myList = new ArrayList();
 
+    public List<Commentaire> extractComment(int id) {
+        List<Commentaire> myList = new ArrayList();
         try {
             Statement st = cnxx.createStatement();
-            String req = "SELECT * FROM publication WHERE Publication LIKE '%"+mot+"%' ";
+            String req = "Select * FROM commentaire HAVING IDpublication ='" + id + "' ";
             ResultSet rs;
-            rs = st.executeQuery(req);
-            while (rs.next()) {
-
-                Publication per = new Publication();
-
-                per.setIDpublication(rs.getInt("IDpublication"));
-                per.setIDuser(rs.getInt("IDuser"));
-                per.setImagePublication(rs.getString(3));
-                per.setDatePublication(rs.getString(4));
-                per.setPublication(rs.getString(5));
-                per.comm = extractComment(rs.getInt("IDpublication"));
-                myList.add(per);
-            }
-            System.out.println("recherche resulatat du mot:  "+mot+"  "+myList);
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-            //   return null;
-        }
-        return myList;
-    }
-public List<Commentaire> extractComment(int id) {
- List<Commentaire> myList = new ArrayList();
-        try {
-            Statement st = cnxx.createStatement();
-        String req = "Select * FROM commentaire HAVING IDpublication ='"+id+"' ";
-         ResultSet rs;
             rs = st.executeQuery(req);
             while (rs.next()) {
 
@@ -193,6 +222,7 @@ public List<Commentaire> extractComment(int id) {
                 per.setIDUser(rs.getInt("IDUser"));
                 per.setCommentaire(rs.getString(4));
                 per.setDateCommentaire(rs.getString(5));
+                per.setNomCommentaire(extractNom(rs.getInt("IDUser")));
                 myList.add(per);
 
             }
@@ -201,7 +231,25 @@ public List<Commentaire> extractComment(int id) {
             //   return null;
         }
         return myList;
-     
+
+    }
+
+    public String extractNom(int id) {
+        String nom = "";
+        try {
+            Statement st = cnxx.createStatement();
+            String req = "Select * FROM user WHERE userID ='" + id + "' ";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+             while (rs.next()) {
+            nom =  rs.getString(2);
+              }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            //   return null;
+        }
+        return nom;
+
     }
 
 }

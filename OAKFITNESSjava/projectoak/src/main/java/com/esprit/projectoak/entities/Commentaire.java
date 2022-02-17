@@ -15,6 +15,15 @@ public class Commentaire {
     private int IDUser;
     private String Commentaire;
     private String DateCommentaire;
+    private String NomCommentaire;
+
+    public void setNomCommentaire(String NomCommentaire) {
+        this.NomCommentaire = NomCommentaire;
+    }
+
+    public String getNomCommentaire() {
+        return NomCommentaire;
+    }
 
     public Commentaire() {
     }
@@ -75,7 +84,7 @@ public class Commentaire {
     }
    @Override
     public String toString() {
-        return "Commentaire {" + "IDCommentaire=" + IDCommentaire + ", IDPublication=" + IDPublication + ", IDUser=" + IDUser + ", Commentaire=" + Commentaire + ", DateCommentaire=" + DateCommentaire + "}" + "\n";
+        return "Commentaire {" + "IDCommentaire=" + IDCommentaire + ", IDPublication=" + IDPublication + ", IDUser=" + IDUser + ", Commentaire=" + Commentaire + ", DateCommentaire=" + DateCommentaire + "nom= " + NomCommentaire + " } \n";
     }
 
     public Commentaire(String Commentaire) {

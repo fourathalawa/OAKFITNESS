@@ -12,7 +12,7 @@ public class Reclamation {
 
     private int IDReclamation;
     private int IDUserReclamation;
-    private int CategReclam; // 1:publication,2:commentaire,3:user
+    private int CategReclam; 
     private String DescrReclam;
     private String DateReclam;
     private String pourcentageReclam;

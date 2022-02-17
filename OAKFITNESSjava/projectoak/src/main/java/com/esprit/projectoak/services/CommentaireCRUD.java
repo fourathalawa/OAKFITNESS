@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.esprit.projectoak.services;
+
 import com.esprit.projectoak.entities.Commentaire;
 import com.esprit.projectoak.entities.Reclamation;
 import com.esprit.projectoak.utils.MyConnection;
@@ -13,14 +14,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDateTime;  
-import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author user
  */
 public class CommentaireCRUD {
-    
+
     Connection cnxx;
 
     public CommentaireCRUD() {
@@ -48,8 +50,8 @@ public class CommentaireCRUD {
         PreparedStatement pst;
         try {
             pst = cnxx.prepareStatement(req);
-            pst.setInt(1,p.getIDPublication());
-            pst.setInt(2,p.getIDUser());
+            pst.setInt(1, p.getIDPublication());
+            pst.setInt(2, p.getIDUser());
             pst.setString(3, p.getCommentaire());
             pst.setString(4, java.time.LocalDate.now().toString());
 
@@ -99,8 +101,8 @@ public class CommentaireCRUD {
 
         try {
             Statement st = cnxx.createStatement();
-             String req = "SELECT * FROM commentaire inner join publication"
- + " on publication.IDpublication = commentaire.IDPublication ";
+            String req = "SELECT * FROM commentaire inner join publication"
+                    + " on publication.IDpublication = commentaire.IDPublication ";
             ResultSet rs;
             rs = st.executeQuery(req);
             while (rs.next()) {
@@ -119,4 +121,14 @@ public class CommentaireCRUD {
         }
         return myList;
     }
+
+    public int afficherNote(int i) { //1 = + 2 = -
+        int n = 0;
+
+
+
+
+        return n;
+    }
+
 }
