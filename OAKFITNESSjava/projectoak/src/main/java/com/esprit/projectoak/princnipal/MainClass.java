@@ -29,6 +29,7 @@ public class MainClass {
 //        // System.out.println(p.getIDReclamation());
 //        //ps.supprimerReclamation(26);
 //        ps.modifierReclamation(25, p);
+//jfjfj
 System.out.println("**************affichage reclamation************************************");
         System.out.println(ps.afficherReclamation());
  PublicationCRUD pb = new PublicationCRUD();
