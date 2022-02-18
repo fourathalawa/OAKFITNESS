@@ -25,7 +25,7 @@ public class ProduitCRUD {
     } 
     public void ajouterProduit(Produit p) {
 
-        String req = "INSERT INTO produit (NomProduit,CategProduit,DescrProduit,PrixProduit,IsAvailable,ImageProduit) VALUES (?,?,?,?,?,?)";
+        String req = "INSERT INTO produit (NomProduit,CategProduit,DescrProduit,PrixProduit,IsAvailable,ImageProduit,StockProduit) VALUES (?,?,?,?,?,?,?)";
         PreparedStatement pst;
         try {
             pst = cnxx.prepareStatement(req);
@@ -35,6 +35,7 @@ public class ProduitCRUD {
             pst.setFloat(4, p.getPrixProduit());
             pst.setInt(5, p.getIsAvailable());
             pst.setString(6, p.getImageProduit());
+            pst.setInt(7, p.StockProduit());
             pst.executeUpdate();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -60,6 +61,7 @@ public class ProduitCRUD {
                 per.setPrixProduit(rs.getFloat("PrixProduit"));
                 per.setIsAvailable(rs.getInt("IsAvailable"));
                 per.setImageProduit(rs.getString("ImageProduit"));
+                per.setStockProduit(rs.getInt("StockProduit"));
                 myList.add(per);
             }
         } catch (SQLException ex) {
@@ -86,7 +88,7 @@ try {
       }
     
      public void modifierProduit(Produit p , int IdProduit) {
-        String req = "UPDATE produit SET NomProduit ='" + p.getNomProduit() + "',CategProduit ='" + p.getCategProduit() + "',DescrProduit ='" + p.getDescrProduit() + "',PrixProduit ='" + p.getPrixProduit() + "', IsAvailable ='" + p.getIsAvailable() +"',ImageProduit ='" + p.getImageProduit() + "' WHERE IdProduit = '" + IdProduit + "'";
+        String req = "UPDATE produit SET NomProduit ='" + p.getNomProduit() + "',CategProduit ='" + p.getCategProduit() + "',DescrProduit ='" + p.getDescrProduit() + "',PrixProduit ='" + p.getPrixProduit() + "', IsAvailable ='" + p.getIsAvailable() +"',ImageProduit ='" + p.getImageProduit() +"',StockProduit ='" + p.getStockProduit() + "' WHERE IdProduit = '" + IdProduit + "'";
         PreparedStatement pst;
 
         try {
@@ -118,6 +120,7 @@ public List<Produit> afficherProduitTrier1() {
                 per.setPrixProduit(rs.getFloat("PrixProduit"));
                 per.setIsAvailable(rs.getInt("IsAvailable"));
                 per.setImageProduit(rs.getString("ImageProduit"));
+                per.setStockProduit(rs.getInt("StockProduit")); 
                 myList.add(per);
             }
         } catch (SQLException ex) {

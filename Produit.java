@@ -16,9 +16,11 @@ public class Produit {
     private float PrixProduit;
     private int IsAvailable;
     private String ImageProduit;
+    private int StockProduit;
+
 //stock
 
-    public Produit(int IdProduit, String NomProduit, String CategProduit, String DescrProduit, float PrixProduit, int IsAvailable, String ImageProduit) {
+    public Produit(int IdProduit, String NomProduit, String CategProduit, String DescrProduit, float PrixProduit, int IsAvailable, String ImageProduit, int StockProduit) {
         this.IdProduit = IdProduit;
         this.NomProduit = NomProduit;
         this.CategProduit = CategProduit;
@@ -26,22 +28,28 @@ public class Produit {
         this.PrixProduit = PrixProduit;
         this.IsAvailable = IsAvailable;
         this.ImageProduit = ImageProduit;
+        this.StockProduit = StockProduit
     }
 
     public Produit() {
     }
 
-    public Produit(String NomProduit, String CategProduit, String DescrProduit, float PrixProduit, int IsAvailable, String ImageProduit) {
+    public Produit(String NomProduit, String CategProduit, String DescrProduit, float PrixProduit, int IsAvailable, String ImageProduit, int StockProduit ) {
         this.NomProduit = NomProduit;
         this.CategProduit = CategProduit;
         this.DescrProduit = DescrProduit;
         this.PrixProduit = PrixProduit;
         this.IsAvailable = IsAvailable;
         this.ImageProduit = ImageProduit;
+        this.StockProduit = StockProduit;
     }
 
-  
-   
+   public int getStockProduit(){
+  return StockProduit;
+}
+   public void setStockProduit(int StockProduit) {
+        this.StockProduit = StockProduit;
+    }
 
     public int getIdProduit() {
         return IdProduit;
@@ -101,7 +109,7 @@ public class Produit {
 
     @Override
     public String toString() {
-        return "Produit{" + "IdProduit=" + IdProduit + ", NomProduit=" + NomProduit + ", CategProduit=" + CategProduit + ", DescrProduit=" + DescrProduit + ", PrixProduit=" + PrixProduit + ", IsAvailable=" + IsAvailable + ", ImageProduit=" + ImageProduit + '}';
+        return "Produit{" + "IdProduit=" + IdProduit + ", NomProduit=" + NomProduit + ", CategProduit=" + CategProduit + ", DescrProduit=" + DescrProduit + ", PrixProduit=" + PrixProduit + ", IsAvailable=" + IsAvailable + ", ImageProduit=" + ImageProduit +", StockProduit =" + StockProduit + '}';
     }
     
     

@@ -2,26 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package principal;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 
+package principal;
 import entities.Produit;
 import entities.Transformation;
 import services.ProduitCRUD;
 import services.TransformationCRUD;
 import utils.MyConnection;
-
 /**
  *
  * @author kriaa
  */
-public class MainClass {
-
-    public static void main(String[] args) {
-
+public class ClassMain {
+public static void main(String[] args) {
         ProduitCRUD ps = new ProduitCRUD();
-        Produit p = new Produit(31, "GoldStandard", "Whey", "premium Whey", 17, 1, "GoldStandard.png");
+        Produit p = new Produit(31, "GoldStandard", "Whey", "premium Whey", 17, 1, "GoldStandard.png",10);
         Produit p2 = new Produit("Gtest", "Wtest", "premium test", 026, 0, "Gold.png");
-        //ps.ajouterProduit(p2);
+        ps.ajouterProduit(p);
         //ps.supprimerProduit(31);
         //ps.modifierProduit(p2, 28);
         System.out.println(ps.afficherProduit());
@@ -51,6 +52,5 @@ public class MainClass {
         //System.out.println(ts.calculerApresIMC(17) );
         System.out.println("---------------Image Plus Like----------------");
         System.out.println(ts.afficherTransformationLike());
-
-    }
+}
 }
