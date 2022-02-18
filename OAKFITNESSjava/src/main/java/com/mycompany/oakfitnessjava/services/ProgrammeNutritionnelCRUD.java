@@ -4,7 +4,6 @@
  */
 package com.mycompany.oakfitnessjava.services;
 
-
 import com.mycompany.oakfitnessjava.entities.ProgrammeNutritionnel;
 import com.mycompany.oakfitnessjava.entities.Repas;
 import com.mycompany.oakfitnessjava.utils.MyConnection;
@@ -21,7 +20,8 @@ import java.util.List;
  * @author Heni Nechi
  */
 public class ProgrammeNutritionnelCRUD {
-     Connection cnxx;
+
+    Connection cnxx;
 
     public ProgrammeNutritionnelCRUD() {
         cnxx = MyConnection.getInstance().getCnx();
@@ -40,29 +40,28 @@ public class ProgrammeNutritionnelCRUD {
         }
 
     }
-    public void ajouterProgrammeNutritionnel2(ProgrammeNutritionnel P){
-    String Request = "INSERT INTO ProgrammeNutritionnel (IDCoach,IDAdherent,Calorie,TypeProgrammeNutritionnel)"
+
+    public void ajouterProgrammeNutritionnel2(ProgrammeNutritionnel P) {
+        String Request = "INSERT INTO ProgrammeNutritionnel (IDCoach,IDAdherent,Calorie,TypeProgrammeNutritionnel)"
                 + " VALUES (?,?,?,?)";
-            
-    
-    PreparedStatement  pst;
-    try {
+
+        PreparedStatement pst;
+        try {
             pst = cnxx.prepareStatement(Request);
             pst.setInt(1, P.getIDCoach());
             pst.setInt(2, P.getIDAdherent());
             pst.setInt(3, P.getCalorie());
             pst.setString(4, P.getTypeProgrammeNutritionel());
             pst.executeUpdate();
-                        System.out.println("ProgrammeNutritionnel ajouté avec succés");
- } catch (SQLException ex) {
-            System.err.println(ex.getMessage());    
+            System.out.println("ProgrammeNutritionnel ajouté avec succés");
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
         }
-    
+
     }
-    
 
     public List<ProgrammeNutritionnel> afficherProgrammeNutritionnel() {
-         List<ProgrammeNutritionnel> myList = new ArrayList();
+        List<ProgrammeNutritionnel> myList = new ArrayList();
 
         try {
             Statement st = cnxx.createStatement();
@@ -84,45 +83,43 @@ public class ProgrammeNutritionnelCRUD {
         }
         return myList;
     }
-      
-      public void supprimerProgrammeNutritionnel(int id)
-      {
-                  String Request = "DELETE FROM ProgrammeNutritionnel WHERE IDProgrammeNutritionnel='"+id+"' ";
-                          PreparedStatement pst;
 
-try {
+    public void supprimerProgrammeNutritionnel(int id) {
+        String Request = "DELETE FROM ProgrammeNutritionnel WHERE IDProgrammeNutritionnel='" + id + "' ";
+        PreparedStatement pst;
+
+        try {
             pst = cnxx.prepareStatement(Request);
             pst.executeUpdate();
-                        System.out.println("ProgrammeNutritionnel supprimé avec succés");
+            System.out.println("ProgrammeNutritionnel supprimé avec succés");
 
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-          
-      }
 
-      
-      public void ModifierProgrammeNutritionnel(ProgrammeNutritionnel PS, int id)
-      {
-           String req = "UPDATE ProgrammeNutritionnel SET IDCoach ='"+PS.getIDCoach()+"',IDAdherent ='"+PS.getIDAdherent()+"', Calorie ='"+PS.getCalorie()+"', TypeProgrammeNutritionnel ='"+PS.getTypeProgrammeNutritionel()+"' WHERE IDProgrammeNutritionnel = '"+id+"'";
-          PreparedStatement pst;
+    }
 
-try {
+    public void ModifierProgrammeNutritionnel(ProgrammeNutritionnel PS, int id) {
+        String req = "UPDATE ProgrammeNutritionnel SET IDCoach ='" + PS.getIDCoach() + "',IDAdherent ='" + PS.getIDAdherent() + "', Calorie ='" + PS.getCalorie() + "', TypeProgrammeNutritionnel ='" + PS.getTypeProgrammeNutritionel() + "' WHERE IDProgrammeNutritionnel = '" + id + "'";
+        PreparedStatement pst;
+
+        try {
             pst = cnxx.prepareStatement(req);
             pst.executeUpdate();
-                        System.out.println("ProgrammeNutritionnel modifié avec succés");
+            System.out.println("ProgrammeNutritionnel modifié avec succés");
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-          
-      }
-    public List<Repas> AfficherRepasDeProgramme(int id){
-    List<Repas> myList = new ArrayList();
+
+    }
+
+    public List<Repas> AfficherRepasDeProgramme(int id) {
+        List<Repas> myList = new ArrayList();
 
         try {
             Statement st = cnxx.createStatement();
-            String req = "SELECT * in (SELECT IDRepas FROM programmen_repas as pnr WHERE pnr.IDProgrammeNutritionnel='"+id+"')";
+            String req = "SELECT * in (SELECT IDRepas FROM programmen_repas as pnr WHERE pnr.IDProgrammeNutritionnel='" + id + "')";
             ResultSet rs;
             rs = st.executeQuery(req);
             while (rs.next()) {

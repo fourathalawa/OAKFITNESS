@@ -17,19 +17,31 @@ import com.mycompany.oakfitnessjava.services.ProgrammeSportifCRUD;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import javax.mail.MessagingException;
+
 /**
  *
  * @author Heni Nechi
  */
 public class MainClass {
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, MessagingException {
+        //Execute this everyday at
+
         //MyConnection mc = new MyConnection();
-        
-       // ExerciceCRUD ecrud = new ExerciceCRUD();
+        EvenementCRUD ecrud = new EvenementCRUD();
+        List<Evenement> J1 = ecrud.isJ1();
+        SimpleDateFormat sdf = new SimpleDateFormat(
+                "yyyy-MM-dd");
+        Evenement ev = new Evenement(4, sdf.parse("2022-02-19"), "test4", "test4", "test4", "test4");
+        //ecrud.ajouterEvenement2(ev);
+        System.out.println(ecrud.isJ1());
+        ecrud.EnvoyeEmailJ1(J1, "heni.m.nechi@gmail.com, heni.nechi@esprit.tn, hani.nechi@yahoo.fr");
+        // ExerciceCRUD ecrud = new ExerciceCRUD();
         //ProgrammeSportifCRUD pscrud = new ProgrammeSportifCRUD();
         //ProgrammeSportif ps = new ProgrammeSportif(1,1,1,"test");
-       // pscrud.ajouterProgrammeSportif2(ps); 
+        // pscrud.ajouterProgrammeSportif2(ps); 
         //Exercice ex = new Exercice("test3","test3","test3","test3","test3","test3");
         //Exercice ex2 = new Exercice("test3","test3","test3","test3","test3","test3");
         //ecrud.ajouterExercice2(ex2);
@@ -37,7 +49,7 @@ public class MainClass {
         /*ecrud.ajouterExercice2(ex2);*/
         //ecrud.AjouterExerciceAProgramme(10,27); 
         //System.out.println(pscrud.AfficherExercicesDeProgramme(10));
-       //ecrud.supprimerExerciceDeProgramme(2);
+        //ecrud.supprimerExerciceDeProgramme(2);
         /*System.out.println(ecrud.afficherExercice());
         Exercice ex2 = new Exercice("test4","test4","test4","test4","test4","test4");
         ecrud.ModifierExercice(ex2, 2);
@@ -74,27 +86,28 @@ public class MainClass {
         //ExerciceCRUD ecrud = new ExerciceCRUD();
         //ProgrammeNutritionnelCRUD pncrud = new ProgrammeNutritionnelCRUD();
         //ProgrammeSportifCRUD pscrud = new ProgrammeSportifCRUD();
-        
-        
+
         //ProgrammeNutritionnel pn = new ProgrammeNutritionnel(1,1,100,"test2");
-        Repas r = new Repas("test3","test3","test3",250,"test3");
+        Repas r = new Repas("test3", "test3", "test3", 250, "test3");
         //ProgrammeSportif ps = new ProgrammeSportif(1, 1,1, 1,"test");
         //Exercice ex = new Exercice("test28","test28","test28","test28","test28","test28");
         //ecrud.ajouterExercice2(ex);
         //ecrud.AjouterExerciceAProgramme(10, 28);
         //pncrud.ajouterProgrammeNutritionnel2(pn);
-        rcrud.ajouterRepas2(r);
+        //rcrud.ajouterRepas2(r);
         //rcrud.AjouterRepasAProgramme(1, 2);
-      // System.out.println(pncrud.AfficherRepasDeProgramme(1));
-       //System.out.println(pscrud.AfficherExercicesDeProgramme(10));
-       //System.out.println(rcrud.afficherRepas());*/
-       /* SimpleDateFormat sdf = new SimpleDateFormat(
+        // System.out.println(pncrud.AfficherRepasDeProgramme(1));
+        //ystem.out.println(pscrud.AfficherExercicesDeProgramme(10));
+        //System.out.println(rcrud.afficherRepas());*/
+        /*SimpleDateFormat sdf = new SimpleDateFormat(
     "yyyy-MM-dd");
         EvenementCRUD ecrud = new EvenementCRUD();
-        Evenement ev = new Evenement(1,sdf.parse("2023-04-02"),"test3","test3","test3","test3");
+        Evenement ev = new Evenement(4,sdf.parse("2022-06-08"),"test4","test4","test4","test4");
         //ecrud.ajouterEvenement2(ev);
+        System.out.println(ecrud.EvenementCreatedby(2));
         System.out.println(ecrud.afficherEvenement());
         System.out.println(ecrud.BetweenDatesEvenement(sdf.parse("2022-03-01"), sdf.parse("2022-12-31")));
        // Evenement ev2 = new Evenement(2,sdf.parse("2022-09-28"),"test4","test4","test4","test4");*/
+
     }
 }
