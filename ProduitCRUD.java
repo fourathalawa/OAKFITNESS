@@ -35,7 +35,7 @@ public class ProduitCRUD {
             pst.setFloat(4, p.getPrixProduit());
             pst.setInt(5, p.getIsAvailable());
             pst.setString(6, p.getImageProduit());
-            pst.setInt(7, p.StockProduit());
+            pst.setInt(7, p.getStockProduit());
             pst.executeUpdate();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -133,7 +133,7 @@ public List<Produit> afficherProduitTrier1() {
 public float calculerChiffreAffaire() {
 		float reponse=0;
 		
-		String requete="SELECT SUM(PrixProduit) As Total FROM produit where IsAvailable = 1";
+		String requete="SELECT SUM(PrixProduit * StockProduit) As Total FROM produit where IsAvailable = 1";
 		
 		
 		

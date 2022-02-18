@@ -9,6 +9,7 @@ package entities;
  * @author kriaa
  */
 public class Produit {
+
     private int IdProduit;
     private String NomProduit;
     private String CategProduit;
@@ -19,22 +20,8 @@ public class Produit {
     private int StockProduit;
 
 //stock
-
     public Produit(int IdProduit, String NomProduit, String CategProduit, String DescrProduit, float PrixProduit, int IsAvailable, String ImageProduit, int StockProduit) {
         this.IdProduit = IdProduit;
-        this.NomProduit = NomProduit;
-        this.CategProduit = CategProduit;
-        this.DescrProduit = DescrProduit;
-        this.PrixProduit = PrixProduit;
-        this.IsAvailable = IsAvailable;
-        this.ImageProduit = ImageProduit;
-        this.StockProduit = StockProduit
-    }
-
-    public Produit() {
-    }
-
-    public Produit(String NomProduit, String CategProduit, String DescrProduit, float PrixProduit, int IsAvailable, String ImageProduit, int StockProduit ) {
         this.NomProduit = NomProduit;
         this.CategProduit = CategProduit;
         this.DescrProduit = DescrProduit;
@@ -44,10 +31,24 @@ public class Produit {
         this.StockProduit = StockProduit;
     }
 
-   public int getStockProduit(){
-  return StockProduit;
-}
-   public void setStockProduit(int StockProduit) {
+    public Produit() {
+    }
+
+    public Produit(String NomProduit, String CategProduit, String DescrProduit, float PrixProduit, int IsAvailable, String ImageProduit, int StockProduit) {
+        this.NomProduit = NomProduit;
+        this.CategProduit = CategProduit;
+        this.DescrProduit = DescrProduit;
+        this.PrixProduit = PrixProduit;
+        this.IsAvailable = IsAvailable;
+        this.ImageProduit = ImageProduit;
+        this.StockProduit = StockProduit;
+    }
+
+    public int getStockProduit() {
+        return StockProduit;
+    }
+
+    public void setStockProduit(int StockProduit) {
         this.StockProduit = StockProduit;
     }
 
@@ -109,10 +110,7 @@ public class Produit {
 
     @Override
     public String toString() {
-        return "Produit{" + "IdProduit=" + IdProduit + ", NomProduit=" + NomProduit + ", CategProduit=" + CategProduit + ", DescrProduit=" + DescrProduit + ", PrixProduit=" + PrixProduit + ", IsAvailable=" + IsAvailable + ", ImageProduit=" + ImageProduit +", StockProduit =" + StockProduit + '}';
+        return "Produit{" + "IdProduit=" + IdProduit + ", NomProduit=" + NomProduit + ", CategProduit=" + CategProduit + ", DescrProduit=" + DescrProduit + ", PrixProduit=" + PrixProduit + ", IsAvailable=" + IsAvailable + ", ImageProduit=" + ImageProduit + ", StockProduit =" + StockProduit + '}';
     }
-    
-    
-    
-}
 
+}

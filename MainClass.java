@@ -17,12 +17,12 @@ import utils.MyConnection;
  *
  * @author kriaa
  */
-public class ClassMain {
+public class MainClass {
 public static void main(String[] args) {
         ProduitCRUD ps = new ProduitCRUD();
         Produit p = new Produit(31, "GoldStandard", "Whey", "premium Whey", 17, 1, "GoldStandard.png",10);
-        Produit p2 = new Produit("Gtest", "Wtest", "premium test", 026, 0, "Gold.png");
-        ps.ajouterProduit(p);
+        Produit p2 = new Produit("Gtest", "Wtest", "premium test", 026, 0, "Gold.png",20);
+        //ps.ajouterProduit(p);
         //ps.supprimerProduit(31);
         //ps.modifierProduit(p2, 28);
         System.out.println(ps.afficherProduit());
