@@ -211,7 +211,7 @@ public class EvenementCRUD {
 
     public void EnvoyeEmailJ1(List<Evenement> EJ1,String Emails) throws MessagingException {
         for (int i = 0; i < EJ1.size(); i++) {
-            JavaMailUtil.sendMail(Emails,"Evenement ID = "+EJ1.get(i).getIDEvenement()+" Titre evenment ="+EJ1.get(i).getTitreEvenement()+" en 1 jour","it works");
+            JavaMailUtil.sendMail(Emails,"Votre Evenement "+EJ1.get(i).getTitreEvenement()+" en 1 jour","Don't mess out");
         }
     }
 }

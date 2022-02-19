@@ -16,8 +16,14 @@ import com.mycompany.oakfitnessjava.services.ProgrammeNutritionnelCRUD;
 import com.mycompany.oakfitnessjava.services.ProgrammeSportifCRUD;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.mail.MessagingException;
 
 /**
@@ -27,17 +33,42 @@ import javax.mail.MessagingException;
 public class MainClass {
 
     public static void main(String[] args) throws ParseException, MessagingException {
-        //Execute this everyday at
+        // Execute this everyday at 00:00
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                EvenementCRUD ecrud = new EvenementCRUD();
+                List<Evenement> J1 = ecrud.isJ1();
+                if (!J1.isEmpty()) {
+                    try {
+                        ecrud.EnvoyeEmailJ1(J1, "heni.m.nechi@gmail.com, heni.nechi@esprit.tn");
+                        System.out.println("Message sent!");
+                    } catch (MessagingException ex) {
+                        Logger.getLogger(MainClass.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        };
+        Calendar date = Calendar.getInstance();
+        date.set(Calendar.DAY_OF_MONTH, 20);
+        date.set(Calendar.HOUR_OF_DAY, 0);
+        date.set(Calendar.MINUTE, 0);
+        date.set(Calendar.SECOND, 0);
+        date.set(Calendar.MILLISECOND, 0);
+
+        System.out.println(date.getTime());
+        timer.scheduleAtFixedRate(task, date.getTime(), 86400000);
 
         //MyConnection mc = new MyConnection();
-        EvenementCRUD ecrud = new EvenementCRUD();
+        /*EvenementCRUD ecrud = new EvenementCRUD();
         List<Evenement> J1 = ecrud.isJ1();
         SimpleDateFormat sdf = new SimpleDateFormat(
                 "yyyy-MM-dd");
-        Evenement ev = new Evenement(4, sdf.parse("2022-02-19"), "test4", "test4", "test4", "test4");
-        //ecrud.ajouterEvenement2(ev);
-        System.out.println(ecrud.isJ1());
-        ecrud.EnvoyeEmailJ1(J1, "heni.m.nechi@gmail.com, heni.nechi@esprit.tn, hani.nechi@yahoo.fr");
+        Evenement ev = new Evenement(4, sdf.parse("2022-02-20"), "test5", "test5", "test5", "test5");
+        ecrud.ajouterEvenement2(ev);
+        System.out.println(ecrud.isJ1());*/
+        //ecrud.EnvoyeEmailJ1(J1, "heni.m.nechi@gmail.com, heni.nechi@esprit.tn, hani.nechi@yahoo.fr");
         // ExerciceCRUD ecrud = new ExerciceCRUD();
         //ProgrammeSportifCRUD pscrud = new ProgrammeSportifCRUD();
         //ProgrammeSportif ps = new ProgrammeSportif(1,1,1,"test");
