@@ -15,7 +15,7 @@ public class ProgrammeSportif {
     private int IDAdherent;
     private int DureeMois;
     private String TypeProgrammeSportif;
-    
+
     public ProgrammeSportif() {
     }
 
@@ -33,12 +33,6 @@ public class ProgrammeSportif {
         this.DureeMois = DureeMois;
         this.TypeProgrammeSportif = TypeProgrammeSportif;
     }
-
-    
-
-    
-
-    
 
     public int getIDProgrammeSportif() {
         return IDProgrammeSportif;
@@ -63,7 +57,6 @@ public class ProgrammeSportif {
     public void setIDAdherent(int IDAdherent) {
         this.IDAdherent = IDAdherent;
     }
-
 
     public int getDureeMois() {
         return DureeMois;

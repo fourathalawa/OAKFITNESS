@@ -19,6 +19,7 @@ import java.util.List;
  * @author Heni Nechi
  */
 public class RepasCRUD {
+
     Connection cnxx;
 
     public RepasCRUD() {
@@ -31,36 +32,36 @@ public class RepasCRUD {
         Statement st;
         try {
             st = cnxx.createStatement();
-            st.executeUpdate(Request);  
+            st.executeUpdate(Request);
             System.out.println("Repas Ajouter avec succes!");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
 
     }
-    public void ajouterRepas2(Repas R){
-    String Request = "INSERT INTO Repas (PDej,Dej,Dinn,Calorie,RestOrActive)"
+
+    public void ajouterRepas2(Repas R) {
+        String Request = "INSERT INTO Repas (PDej,Dej,Dinn,Calorie,RestOrActive)"
                 + " VALUES (?,?,?,?,?)";
-    
-    PreparedStatement  pst;
-    try {
+
+        PreparedStatement pst;
+        try {
             pst = cnxx.prepareStatement(Request);
             pst.setString(1, R.getPDej());
             pst.setString(2, R.getDej());
             pst.setString(3, R.getDinn());
-            pst.setInt(4,R.getCalorie());
+            pst.setInt(4, R.getCalorie());
             pst.setString(5, R.getRestOrActive());
             pst.executeUpdate();
-                        System.out.println("Repas ajouté avec succés");
- } catch (SQLException ex) {
-            System.err.println(ex.getMessage());    
+            System.out.println("Repas ajouté avec succés");
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
         }
-    
+
     }
-    
 
     public List<Repas> afficherRepas() {
-         List<Repas> myList = new ArrayList();
+        List<Repas> myList = new ArrayList();
 
         try {
             Statement st = cnxx.createStatement();
@@ -84,47 +85,45 @@ public class RepasCRUD {
         }
         return myList;
     }
-      
-      public void supprimerRepas(int id)
-      {
-                  String Request = "DELETE FROM Repas WHERE IDRepas='"+id+"' ";
-                          PreparedStatement pst;
 
-try {
+    public void supprimerRepas(int id) {
+        String Request = "DELETE FROM Repas WHERE IDRepas='" + id + "' ";
+        PreparedStatement pst;
+
+        try {
             pst = cnxx.prepareStatement(Request);
             pst.executeUpdate();
-                        System.out.println("Repas supprimé avec succés");
+            System.out.println("Repas supprimé avec succés");
 
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-          
-      }
 
-      
-      public void ModifierRepas(Repas R, int id)
-      {
-           String req = "UPDATE Repas SET PDej ='"+R.getPDej()+"',Dej ='"+R.getDej()+"',Dinn ='"+R.getDinn()+"',Calorie ='"+R.getCalorie()+"', RestOrActive ='"+R.getRestOrActive()+"' WHERE IDRepas = '"+id+"'";
-          PreparedStatement pst;
+    }
 
-try {
+    public void ModifierRepas(Repas R, int id) {
+        String req = "UPDATE Repas SET PDej ='" + R.getPDej() + "',Dej ='" + R.getDej() + "',Dinn ='" + R.getDinn() + "',Calorie ='" + R.getCalorie() + "', RestOrActive ='" + R.getRestOrActive() + "' WHERE IDRepas = '" + id + "'";
+        PreparedStatement pst;
+
+        try {
             pst = cnxx.prepareStatement(req);
             pst.executeUpdate();
-                        System.out.println("Repas modifié avec succés");
+            System.out.println("Repas modifié avec succés");
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-          
-      }
-         public void AjouterRepasAProgramme(int IDR, int IDPn) {
+
+    }
+
+    public void AjouterRepasAProgramme(int IDPn, int IDR) {
         String req = "INSERT INTO programmen_repas (IDProgrammeNutritionnel,IDRepas) VALUES (?,?)";
         PreparedStatement pst;
         try {
             pst = cnxx.prepareStatement(req);
 
-            pst.setInt(1, IDR);
-            pst.setInt(2, IDPn);
+            pst.setInt(1, IDPn);
+            pst.setInt(2, IDR);
             pst.executeUpdate();
             System.out.println("Repas ajouté à programme avec succés");
         } catch (SQLException ex) {
@@ -132,8 +131,8 @@ try {
         }
     }
 
-    public void supprimerRepasDeProgramme(int id,int idP) {
-        String Request = "DELETE FROM programmen_repas WHERE IDRepas='" + id + "' AND IDProgrammeNutritionnel ='"+idP+"' ";
+    public void supprimerRepasDeProgramme(int id, int idP) {
+        String Request = "DELETE FROM programmen_repas WHERE IDRepas='" + id + "' AND IDProgrammeNutritionnel ='" + idP + "' ";
         PreparedStatement pst;
 
         try {
@@ -146,5 +145,5 @@ try {
         }
 
     }
-    
+
 }

@@ -20,6 +20,7 @@ import java.util.List;
  * @author Heni Nechi
  */
 public class ProgrammeSportifCRUD {
+
     Connection cnxx;
 
     public ProgrammeSportifCRUD() {
@@ -39,29 +40,28 @@ public class ProgrammeSportifCRUD {
         }
 
     }
-    public void ajouterProgrammeSportif2(ProgrammeSportif P){
-    String Request = "INSERT INTO ProgrammeSportif (IDCoach,IDAdherent,DureeMois,TypeProgrammeSportif)"
+
+    public void ajouterProgrammeSportif2(ProgrammeSportif P) {
+        String Request = "INSERT INTO ProgrammeSportif (IDCoach,IDAdherent,DureeMois,TypeProgrammeSportif)"
                 + " VALUES (?,?,?,?)";
-            
-    
-    PreparedStatement  pst;
-    try {
+
+        PreparedStatement pst;
+        try {
             pst = cnxx.prepareStatement(Request);
             pst.setInt(1, P.getIDCoach());
             pst.setInt(2, P.getIDAdherent());
             pst.setInt(3, P.getDureeMois());
             pst.setString(4, P.getTypeProgrammeSportif());
             pst.executeUpdate();
-                        System.out.println("ProgrammeSportif ajouté avec succés");
- } catch (SQLException ex) {
-            System.err.println(ex.getMessage());    
+            System.out.println("ProgrammeSportif ajouté avec succés");
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
         }
-    
+
     }
-    
 
     public List<ProgrammeSportif> afficherProgrammeSportif() {
-         List<ProgrammeSportif> myList = new ArrayList();
+        List<ProgrammeSportif> myList = new ArrayList();
 
         try {
             Statement st = cnxx.createStatement();
@@ -83,45 +83,43 @@ public class ProgrammeSportifCRUD {
         }
         return myList;
     }
-      
-      public void supprimerProgrammeSportif(int id)
-      {
-                  String Request = "DELETE FROM ProgrammeSportif WHERE IDProgrammeSportif='"+id+"' ";
-                          PreparedStatement pst;
 
-try {
+    public void supprimerProgrammeSportif(int id) {
+        String Request = "DELETE FROM ProgrammeSportif WHERE IDProgrammeSportif='" + id + "' ";
+        PreparedStatement pst;
+
+        try {
             pst = cnxx.prepareStatement(Request);
             pst.executeUpdate();
-                        System.out.println("ProgrammeSportif supprimé avec succés");
+            System.out.println("ProgrammeSportif supprimé avec succés");
 
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-          
-      }
 
-      
-      public void ModifierProgrammeSportif(ProgrammeSportif PS, int id)
-      {
-           String req = "UPDATE ProgrammeSportif SET IDCoach ='"+PS.getIDCoach()+"',IDAdherent ='"+PS.getIDAdherent()+"', DureeMois ='"+PS.getDureeMois()+"', TypeProgrammeSportif ='"+PS.getTypeProgrammeSportif()+"' WHERE IDProgrammeSportif = '"+id+"'";
-          PreparedStatement pst;
+    }
 
-try {
+    public void ModifierProgrammeSportif(ProgrammeSportif PS, int id) {
+        String req = "UPDATE ProgrammeSportif SET IDCoach ='" + PS.getIDCoach() + "',IDAdherent ='" + PS.getIDAdherent() + "', DureeMois ='" + PS.getDureeMois() + "', TypeProgrammeSportif ='" + PS.getTypeProgrammeSportif() + "' WHERE IDProgrammeSportif = '" + id + "'";
+        PreparedStatement pst;
+
+        try {
             pst = cnxx.prepareStatement(req);
             pst.executeUpdate();
-                        System.out.println("ProgrammeSportif modifié avec succés");
+            System.out.println("ProgrammeSportif modifié avec succés");
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-          
-      }
-    public List<Exercice> AfficherExercicesDeProgramme(int id){
-    List<Exercice> myList = new ArrayList();
+
+    }
+
+    public List<Exercice> AfficherExercicesDeProgramme(int id) {
+        List<Exercice> myList = new ArrayList();
 
         try {
             Statement st = cnxx.createStatement();
-            String req = "SELECT * from exercice WHERE IDExercice in (SELECT IDExercice FROM programmes_exercice as pse WHERE pse.IDProgrammeSportif='"+id+"')";
+            String req = "SELECT * from exercice WHERE IDExercice in (SELECT IDExercice FROM programmes_exercice as pse WHERE pse.IDProgrammeSportif='" + id + "')";
             ResultSet rs;
             rs = st.executeQuery(req);
             while (rs.next()) {

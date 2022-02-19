@@ -63,7 +63,6 @@ public class ExerciceCRUD {
             System.out.println(auto_id);
             pst.setInt(7, E.getIDExercice());
             pst.executeUpdate();*/
-
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
@@ -141,8 +140,8 @@ public class ExerciceCRUD {
         }
     }
 
-    public void supprimerExerciceDeProgramme(int id,int idP) {
-        String Request = "DELETE FROM programmes_exercice WHERE IDExercice='" + id + "'AND IDProgrammeSportif='"+idP+"' ";
+    public void supprimerExerciceDeProgramme(int id, int idP) {
+        String Request = "DELETE FROM programmes_exercice WHERE IDExercice='" + id + "'AND IDProgrammeSportif='" + idP + "' ";
         PreparedStatement pst;
 
         try {
@@ -155,5 +154,5 @@ public class ExerciceCRUD {
         }
 
     }
-    
+
 }

@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package com.mycompany.oakfitnessjava.entities;
 
 import java.util.Date;
@@ -12,6 +11,7 @@ import java.util.Date;
  * @author Heni Nechi
  */
 public class Evenement {
+
     private int IDEvenement;
     private int IDCreatorEvenement;
     private Date DateEvenement;
@@ -19,8 +19,8 @@ public class Evenement {
     private String DescrEvenement;
     private String AdresseEvenement;
     private String TypeEvenement;
-    
-    public Evenement(){
+
+    public Evenement() {
     }
 
     public Evenement(int IDEvenement, int IDCreatorEvenement, Date DateEvenement, String TitreEvenement, String DescrEvenement, String AdresseEvenement, String TypeEvenement) {
@@ -100,8 +100,7 @@ public class Evenement {
 
     @Override
     public String toString() {
-        return "Evenement{" + "IDEvenement=" + IDEvenement + ", IDCreatorEvenemnt="+ IDCreatorEvenement + ", DateEvenement=" + DateEvenement + ", TitreEvenement=" + TitreEvenement + ", DescrEvenement=" + DescrEvenement + ", AdresseEvenement=" + AdresseEvenement + ", TypeEvenement=" + TypeEvenement + '}';
+        return "Evenement{" + "IDEvenement=" + IDEvenement + ", IDCreatorEvenemnt=" + IDCreatorEvenement + ", DateEvenement=" + DateEvenement + ", TitreEvenement=" + TitreEvenement + ", DescrEvenement=" + DescrEvenement + ", AdresseEvenement=" + AdresseEvenement + ", TypeEvenement=" + TypeEvenement + '}';
     }
-    
-    
+
 }

@@ -18,7 +18,6 @@ public class ProgrammeNutritionnel {
 
     public ProgrammeNutritionnel() {
     }
-    
 
     public ProgrammeNutritionnel(int IDProgrammeNutritionnel, int IDCoach, int IDAdherent, int Calorie, String TypeProgrammeNutritionel) {
         this.IDProgrammeNutritionnel = IDProgrammeNutritionnel;
@@ -28,7 +27,7 @@ public class ProgrammeNutritionnel {
         this.TypeProgrammeNutritionel = TypeProgrammeNutritionel;
     }
 
-    public ProgrammeNutritionnel(int IDCoach, int IDAdherent,int Calorie, String TypeProgrammeNutritionel) {
+    public ProgrammeNutritionnel(int IDCoach, int IDAdherent, int Calorie, String TypeProgrammeNutritionel) {
         this.IDCoach = IDCoach;
         this.IDAdherent = IDAdherent;
         this.Calorie = Calorie;

@@ -13,27 +13,28 @@ import java.sql.SQLException;
  * @author Heni Nechi
  */
 public class MyConnection {
-    public String url="jdbc:mysql://localhost/oakdb";
-    public String login="root";
-    public String pwd="";
+
+    public String url = "jdbc:mysql://localhost/oakdb";
+    public String login = "root";
+    public String pwd = "";
     Connection cnx;
     public static MyConnection instance;
 
     public MyConnection() {
         try {
-          cnx =  DriverManager.getConnection(url,login,pwd);
-          System.out.println("Connexion etablie!");
+            cnx = DriverManager.getConnection(url, login, pwd);
+            System.out.println("Connexion etablie!");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-        
+
     }
 
     public Connection getCnx() {
         return cnx;
     }
 
-   public static MyConnection getInstance() {
+    public static MyConnection getInstance() {
 
         if (instance == null) {
 
@@ -42,6 +43,5 @@ public class MyConnection {
         return instance;
 
     }
-    
-    
+
 }

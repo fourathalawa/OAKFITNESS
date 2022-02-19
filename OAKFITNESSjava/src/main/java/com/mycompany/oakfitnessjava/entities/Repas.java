@@ -16,9 +16,9 @@ public class Repas {
     private String Dinn;
     private int Calorie;
     private String RestOrActive;
-    
+
     public Repas() {
-        
+
     }
 
     public Repas(int IDRepas, String PDej, String Dej, String Dinn, int Calorie, String RestOrActive) {
@@ -45,10 +45,6 @@ public class Repas {
     public void setCalorie(int Calorie) {
         this.Calorie = Calorie;
     }
-
-    
-
-    
 
     public int getIDRepas() {
         return IDRepas;
@@ -94,7 +90,5 @@ public class Repas {
     public String toString() {
         return "Repas{" + "IDRepas=" + IDRepas + ", PDej=" + PDej + ", Dej=" + Dej + ", Dinn=" + Dinn + ", Calorie=" + Calorie + ", RestOrActive=" + RestOrActive + '}';
     }
-
-    
 
 }

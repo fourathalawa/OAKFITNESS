@@ -39,9 +39,11 @@ public class MainClass {
             @Override
             public void run() {
                 EvenementCRUD ecrud = new EvenementCRUD();
+                //Get events that's due in 1 day
                 List<Evenement> J1 = ecrud.isJ1();
                 if (!J1.isEmpty()) {
                     try {
+                        //Send Emails to user about the J-1 events
                         ecrud.EnvoyeEmailJ1(J1, "heni.m.nechi@gmail.com, heni.nechi@esprit.tn");
                         System.out.println("Message sent!");
                     } catch (MessagingException ex) {
@@ -60,85 +62,83 @@ public class MainClass {
         System.out.println(date.getTime());
         timer.scheduleAtFixedRate(task, date.getTime(), 86400000);
 
-        //MyConnection mc = new MyConnection();
-        /*EvenementCRUD ecrud = new EvenementCRUD();
-        List<Evenement> J1 = ecrud.isJ1();
-        SimpleDateFormat sdf = new SimpleDateFormat(
-                "yyyy-MM-dd");
-        Evenement ev = new Evenement(4, sdf.parse("2022-02-20"), "test5", "test5", "test5", "test5");
-        ecrud.ajouterEvenement2(ev);
-        System.out.println(ecrud.isJ1());*/
-        //ecrud.EnvoyeEmailJ1(J1, "heni.m.nechi@gmail.com, heni.nechi@esprit.tn, hani.nechi@yahoo.fr");
-        // ExerciceCRUD ecrud = new ExerciceCRUD();
-        //ProgrammeSportifCRUD pscrud = new ProgrammeSportifCRUD();
-        //ProgrammeSportif ps = new ProgrammeSportif(1,1,1,"test");
-        // pscrud.ajouterProgrammeSportif2(ps); 
-        //Exercice ex = new Exercice("test3","test3","test3","test3","test3","test3");
-        //Exercice ex2 = new Exercice("test3","test3","test3","test3","test3","test3");
-        //ecrud.ajouterExercice2(ex2);
-        //System.out.println(ex.getIDExercice());
-        /*ecrud.ajouterExercice2(ex2);*/
-        //ecrud.AjouterExerciceAProgramme(10,27); 
-        //System.out.println(pscrud.AfficherExercicesDeProgramme(10));
-        //ecrud.supprimerExerciceDeProgramme(2);
-        /*System.out.println(ecrud.afficherExercice());
-        Exercice ex2 = new Exercice("test4","test4","test4","test4","test4","test4");
-        ecrud.ModifierExercice(ex2, 2);
-        ecrud.supprimerExercice(1);
-        System.out.println(ecrud.afficherExercice());
-        
+        //Evenement (CRUD) Evenement Instance
         EvenementCRUD ecrud = new EvenementCRUD();
-        Evenement ev = new Evenement("test3","test3","test3","test3");
-        ecrud.ajouterEvenement2(ev);
-        System.out.println(ecrud.afficherEvenement());
-        Evenement ev2 = new Evenement("test4","test4","test4","test4");
-        ecrud.ModifierEvenement(ev2, 3);
-        //ecrud.supprimerExercice(1);
-        System.out.println(ecrud.afficherEvenement()); 
-        
-        RepasCRUD rcrud = new RepasCRUD();
-        Repas r = new Repas("test3","test3","test3","test3");
-        rcrud.ajouterRepas2(r);
-        System.out.println(rcrud.afficherRepas());
-        Repas r2 = new Repas("test4","test4","test4","test4");
-        rcrud.ModifierRepas(r2, 3);
-        //ecrud.supprimerExercice(1);
-        System.out.println(rcrud.afficherRepas()); 
+        //Date to be inserted into Instance
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Evenement ev = new Evenement(4, sdf.parse("2022-02-22"), "test5", "test5", "test5", "test5");
+        //Add an event
+        // ecrud.ajouterEvenement2(ev);
+        //Delete an event 
+        //ecrud.supprimerEvenement(4);
+        //Edit an event 
+        //ecrud.ModifierEvenement(ev, 27);
+        //Show events 
+        //System.out.println(ecrud.afficherEvenement());
+        //Get event created by user
+        //ecrud.EvenementCreatedby(2);
+        //Get Events between 2 dates
+        //ecrud.BetweenDatesEvenement(sdf.parse("2022-01-01"), sdf.parse("2022-12-31"));
 
+        //Exercice (CRUD) Exercice Instance
+        ExerciceCRUD excrud = new ExerciceCRUD();
+        Exercice ex = new Exercice("test3", "test3", "test3", "test3", "test3", "test3");
+        //Add an exercice 
+        //excrud.ajouterExercice2(ex);
+        //Delete an exercice
+        //excrud.supprimerExercice(2);
+        //Edit an exercice 
+        //excrud.ModifierExercice(ex, 3);
+        //Show exercices
+        //System.out.println(excrud.afficherExercice());
+        //Add an exercice to a Fitness Plan
+        //excrud.AjouterExerciceAProgramme(1, 5);
+        //Delete an exercice from a Fitness Plan 
+        //excrud.supprimerExerciceDeProgramme(2, 2);
+        
+        //Fitness Plan (CRUD) Fitness Instance
         ProgrammeSportifCRUD pscrud = new ProgrammeSportifCRUD();
-        ProgrammeSportif ps = new ProgrammeSportif(1, 1,1, 1,"test");
-        pscrud.ajouterProgrammeSportif2(ps,ex);
-        System.out.println(pscrud.afficherProgrammeSportif());
-        ProgrammeSportif ps2 = new ProgrammeSportif(2, 2, ex2.getIDExercice(), 2,"test2");
-        pscrud.ModifierProgrammeSportif(ps2,ex,2);
-        //ecrud.supprimerExercice(1);
-        System.out.println(pscrud.afficherProgrammeSportif());*/
-        RepasCRUD rcrud = new RepasCRUD();
-        //ExerciceCRUD ecrud = new ExerciceCRUD();
-        //ProgrammeNutritionnelCRUD pncrud = new ProgrammeNutritionnelCRUD();
-        //ProgrammeSportifCRUD pscrud = new ProgrammeSportifCRUD();
+        ProgrammeSportif ps = new ProgrammeSportif(1, 1, 1, "test");
+        //Add a Fitness Plan 
+        //pscrud.ajouterProgrammeSportif2(ps);
+        //Delete a Fitness Plan 
+        //pscrud.supprimerProgrammeSportif(2);
+        //Edit a Fitness Plan
+        //pscrud.ModifierProgrammeSportif(ps, 3);
+        //Show Fitness Plans
+        //System.out.println(pscrud.afficherProgrammeSportif());
+        //Show Exercices of a Fitness Plan
+        //pscrud.AfficherExercicesDeProgramme(2);
 
-        //ProgrammeNutritionnel pn = new ProgrammeNutritionnel(1,1,100,"test2");
+        //Meals (CRUD) Meal Instance       
+        RepasCRUD rcrud = new RepasCRUD();
         Repas r = new Repas("test3", "test3", "test3", 250, "test3");
-        //ProgrammeSportif ps = new ProgrammeSportif(1, 1,1, 1,"test");
-        //Exercice ex = new Exercice("test28","test28","test28","test28","test28","test28");
-        //ecrud.ajouterExercice2(ex);
-        //ecrud.AjouterExerciceAProgramme(10, 28);
-        //pncrud.ajouterProgrammeNutritionnel2(pn);
+        //Add a Meal
         //rcrud.ajouterRepas2(r);
-        //rcrud.AjouterRepasAProgramme(1, 2);
-        // System.out.println(pncrud.AfficherRepasDeProgramme(1));
-        //ystem.out.println(pscrud.AfficherExercicesDeProgramme(10));
-        //System.out.println(rcrud.afficherRepas());*/
-        /*SimpleDateFormat sdf = new SimpleDateFormat(
-    "yyyy-MM-dd");
-        EvenementCRUD ecrud = new EvenementCRUD();
-        Evenement ev = new Evenement(4,sdf.parse("2022-06-08"),"test4","test4","test4","test4");
-        //ecrud.ajouterEvenement2(ev);
-        System.out.println(ecrud.EvenementCreatedby(2));
-        System.out.println(ecrud.afficherEvenement());
-        System.out.println(ecrud.BetweenDatesEvenement(sdf.parse("2022-03-01"), sdf.parse("2022-12-31")));
-       // Evenement ev2 = new Evenement(2,sdf.parse("2022-09-28"),"test4","test4","test4","test4");*/
+        //Delete a Meal 
+        //rcrud.supprimerRepas(2);
+        //Edit a Meal 
+        //rcrud.ModifierRepas(r, 3);
+        //Show Meals 
+        //System.out.println(rcrud.afficherRepas());
+        //Add a Meal to a Nutrional Plan
+        //rcrud.AjouterRepasAProgramme(2, 3);
+        //Delete a Meal from a Nutrional Plan
+        //rcrud.supprimerRepasDeProgramme(2, 4);
+        
+        //Fitness Plan (CRUD) Fitness Instance
+        ProgrammeNutritionnelCRUD pncrud = new ProgrammeNutritionnelCRUD();
+        ProgrammeNutritionnel pn = new ProgrammeNutritionnel(1, 1, 100, "test2");
+        //Add a Nutrional Plan 
+        //pncrud.ajouterProgrammeNutritionnel2(pn);
+        //Delete a Fitness Plan 
+        //pncrud.supprimerProgrammeNutritionnel(2);
+        //Edit a Fitness Plan
+        //pncrud.ModifierProgrammeNutritionnel(pn, 3);
+        //Show Fitness Plans
+        //System.out.println(pncrud.afficherProgrammeNutritionnel());
+        //Show Exercices of a Fitness Plan
+        //pncrud.AfficherRepasDeProgramme(2);  
 
     }
 }
