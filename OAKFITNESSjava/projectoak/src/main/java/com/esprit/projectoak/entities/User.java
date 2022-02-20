@@ -10,14 +10,14 @@ package com.esprit.projectoak.entities;
  */
 public class User {
     private int userID;
-    private int userName;
+    private String userName;
     private String userMail;
 
     public void setUserID(int userID) {
         this.userID = userID;
     }
 
-    public void setUserName(int userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
@@ -29,7 +29,7 @@ public class User {
         return userID;
     }
 
-    public int getUserName() {
+    public String getUserName() {
         return userName;
     }
 
@@ -38,6 +38,17 @@ public class User {
     }
 
     public User() {
+    }
+
+    public User(String userName, String userMail) {
+        this.userName = userName;
+        this.userMail = userMail;
+    }
+
+    public User(int userID, String userName, String userMail) {
+        this.userID = userID;
+        this.userName = userName;
+        this.userMail = userMail;
     }
 
 }

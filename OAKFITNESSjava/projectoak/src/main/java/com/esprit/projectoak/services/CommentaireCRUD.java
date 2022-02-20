@@ -123,13 +123,6 @@ public class CommentaireCRUD {
 //test
     }
 
-    public int afficherNote(int i) { //1 = + 2 = -
-        int n = 0;
-
-
-
-
-        return n;
-    }
+  
 
 }
