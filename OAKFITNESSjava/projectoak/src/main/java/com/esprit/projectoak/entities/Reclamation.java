@@ -15,6 +15,7 @@ public class Reclamation {
     private int CategReclam; 
     private String DescrReclam;
     private String DateReclam;
+    private String IDCommentaire;
     private String pourcentageReclam;
 
     public String getPourcentageReclam() {

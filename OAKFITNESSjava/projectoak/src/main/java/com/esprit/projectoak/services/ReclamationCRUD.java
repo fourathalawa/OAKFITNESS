@@ -146,5 +146,13 @@ public class ReclamationCRUD {
 
         sc.forEach((k, v) -> System.out.println("categorie: " + k + ", pourcentage reclamation seleon categorie: " + v+"%"));
     }
+   
+  public void ReclamerComment(int idComment){
+
+
+
+}
+
+
 
 }
