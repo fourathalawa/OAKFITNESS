@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphique.gui.GpanierController">
+   <children>
+      <BorderPane layoutX="7.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#AfficherPanierClient" text="afficher mon panier">
+                     <HBox.margin>
+                        <Insets right="150.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Label alignment="CENTER" text="shopping cart" textFill="#f5b301">
+                     <font>
+                        <Font name="Cambria Bold" size="40.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </top>
+         <left>
+            <HBox prefHeight="329.0" prefWidth="1316.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="300.0" />
+               </BorderPane.margin>
+               <children>
+                  <TableView fx:id="tablepanier" prefHeight="339.0" prefWidth="1052.0">
+                    <columns>
+                      <TableColumn fx:id="produit" minWidth="600.0" prefWidth="75.0" text="product" />
+                      <TableColumn fx:id="prix" minWidth="150.0" prefWidth="75.0" text="price" />
+                        <TableColumn fx:id="quantité" minWidth="150.0" prefWidth="75.0" text="quantity" />
+                        <TableColumn fx:id="totalP" minWidth="150.0" prefWidth="75.0" text="subtotal" />
+                    </columns>
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </TableView>
+               </children>
+            </HBox>
+         </left>
+         <bottom>
+            <HBox prefHeight="86.0" prefWidth="1316.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="50.0" />
+               </BorderPane.margin>
+               <children>
+                  <Button fx:id="validerPanier" mnemonicParsing="false" onMouseClicked="#validerPanier" prefHeight="31.0" prefWidth="214.0" text="passer votre commande">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="188.0" text="vider panier">
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Label text="total panier:" textFill="#fed053">
+                     <font>
+                        <Font name="Cambria Bold" size="40.0" />
+                     </font>
+                     <padding>
+                        <Insets left="400.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="totalPanier" onAction="#totalPanier" />
+                  
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

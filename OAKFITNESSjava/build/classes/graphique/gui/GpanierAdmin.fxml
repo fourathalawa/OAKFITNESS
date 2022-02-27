@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphique.gui.GpanierAdminController">
+    <children>
+      <TableView fx:id="tableTPanier" layoutX="152.0" layoutY="500.0" prefHeight="240.0" prefWidth="634.0">
+        <columns>
+          <TableColumn fx:id="IDPANIER" minWidth="100.0" prefWidth="75.0" text="id_panier " />
+          <TableColumn fx:id="IDutitilisateur" minWidth="120.0" prefWidth="75.0" text="id_utilisateur " />
+            <TableColumn fx:id="IDproduit" minWidth="100.0" prefWidth="75.0" text="id_produit " />
+            <TableColumn fx:id="Quantité" minWidth="100.0" prefWidth="75.0" text="quantite" />
+            <TableColumn fx:id="total" minWidth="100.0" prefWidth="109.0" text="total" />
+            <TableColumn fx:id="id_commande" minWidth="50.0" prefWidth="109.0" text="id_commande" />
+        </columns>
+      </TableView>
+      
+      <Button fx:id="AfficherPanierParClient" layoutX="397.0" layoutY="359.0" mnemonicParsing="false" onMouseClicked="#AfficherPanierParClient" prefHeight="31.0" prefWidth="207.0" text="Afficher Par Client" />
+      <TextField fx:id="IDutitilisateurAfficher" layoutX="604.0" layoutY="359.0" promptText="id utilisateur " />
+      <Button layoutX="397.0" layoutY="390.0" mnemonicParsing="false" onMouseClicked="#supprimerPanierParClient" prefHeight="31.0" prefWidth="207.0" text="supprimer panier id panier" />
+      <TextField fx:id="IDpanier" layoutX="604.0" layoutY="390.0" onMouseClicked="#supprimerPanierParClient" promptText="id panier" />
+      <Label layoutX="117.0" layoutY="28.0" text="Id_Client" />
+      <Label layoutX="117.0" layoutY="75.0" text="ID_Produit" />
+      <Label layoutX="117.0" layoutY="135.0" text="Quantity" />
+      <TextField fx:id="id_client" layoutX="210.0" layoutY="23.0" />
+      <TextField fx:id="id_produit" layoutX="210.0" layoutY="70.0" />
+      <TextField fx:id="quantity" layoutX="210.0" layoutY="130.0" />
+      <Button fx:id="ajouterpanier" layoutX="397.0" layoutY="190.0" mnemonicParsing="false" onMouseClicked="#ajouterPanier" text="ajouter panier" />
+   </children>
+</AnchorPane>
