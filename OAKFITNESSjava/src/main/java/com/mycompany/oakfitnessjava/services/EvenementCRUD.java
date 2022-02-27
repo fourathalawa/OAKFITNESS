@@ -108,7 +108,7 @@ public class EvenementCRUD {
     }
 
     public void ModifierEvenement(Evenement E, int id) {
-        String req = "UPDATE Evenement SET IDCreatorEvenement='" + E.getIDCreatorEvenement() + "' DateEvenement ='" + E.getDateEvenement() + "' TitreEvenement ='" + E.getTitreEvenement() + "',DescrEvenement ='" + E.getDescrEvenement() + "',AdresseEvenement ='" + E.getAdresseEvenement() + "', TypeEvenement ='" + E.getTypeEvenement() + "' WHERE IDEvenement = '" + id + "'";
+        String req = "UPDATE Evenement SET  IDCreatorEvenement='"+E.getIDCreatorEvenement()+"',DateEvenement ='" + E.getDateEvenement() + "', TitreEvenement ='" + E.getTitreEvenement() + "',DescrEvenement ='" + E.getDescrEvenement() + "',AdresseEvenement ='" + E.getAdresseEvenement() + "', TypeEvenement ='" + E.getTypeEvenement() + "' WHERE IDEvenement = '" + id + "'";
         PreparedStatement pst;
 
         try {
@@ -131,6 +131,62 @@ public class EvenementCRUD {
             Statement st = cnxx.createStatement();
             String req = "SELECT * FROM `Evenement` "
                     + "WHERE (DateEvenement BETWEEN '" + sqlDate1 + "' AND '" + sqlDate2 + "')";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                Evenement e = new Evenement();
+                e.setIDEvenement(rs.getInt(1));
+                e.setIDCreatorEvenement(rs.getInt(2));
+                e.setDateEvenement(rs.getDate(3));
+                e.setTitreEvenement(rs.getString(4));
+                e.setDescrEvenement(rs.getString(5));
+                e.setAdresseEvenement(rs.getString(6));
+                e.setTypeEvenement(rs.getString(7));
+                myList.add(e);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            //   return null;
+        }
+        return myList;
+    }
+    public List<Evenement> FirstDatesEvenement(Date D1) {
+        List<Evenement> myList = new ArrayList();
+
+        try {
+            java.sql.Date sqlDate1 = new java.sql.Date(D1.getTime());
+            Statement st = cnxx.createStatement();
+            String req = "SELECT * FROM `Evenement` "
+                    + "WHERE (DateEvenement > '" + sqlDate1 + "')";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                Evenement e = new Evenement();
+                e.setIDEvenement(rs.getInt(1));
+                e.setIDCreatorEvenement(rs.getInt(2));
+                e.setDateEvenement(rs.getDate(3));
+                e.setTitreEvenement(rs.getString(4));
+                e.setDescrEvenement(rs.getString(5));
+                e.setAdresseEvenement(rs.getString(6));
+                e.setTypeEvenement(rs.getString(7));
+                myList.add(e);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            //   return null;
+        }
+        return myList;
+    }
+    public List<Evenement> LastDatesEvenement(Date D1) {
+        List<Evenement> myList = new ArrayList();
+
+        try {
+            java.sql.Date sqlDate1 = new java.sql.Date(D1.getTime());
+            Statement st = cnxx.createStatement();
+            String req = "SELECT * FROM `Evenement` "
+                    + "WHERE (DateEvenement < '" + sqlDate1 + "')";
             ResultSet rs;
             rs = st.executeQuery(req);
             while (rs.next()) {
@@ -208,10 +264,70 @@ public class EvenementCRUD {
         }
         return myList;
     }
+    public List<Integer> CreatorsID(){
+    List<Integer> myList = new ArrayList();
+
+        try {
+            Statement st = cnxx.createStatement();
+            String req = "SELECT DISTINCT IDCreatorEvenement FROM `Evenement`";
+             
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                Evenement e = new Evenement();
+                
+                e.setIDCreatorEvenement(rs.getInt(1));
+                
+                myList.add(e.getIDCreatorEvenement());
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            //   return null;
+        }
+        return myList;
+    }
 
     public void EnvoyeEmailJ1(List<Evenement> EJ1, String Emails) throws MessagingException {
         for (int i = 0; i < EJ1.size(); i++) {
             JavaMailUtil.sendMail(Emails, "Votre Evenement " + EJ1.get(i).getTitreEvenement() + " en 1 jour", "Don't mess out");
         }
+    }
+    public int CountEvenement() {
+        int count =0;
+
+        try {
+            Statement st = cnxx.createStatement();
+            String req = "SELECT COUNT(*) AS count FROM Evenement";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                count=rs.getInt("count");
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            //   return null;
+        }
+        return count;
+    }
+    public int isJ1Count() {
+        int count=0;
+
+        try {
+            Statement st = cnxx.createStatement();
+            String req = "SELECT COUNT(*) AS count FROM `Evenement` "
+                    + "WHERE DateEvenement = '" + java.time.LocalDate.now().plusDays(1) + "'";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                count = rs.getInt("count");
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            //   return null;
+        }
+        return count;
     }
 }

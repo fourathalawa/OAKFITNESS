@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="408.0" prefWidth="767.0" style="-fx-background-color: #FED053;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.oakfitnessjava.gui.EvenemntEditController">
+    <children>
+      <Label layoutX="67.0" layoutY="63.0" text="Event Creator:" textFill="#3b3f46" />
+      <TextField fx:id="tfcreator" disable="true" editable="false" layoutX="200.0" layoutY="59.0" />
+      <TextField fx:id="tfTitle" layoutX="198.0" layoutY="134.0" />
+      <DatePicker fx:id="dpDate" layoutX="530.0" layoutY="65.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextArea fx:id="taDescription" layoutX="198.0" layoutY="201.0" prefHeight="137.0" prefWidth="149.0" />
+      <TextField fx:id="tfAdress" layoutX="528.0" layoutY="130.0" />
+      <ComboBox fx:id="cbType" layoutX="522.0" layoutY="196.0" prefWidth="150.0" />
+      <Label layoutX="405.0" layoutY="69.0" text="Event Date:" textFill="#3b3f46" />
+      <Label layoutX="75.0" layoutY="138.0" text="Event Title" textFill="#3b3f46" />
+      <Label layoutX="53.0" layoutY="201.0" text="Event Description: " textFill="#3b3f46" />
+      <Label layoutX="405.0" layoutY="134.0" text="Event Adress:" textFill="#3b3f46" />
+      <Label layoutX="404.0" layoutY="200.0" text="Event Type:" textFill="#3b3f46" />
+      <Button fx:id="btnValider" layoutX="525.0" layoutY="253.0" mnemonicParsing="false" onAction="#UpdateEvent" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #3B3F46;" text="Valider" textFill="#eeeeee">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="31.0">
+               <image>
+                  <Image url="@../images/green-check-mark-icon-png-13.jpg" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <TextField fx:id="eid" layoutX="508.0" layoutY="253.0" prefHeight="25.0" prefWidth="15.0" visible="false" />
+      <Label fx:id="errortitle" layoutX="230.0" layoutY="110.0" text="Add an event Title!" textFill="RED" visible="false" />
+      <Label fx:id="errordescription" layoutX="219.0" layoutY="180.0" text="Add an event Decription!" textFill="RED" visible="false" />
+      <Label fx:id="errordate" layoutX="542.0" layoutY="46.0" text="Select an event Date" textFill="RED" visible="false" />
+      <Label fx:id="erroradress" layoutX="544.0" layoutY="110.0" text="Add an event Adress" textFill="RED" visible="false" />
+      <Label fx:id="errortype" layoutX="544.0" layoutY="172.0" text="Select an event Type" textFill="RED" visible="false" />
+   </children>
+</AnchorPane>

@@ -71,6 +71,7 @@ public class ProgrammeSportifCRUD {
             while (rs.next()) {
 
                 ProgrammeSportif ps = new ProgrammeSportif();
+                ps.setIDProgrammeSportif(rs.getInt(1));
                 ps.setIDCoach(rs.getInt(2));
                 ps.setIDAdherent(rs.getInt(3));
                 ps.setDureeMois(rs.getInt(4));
@@ -128,10 +129,12 @@ public class ProgrammeSportifCRUD {
                 ex.setIDExercice(rs.getInt("IDExercice"));
                 ex.setTypeExercice(rs.getString(2));
                 ex.setNomExercice(rs.getString(3));
-                ex.setDescrExercice(rs.getString(4));
-                ex.setDiffExercice(rs.getString(5));
-                ex.setJusteSalleExercice(rs.getString(6));
-                ex.setDureeExercice(rs.getString(7));
+                ex.setMuscle(rs.getString(4));
+                ex.setVideo(rs.getString(5));
+                ex.setDescrExercice(rs.getString(6));
+                ex.setDiffExercice(rs.getString(7));
+                ex.setJusteSalleExercice(rs.getString(8));
+                ex.setDureeExercice(rs.getString(9));
                 myList.add(ex);
             }
         } catch (SQLException e) {
@@ -140,4 +143,33 @@ public class ProgrammeSportifCRUD {
         }
         return myList;
     }
+    public List<Exercice> AfficherExercicesDeProgrammeJour(int id,String jour) {
+        List<Exercice> myList = new ArrayList();
+
+        try {
+            Statement st = cnxx.createStatement();
+            String req = "SELECT * from exercice WHERE IDExercice in (SELECT IDExercice FROM programmes_exercice as pse WHERE pse.IDProgrammeSportif='" + id + "' AND pse.JourExercice = '"+jour+"')";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                Exercice ex = new Exercice();
+                ex.setIDExercice(rs.getInt("IDExercice"));
+                ex.setTypeExercice(rs.getString(2));
+                ex.setNomExercice(rs.getString(3));
+                ex.setMuscle(rs.getString(4));
+                ex.setVideo(rs.getString(5));
+                ex.setDescrExercice(rs.getString(6));
+                ex.setDiffExercice(rs.getString(7));
+                ex.setJusteSalleExercice(rs.getString(8));
+                ex.setDureeExercice(rs.getString(9));
+                myList.add(ex);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            //   return null;
+        }
+        return myList;
+    }
+   
 }

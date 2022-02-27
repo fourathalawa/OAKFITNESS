@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="666.0" prefWidth="863.0" style="-fx-background-color: #F5B301;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.oakfitnessjava.gui.EventsDetailsWindowController">
+   <children>
+      <HBox alignment="CENTER_LEFT" layoutY="-5.0" prefHeight="101.0" prefWidth="863.0" style="-fx-background-color: #3B3F46;">
+         <children>
+            <Label alignment="CENTER" text="TOTAL EVENTS : " textFill="#f2f2f2">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="eventcount" text="Label" textFill="#ffc508">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin>
+            </Label>
+            <Label text="EVENTS IN ONE DAY:" textFill="#fffdfd">
+               <HBox.margin>
+                  <Insets left="270.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="eventj1" text="Label" textFill="#ffc508">
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="70.0" />
+         </padding></HBox>
+      <Button fx:id="openEdit" layoutX="603.0" layoutY="608.0" mnemonicParsing="false" onAction="#openEventEdit" prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: #3B3F46;" text="Edit Event" textFill="#fed053">
+         <effect>
+            <Blend />
+         </effect>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="27.0">
+               <image>
+                  <Image url="@../images/document-edit-flat.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TableView fx:id="eventtable" layoutX="20.0" layoutY="218.0" prefHeight="377.0" prefWidth="829.0" style="-fx-background-color: #F5DE7A;">
+        <columns>
+          <TableColumn fx:id="col_title" prefWidth="111.0" text="Event Title" />
+          <TableColumn fx:id="col_date" prefWidth="110.0" text="Event Date" />
+            <TableColumn fx:id="col_description" prefWidth="136.0" text="Event Description" />
+            <TableColumn fx:id="col_adress" prefWidth="142.0" text="Event Adress" />
+            <TableColumn fx:id="col_type" prefWidth="168.0" text="Event Type" />
+            <TableColumn fx:id="col_creator" prefWidth="161.0" text="Event Creator" />
+            <TableColumn fx:id="col_id" prefWidth="47.0" text="Column X" visible="false" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnDelete" layoutX="724.0" layoutY="608.0" mnemonicParsing="false" onAction="#DeleteEvent" prefHeight="39.0" prefWidth="125.0" style="-fx-background-color: #3B3F46;" text="Delete Event" textFill="#fed053">
+         <effect>
+            <Blend />
+         </effect>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="31.0">
+               <image>
+                  <Image url="@../images/910950.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="openEdit" layoutX="481.0" layoutY="608.0" mnemonicParsing="false" onAction="#openEventAdd" prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: #3B3F46;" text="Add Event" textFill="#fed053">
+         <effect>
+            <Blend />
+         </effect>
+         <graphic>
+            <ImageView fitHeight="29.0" fitWidth="32.0">
+               <image>
+                  <Image url="@../images/add-icon-png-10.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <DatePicker fx:id="dpdate2" layoutX="481.0" layoutY="180.0" prefHeight="25.0" prefWidth="187.0" />
+      <DatePicker fx:id="dpdate1" layoutX="222.0" layoutY="180.0" prefHeight="25.0" prefWidth="211.0" />
+      <ComboBox fx:id="cbcreator" layoutX="21.0" layoutY="179.0" prefHeight="25.0" prefWidth="150.0" />
+      <TextField fx:id="tfsearch" layoutX="21.0" layoutY="132.0" prefHeight="25.0" prefWidth="829.0" />
+      <Label layoutX="405.0" layoutY="109.0" text="Event Name">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+      <Label layoutX="66.0" layoutY="161.0" text="Event Creator">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+      <Label layoutX="307.0" layoutY="161.0" text="First Date">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+      <Label layoutX="556.0" layoutY="161.0" text="Last Day">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+      <Button fx:id="btnFilter" layoutX="723.0" layoutY="180.0" mnemonicParsing="false" onAction="#Filter" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: #3B3F46;" text="Filter" textFill="#fed053">
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="18.0">
+               <image>
+                  <Image url="@../images/img_524067.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="setnull" layoutX="181.0" layoutY="181.0" mnemonicParsing="false" onAction="#SetNullCombo" prefHeight="9.0" prefWidth="7.0" style="-fx-background-color: #3B3F46;" text="X" textFill="#ffc508">
+         <font>
+            <Font size="10.0" />
+         </font></Button>
+      <Button fx:id="setnull1" layoutX="449.0" layoutY="181.0" mnemonicParsing="false" onAction="#SetNullDate1" prefHeight="9.0" prefWidth="7.0" style="-fx-background-color: #3B3F46;" text="X" textFill="#ffc508">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Button fx:id="setnull2" layoutX="681.0" layoutY="181.0" mnemonicParsing="false" onAction="#SetNullDate2" prefHeight="9.0" prefWidth="7.0" style="-fx-background-color: #3B3F46;" text="X" textFill="#ffc508">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

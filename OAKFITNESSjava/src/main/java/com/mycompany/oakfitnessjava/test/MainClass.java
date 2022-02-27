@@ -17,9 +17,7 @@ import com.mycompany.oakfitnessjava.services.ProgrammeSportifCRUD;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
@@ -32,9 +30,15 @@ import javax.mail.MessagingException;
  */
 public class MainClass {
 
+    enum jour {
+        Lundi, Mardi, Mercredi, Jedui, Vendredi, Samedi, Dimanche
+    };
+    enum type {
+    Full_Body,Half_body,Cardio,Musculation,Prise_de_masse,Remise_en_forme
+    }
     public static void main(String[] args) throws ParseException, MessagingException {
         // Execute this everyday at 00:00
-        Timer timer = new Timer();
+       /* Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
@@ -57,10 +61,10 @@ public class MainClass {
         date.set(Calendar.HOUR_OF_DAY, 0);
         date.set(Calendar.MINUTE, 0);
         date.set(Calendar.SECOND, 0);
-        date.set(Calendar.MILLISECOND, 0);
+        date.set(Calendar.MILLISECOND, 0);*/
 
-        System.out.println(date.getTime());
-        timer.scheduleAtFixedRate(task, date.getTime(), 86400000);
+        //System.out.println(date.getTime());
+        //timer.scheduleAtFixedRate(task, date.getTime(), 86400000);
 
         //Evenement (CRUD) Evenement Instance
         EvenementCRUD ecrud = new EvenementCRUD();
@@ -68,7 +72,7 @@ public class MainClass {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Evenement ev = new Evenement(4, sdf.parse("2022-02-22"), "test5", "test5", "test5", "test5");
         //Add an event
-        // ecrud.ajouterEvenement2(ev);
+        // ecrud.ajouterEvenement2(ev)
         //Delete an event 
         //ecrud.supprimerEvenement(4);
         //Edit an event 
@@ -79,10 +83,11 @@ public class MainClass {
         //ecrud.EvenementCreatedby(2);
         //Get Events between 2 dates
         //ecrud.BetweenDatesEvenement(sdf.parse("2022-01-01"), sdf.parse("2022-12-31"));
-
+        System.out.println(ecrud.LastDatesEvenement(sdf.parse("2022-03-05")));
+        //System.out.println(ecrud.CreatorsID());
         //Exercice (CRUD) Exercice Instance
         ExerciceCRUD excrud = new ExerciceCRUD();
-        Exercice ex = new Exercice("test3", "test3", "test3", "test3", "test3", "test3");
+        Exercice ex = new Exercice("Muscution", "Dumbell Press", "Chest", "youtube.com", "not very easy", "meduim","Salle","3 SETS ");
         //Add an exercice 
         //excrud.ajouterExercice2(ex);
         //Delete an exercice
@@ -92,13 +97,13 @@ public class MainClass {
         //Show exercices
         //System.out.println(excrud.afficherExercice());
         //Add an exercice to a Fitness Plan
-        //excrud.AjouterExerciceAProgramme(1, 5);
+        //excrud.AjouterExerciceAProgramme(10, 32, jour.Samedi.name());
         //Delete an exercice from a Fitness Plan 
         //excrud.supprimerExerciceDeProgramme(2, 2);
-        
+
         //Fitness Plan (CRUD) Fitness Instance
         ProgrammeSportifCRUD pscrud = new ProgrammeSportifCRUD();
-        ProgrammeSportif ps = new ProgrammeSportif(1, 1, 1, "test");
+        ProgrammeSportif ps = new ProgrammeSportif(1, 1, 1, type.Full_Body.name());
         //Add a Fitness Plan 
         //pscrud.ajouterProgrammeSportif2(ps);
         //Delete a Fitness Plan 
@@ -109,6 +114,8 @@ public class MainClass {
         //System.out.println(pscrud.afficherProgrammeSportif());
         //Show Exercices of a Fitness Plan
         //pscrud.AfficherExercicesDeProgramme(2);
+        //Show Exercices of a fitness plan at a specific day of the week
+        //System.out.println(pscrud.AfficherExercicesDeProgrammeJour(10, jour.Lundi.name()));
 
         //Meals (CRUD) Meal Instance       
         RepasCRUD rcrud = new RepasCRUD();
@@ -125,7 +132,7 @@ public class MainClass {
         //rcrud.AjouterRepasAProgramme(2, 3);
         //Delete a Meal from a Nutrional Plan
         //rcrud.supprimerRepasDeProgramme(2, 4);
-        
+
         //Fitness Plan (CRUD) Fitness Instance
         ProgrammeNutritionnelCRUD pncrud = new ProgrammeNutritionnelCRUD();
         ProgrammeNutritionnel pn = new ProgrammeNutritionnel(1, 1, 100, "test2");

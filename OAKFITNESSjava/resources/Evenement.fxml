@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="581.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.oakfitnessjava.gui.EvenementController">
+   <children>
+      <Label layoutX="67.0" layoutY="63.0" text="Event Creator:" />
+      <TextField fx:id="tfcreator" layoutX="200.0" layoutY="59.0" />
+      <TextField fx:id="tfTitle" layoutX="200.0" layoutY="176.0" />
+      <DatePicker fx:id="dpDate" layoutX="200.0" layoutY="113.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextArea fx:id="taDescription" layoutX="200.0" layoutY="231.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextField fx:id="tfAdress" layoutX="200.0" layoutY="468.0" />
+      <ComboBox fx:id="cbType" layoutX="200.0" layoutY="518.0" prefWidth="150.0" />
+      <Label layoutX="75.0" layoutY="117.0" text="Event Date:" />
+      <Label layoutX="77.0" layoutY="180.0" text="Event Title" />
+      <Label layoutX="57.0" layoutY="231.0" text="Event Description: " />
+      <Label layoutX="77.0" layoutY="472.0" text="Event Adress:" />
+      <Label layoutX="82.0" layoutY="522.0" text="Event Type:" />
+      <Button fx:id="btnValider" layoutX="589.0" layoutY="278.0" mnemonicParsing="false" onAction="#SaveEvent" text="Valider" />
+   </children>
+</AnchorPane>

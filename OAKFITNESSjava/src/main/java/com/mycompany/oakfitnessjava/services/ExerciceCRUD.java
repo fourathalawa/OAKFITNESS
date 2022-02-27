@@ -22,7 +22,6 @@ import java.util.List;
 public class ExerciceCRUD {
 
     Connection cnxx;
-
     public ExerciceCRUD() {
         cnxx = MyConnection.getInstance().getCnx();
     }
@@ -42,18 +41,20 @@ public class ExerciceCRUD {
     }
 
     public void ajouterExercice2(Exercice E) {
-        String Request = "INSERT INTO EXERCICE (TypeExercice,NomExercice,DescrExercice,DiffExercice,JusteSalleExercice,DureeExercice)"
-                + " VALUES (?,?,?,?,?,?)";
+        String Request = "INSERT INTO EXERCICE (TypeExercice,NomExercice,Muscle,Video,DescrExercice,DiffExercice,JusteSalleExercice,DureeExercice)"
+                + " VALUES (?,?,?,?,?,?,?,?)";
 
         PreparedStatement pst;
         try {
             pst = cnxx.prepareStatement(Request, Statement.RETURN_GENERATED_KEYS);
             pst.setString(1, E.getTypeExercice());
             pst.setString(2, E.getNomExercice());
-            pst.setString(3, E.getDescrExercice());
-            pst.setString(4, E.getDiffExercice());
-            pst.setString(5, E.getJusteSalleExercice());
-            pst.setString(6, E.getDureeExercice());
+            pst.setString(3,E.getMuscle());
+            pst.setString(4, E.getVideo());
+            pst.setString(5, E.getDescrExercice());
+            pst.setString(6, E.getDiffExercice());
+            pst.setString(7, E.getJusteSalleExercice());
+            pst.setString(8, E.getDureeExercice());
             pst.executeUpdate();
             System.out.println("Exercice ajouté avec succés");
 
@@ -80,12 +81,15 @@ public class ExerciceCRUD {
             while (rs.next()) {
 
                 Exercice ex = new Exercice();
-                ex.setTypeExercice(rs.getString(1));
-                ex.setNomExercice(rs.getString(2));
-                ex.setDescrExercice(rs.getString(3));
-                ex.setDiffExercice(rs.getString(4));
-                ex.setJusteSalleExercice(rs.getString(5));
-                ex.setDureeExercice(rs.getString(6));
+                ex.setIDExercice(rs.getInt("IDExercice"));
+                ex.setTypeExercice(rs.getString(2));
+                ex.setNomExercice(rs.getString(3));
+                ex.setMuscle(rs.getString(4));
+                ex.setVideo(rs.getString(5));
+                ex.setDescrExercice(rs.getString(6));
+                ex.setDiffExercice(rs.getString(7));
+                ex.setJusteSalleExercice(rs.getString(8));
+                ex.setDureeExercice(rs.getString(9));
                 myList.add(ex);
             }
         } catch (SQLException e) {
@@ -111,7 +115,7 @@ public class ExerciceCRUD {
     }
 
     public void ModifierExercice(Exercice E, int id) {
-        String req = "UPDATE exercice SET TypeExercice ='" + E.getTypeExercice() + "',NomExercice ='" + E.getNomExercice() + "',DescrExercice ='" + E.getDescrExercice() + "', DiffExercice ='" + E.getDiffExercice() + "', JusteSalleExercice ='" + E.getJusteSalleExercice() + "',DureeExercice = '" + E.getDureeExercice() + "' WHERE IDExercice = '" + id + "'";
+        String req = "UPDATE exercice SET TypeExercice ='" + E.getTypeExercice() + "',NomExercice ='" + E.getNomExercice() + "',Muscle = '"+E.getMuscle()+"', Video ='"+E.getVideo()+"',DescrExercice ='" + E.getDescrExercice() + "', DiffExercice ='" + E.getDiffExercice() + "', JusteSalleExercice ='" + E.getJusteSalleExercice() + "',DureeExercice = '" + E.getDureeExercice() + "' WHERE IDExercice = '" + id + "'";
         PreparedStatement pst;
 
         try {
@@ -125,14 +129,15 @@ public class ExerciceCRUD {
 
     }
 
-    public void AjouterExerciceAProgramme(int IDPs, int IDE) {
-        String req = "INSERT INTO programmes_exercice (IDProgrammeSportif,IDExercice) VALUES (?,?)";
+    public void AjouterExerciceAProgramme(int IDPs, int IDE,String jour) {
+        String req = "INSERT INTO programmes_exercice (IDProgrammeSportif,IDExercice,JourExercice) VALUES (?,?,?)";
         PreparedStatement pst;
         try {
             pst = cnxx.prepareStatement(req);
 
             pst.setInt(1, IDPs);
             pst.setInt(2, IDE);
+            pst.setString(3, jour);
             pst.executeUpdate();
             System.out.println("Exercice ajouté à programme avec succés");
         } catch (SQLException ex) {

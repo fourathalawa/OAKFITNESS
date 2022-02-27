@@ -13,6 +13,8 @@ public class Exercice {
     private int IDExercice;
     private String TypeExercice;
     private String NomExercice;
+    private String Muscle;
+    private String Video;
     private String DescrExercice;
     private String DiffExercice;
     private String JusteSalleExercice;
@@ -22,23 +24,43 @@ public class Exercice {
 
     }
 
-    public Exercice(int IDExercice, String TypeExercice, String NomExercice, String DescrExercice, String DiffExercice, String JusteSalleExercice, String DureeExercice) {
+    public Exercice(int IDExercice, String TypeExercice, String NomExercice,String Muscle,String Video, String DescrExercice, String DiffExercice, String JusteSalleExercice, String DureeExercice) {
         this.IDExercice = IDExercice;
         this.TypeExercice = TypeExercice;
         this.NomExercice = NomExercice;
+        this.Muscle = Muscle;
+        this.Video = Video;
         this.DescrExercice = DescrExercice;
         this.DiffExercice = DiffExercice;
         this.JusteSalleExercice = JusteSalleExercice;
         this.DureeExercice = DureeExercice;
     }
 
-    public Exercice(String TypeExercice, String NomExercice, String DescrExercice, String DiffExercice, String JusteSalleExercice, String DureeExercice) {
+    public Exercice(String TypeExercice, String NomExercice,String Muscle,String Video, String DescrExercice, String DiffExercice, String JusteSalleExercice, String DureeExercice) {
         this.TypeExercice = TypeExercice;
         this.NomExercice = NomExercice;
+        this.Muscle = Muscle;
+        this.Video = Video;
         this.DescrExercice = DescrExercice;
         this.DiffExercice = DiffExercice;
         this.JusteSalleExercice = JusteSalleExercice;
         this.DureeExercice = DureeExercice;
+    }
+
+    public String getMuscle() {
+        return Muscle;
+    }
+
+    public void setMuscle(String Muscle) {
+        this.Muscle = Muscle;
+    }
+
+    public String getVideo() {
+        return Video;
+    }
+
+    public void setVideo(String Video) {
+        this.Video = Video;
     }
 
     public int getIDExercice() {
@@ -99,7 +121,9 @@ public class Exercice {
 
     @Override
     public String toString() {
-        return "Exercice{" + "IDExercice=" + IDExercice + ", TypeExercice=" + TypeExercice + ", NomExercice=" + NomExercice + ", DescrExercice=" + DescrExercice + ", DiffExercice=" + DiffExercice + ", JusteSalleExercice=" + JusteSalleExercice + ", DureeExercice=" + DureeExercice + '}';
+        return "Exercice{" + "IDExercice=" + IDExercice + ", TypeExercice=" + TypeExercice + ", NomExercice=" + NomExercice + ", Muscle=" + Muscle + ", Video=" + Video + ", DescrExercice=" + DescrExercice + ", DiffExercice=" + DiffExercice + ", JusteSalleExercice=" + JusteSalleExercice + ", DureeExercice=" + DureeExercice + '}';
     }
+
+   
 
 }

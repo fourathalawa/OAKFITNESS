@@ -33,7 +33,7 @@ public class JavaMailUtil {
         properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 
         String MyAccount = "heni.m.nechi@gmail.com";
-        String password = "rit ki njarabkom, jadet alik";
+        String password = "qoazcgmxyknlhvuz";
 
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
             @Override

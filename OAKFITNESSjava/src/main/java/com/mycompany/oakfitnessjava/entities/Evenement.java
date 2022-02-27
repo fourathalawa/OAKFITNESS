@@ -23,6 +23,14 @@ public class Evenement {
     public Evenement() {
     }
 
+    public Evenement(Date DateEvenement, String TitreEvenement, String DescrEvenement, String AdresseEvenement, String TypeEvenement) {
+        this.DateEvenement = DateEvenement;
+        this.TitreEvenement = TitreEvenement;
+        this.DescrEvenement = DescrEvenement;
+        this.AdresseEvenement = AdresseEvenement;
+        this.TypeEvenement = TypeEvenement;
+    }
+
     public Evenement(int IDEvenement, int IDCreatorEvenement, Date DateEvenement, String TitreEvenement, String DescrEvenement, String AdresseEvenement, String TypeEvenement) {
         this.IDEvenement = IDEvenement;
         this.IDCreatorEvenement = IDCreatorEvenement;
