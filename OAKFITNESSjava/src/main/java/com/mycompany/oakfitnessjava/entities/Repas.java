@@ -88,7 +88,7 @@ public class Repas {
 
     @Override
     public String toString() {
-        return "Repas{" + "IDRepas=" + IDRepas + ", PDej=" + PDej + ", Dej=" + Dej + ", Dinn=" + Dinn + ", Calorie=" + Calorie + ", RestOrActive=" + RestOrActive + '}';
+        return "Breakfest :" + PDej + " | Lunch : " + Dej + " | Dinner :" + Dinn + "";
     }
 
 }

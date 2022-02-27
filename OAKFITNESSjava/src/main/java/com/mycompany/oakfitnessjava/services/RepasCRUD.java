@@ -116,14 +116,15 @@ public class RepasCRUD {
 
     }
 
-    public void AjouterRepasAProgramme(int IDPn, int IDR) {
-        String req = "INSERT INTO programmen_repas (IDProgrammeNutritionnel,IDRepas) VALUES (?,?)";
+    public void AjouterRepasAProgramme(int IDPn, int IDR,String jour) {
+        String req = "INSERT INTO programmen_repas (IDProgrammeNutritionnel,IDRepas,JourRepas) VALUES (?,?,?)";
         PreparedStatement pst;
         try {
             pst = cnxx.prepareStatement(req);
 
             pst.setInt(1, IDPn);
             pst.setInt(2, IDR);
+            pst.setString(3, jour);
             pst.executeUpdate();
             System.out.println("Repas ajouté à programme avec succés");
         } catch (SQLException ex) {

@@ -140,4 +140,29 @@ public class ProgrammeNutritionnelCRUD {
         }
         return myList;
     }
+    public List<Repas> AfficherRepasDeProgrammeUserDay(int idu,String jour) {
+        List<Repas> myList = new ArrayList();
+
+        try {
+            Statement st = cnxx.createStatement();
+            String req = "SELECT * from repas WHERE IDRepas in (SELECT IDRepas FROM programmen_repas as pnr,programmenutritionnel as pn WHERE (pnr.IDProgrammeNutritionnel=pn.IDProgrammeNutritionnel) AND pnr.JourRepas ='"+jour+"' AND pn.IDAdherent='"+idu+"')";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                Repas r = new Repas();
+                r.setIDRepas(rs.getInt("IDRepas"));
+                r.setPDej(rs.getString(2));
+                r.setDej(rs.getString(3));
+                r.setDinn(rs.getString(4));
+                r.setCalorie(rs.getInt(5));
+                r.setRestOrActive(rs.getString(6));
+                myList.add(r);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            //   return null;
+        }
+        return myList;
+    }
 }

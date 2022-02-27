@@ -7,6 +7,8 @@ package com.mycompany.oakfitnessjava.gui.programmeNutritionnel;
 import com.mycompany.oakfitnessjava.entities.Repas;
 import com.mycompany.oakfitnessjava.services.RepasCRUD;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,6 +36,10 @@ public class MealtoPlanAddController implements Initializable {
     private TextField pnid;
     @FXML
     private Label errorMeal;
+    @FXML
+    private ComboBox<String> day;
+    @FXML
+    private Label ErrorDay;
 
     /**
      * Initializes the controller class.
@@ -45,6 +51,17 @@ public class MealtoPlanAddController implements Initializable {
         data = FXCollections.observableArrayList(rcrud.afficherRepas());
         cbMeal.getItems().clear();
         cbMeal.setItems(data);
+        List<String> listday = new ArrayList<String>();
+        listday.add("Monday");
+        listday.add("Tuesday");
+        listday.add("Wedensday");
+        listday.add("Tursday");
+        listday.add("Friday");
+        listday.add("Saturday");
+        listday.add("Sunday");
+        ObservableList obList = FXCollections.observableList(listday);
+        day.getItems().clear();
+         day.setItems(obList);
     }    
 
     @FXML
@@ -55,10 +72,16 @@ public class MealtoPlanAddController implements Initializable {
         if (cbMeal.getValue()==null ){
             errorMeal.setVisible(true);
         }
-        if(cbMeal.getValue()!=null){
+        if (day.getValue()==null ){
+            ErrorDay.setVisible(true);
+        }
+        if (day.getValue()!=null ){
+            ErrorDay.setVisible(false);
+        }
+        if(cbMeal.getValue()!=null&&day.getValue()!=null){
         int rID = cbMeal.getValue().getIDRepas();
         RepasCRUD rcrud = new RepasCRUD();
-        rcrud.AjouterRepasAProgramme(Integer.parseInt(pnid.getText()), rID);
+        rcrud.AjouterRepasAProgramme(Integer.parseInt(pnid.getText()), rID,day.getValue());
         }
     }
     void SetProgramToEdit(int i){

@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="505.0" prefWidth="775.0" style="-fx-background-color: F5B301;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.oakfitnessjava.gui.exercice.ExerciceAddController">
+<AnchorPane id="AnchorPane" prefHeight="505.0" prefWidth="775.0" style="-fx-background-color: #FED053;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.oakfitnessjava.gui.exercice.ExerciceAddController">
    <children>
       <Label layoutX="70.0" layoutY="79.0" text="Exerice " />
       <Label layoutX="53.0" layoutY="140.0" text="Type Exercice" />

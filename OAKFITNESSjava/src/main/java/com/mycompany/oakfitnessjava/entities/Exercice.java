@@ -121,7 +121,7 @@ public class Exercice {
 
     @Override
     public String toString() {
-        return "Exercice{" + "IDExercice=" + IDExercice + ", TypeExercice=" + TypeExercice + ", NomExercice=" + NomExercice + ", Muscle=" + Muscle + ", Video=" + Video + ", DescrExercice=" + DescrExercice + ", DiffExercice=" + DiffExercice + ", JusteSalleExercice=" + JusteSalleExercice + ", DureeExercice=" + DureeExercice + '}';
+        return "Exercice : " + NomExercice + " | Muscle : " + Muscle + " | Exercice Duration : " + DureeExercice + "";
     }
 
    

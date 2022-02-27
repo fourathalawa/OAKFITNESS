@@ -16,7 +16,7 @@
         <columns>
           <TableColumn fx:id="col_coach" prefWidth="75.0" text="Coach" />
           <TableColumn fx:id="col_member" prefWidth="287.0" text="Member" />
-            <TableColumn fx:id="col_duration" prefWidth="286.0" text="Duration" />
+            <TableColumn fx:id="col_duration" prefWidth="286.0" text="Duration(Months)" />
             <TableColumn fx:id="col_type" prefWidth="426.0" text="Type" />
             <TableColumn fx:id="col_id" minWidth="0.0" prefWidth="0.0" text="id" />
         </columns>
