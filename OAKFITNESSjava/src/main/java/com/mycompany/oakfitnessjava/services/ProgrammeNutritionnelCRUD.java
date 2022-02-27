@@ -71,6 +71,7 @@ public class ProgrammeNutritionnelCRUD {
             while (rs.next()) {
 
                 ProgrammeNutritionnel ps = new ProgrammeNutritionnel();
+                ps.setIDProgrammeNutritionnel(rs.getInt(1));
                 ps.setIDCoach(rs.getInt(2));
                 ps.setIDAdherent(rs.getInt(3));
                 ps.setCalorie(rs.getInt(4));
@@ -119,7 +120,7 @@ public class ProgrammeNutritionnelCRUD {
 
         try {
             Statement st = cnxx.createStatement();
-            String req = "SELECT * in (SELECT IDRepas FROM programmen_repas as pnr WHERE pnr.IDProgrammeNutritionnel='" + id + "')";
+            String req = "SELECT * from repas WHERE IDRepas in (SELECT IDRepas FROM programmen_repas as pnr WHERE pnr.IDProgrammeNutritionnel='" + id + "')";
             ResultSet rs;
             rs = st.executeQuery(req);
             while (rs.next()) {

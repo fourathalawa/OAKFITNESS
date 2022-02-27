@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.oakfitnessjava.gui.programmeNutritionnel.ProgrammeNutriEditController">
+    <children>
+      <TextField fx:id="tfCoach" layoutX="110.0" layoutY="67.0" />
+      <Label layoutX="45.0" layoutY="71.0" text="Coach" />
+      <Label layoutX="45.0" layoutY="145.0" text="Member" />
+      <Label layoutX="45.0" layoutY="225.0" text="Calorie" />
+      <Label layoutX="45.0" layoutY="303.0" text="Type" />
+      <TextField fx:id="tfCalorie" layoutX="110.0" layoutY="221.0" />
+      <TextField fx:id="tfMember" layoutX="110.0" layoutY="141.0" />
+      <Button fx:id="btnValider" layoutX="394.0" layoutY="188.0" mnemonicParsing="false" onAction="#EditDiet" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: #3B3F46;" text="Valider" textFill="WHITE" />
+      <ComboBox fx:id="cbType" layoutX="110.0" layoutY="299.0" prefWidth="150.0" />
+      <Label fx:id="errorcoach" layoutX="272.0" layoutY="71.0" text="Add a Coach!" textFill="RED" visible="false" />
+      <Label fx:id="errormember" layoutX="272.0" layoutY="145.0" text="Add a Member!" textFill="RED" visible="false" />
+      <Label fx:id="errorCalorie" layoutX="272.0" layoutY="225.0" text="Add a Calorie!" textFill="RED" visible="false" />
+      <Label fx:id="errorType" layoutX="272.0" layoutY="303.0" text="Add a Type!" textFill="RED" visible="false" />
+      <TextField fx:id="pnid" layoutX="373.0" layoutY="188.0" prefHeight="25.0" prefWidth="16.0" visible="false" />
+   </children>
+</AnchorPane>

@@ -8,10 +8,12 @@ C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com
 C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\gui\programmeSportif\PorgrammeSportifAddController.java
 C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\gui\programmeSportif\ProgrammeSportifController.java
 C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\services\EvenementCRUD.java
+C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\gui\programmeNutritionnel\ProgrammeNutriEditController.java
 C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\entities\Evenement.java
 C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\services\RepasCRUD.java
 C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\entities\ProgrammeSportif.java
 C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\services\ExerciceCRUD.java
+C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\gui\programmeNutritionnel\ProgrammeDetailsMealsController.java
 C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\test\MainClass.java
 C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\gui\programmeSportif\PorgrammeSportifEditController.java
 C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\gui\programmeSportif\ProgrammeDetailsExerciceController.java
@@ -19,6 +21,7 @@ C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com
 C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\gui\EvenemntEditController.java
 C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\gui\EventsDetailsWindowController.java
 C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\gui\programmeSportif\ExercicetoPlanAddController.java
+C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\gui\programmeNutritionnel\ProgrammeNutriAddController.java
 C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\gui\programmeNutritionnel\ProgrammeNutritionnelController.java
 C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\services\ProgrammeNutritionnelCRUD.java
 C:\Users\Heni Nechi\Documents\GitHub\OAKFITNESS\OAKFITNESSjava\src\main\java\com\mycompany\oakfitnessjava\entities\Exercice.java

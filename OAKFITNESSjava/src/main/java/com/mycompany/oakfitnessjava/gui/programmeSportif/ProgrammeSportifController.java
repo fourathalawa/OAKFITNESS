@@ -183,7 +183,6 @@ public class ProgrammeSportifController implements Initializable {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ProgrammeDetailsExercice.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
                 ProgrammeDetailsExerciceController psec = fxmlLoader.getController();
-                
                 psec.set(ps.getIDProgrammeSportif());
                 Stage stage = new Stage();
                 stage.initModality(Modality.APPLICATION_MODAL);

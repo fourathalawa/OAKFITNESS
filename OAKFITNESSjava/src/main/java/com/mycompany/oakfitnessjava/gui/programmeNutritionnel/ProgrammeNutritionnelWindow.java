@@ -25,6 +25,7 @@ public class ProgrammeNutritionnelWindow extends Application {
     public void start(Stage primaryStage) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("ProgrammeNutritionnel.fxml"));
+            
             Scene scene = new Scene(root);
             primaryStage.setTitle("Diet Plan Management");
             primaryStage.setScene(scene);
