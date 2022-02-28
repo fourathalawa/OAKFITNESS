@@ -6,7 +6,7 @@ package com.mycompany.entities;
 
 /**
  *
- * @author User
+ * @author Fourat Halaoua
  */
 public class Challenge {
 

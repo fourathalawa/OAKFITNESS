@@ -12,7 +12,7 @@ import com.mycompany.utils.MyConnection;
 
 /**
  *
- * @author User
+ * @author Fourat Halaoua
  */
 public class MainClass {
 
@@ -54,15 +54,17 @@ public class MainClass {
   
   
          // ajouter des user
-        /*User admin = new User("fourat","halaoua","fourat.halaoua@esprit.tn",99626324,"21/02/2000",0,"fourat0000");
-        User adherent = new User("assyl", "kriaa", "assyl.kriaa@esprit.tn",65847512,"21/02/2002",1,1,"10/02/2022","assyl2000");
+       // User admin = new User("kassem","benhenda","fourathalawa2000@gmail.com",54626952,"21-02-2000",0,"kassem00002");
+        
+        /*User adherent = new User("assyl", "kriaa", "assyl.kriaa@esprit.tn",65847512,"21/02/2002",1,1,"10/02/2022","assyl2000");
         User coach = new User("habib firas","hadroug","habibfiras.hadroug@esprit.tn", 00000000,"21/5/2000", 2, "aearr", "ouiyfcqglksb","habib9999");
         User responsable = new User("heni","nechi", "heni.nechi@esprit.tn",11111111,"10/01/1998", "mourouj",584712,3,"heni6666");
-        userC.ajouterAdmin(admin);
+        
         userC.ajouterAdhérent(adherent);
         userC.ajouterCoach(coach);
         userC.ajouterResponsable(responsable);*/
-
+//userC.ajouterAdmin(admin);
+ //  userC.ResetPassword(admin);
  /* //modifier des user
         User adherent1 = new User("assylae", "kriaaaz", "assyl.kriaa@esprit.tn",65847512,"21/02/2002",1,1,"10/02/2022","assyl2000");
         User coach1 = new User("habib firasds","hadrougsd","habibfiras.hadroug@esprit.tn", 00000000,"21/5/2000", 2, "aearr", "ouiyfcqglksb","habib9999");

@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author User
+ * @author Fourat Halaoua
  */
 public class MyConnection {
      public String url = "jdbc:mysql://localhost:3306/oakfitness";

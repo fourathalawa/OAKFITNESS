@@ -4,9 +4,13 @@
  */
 package com.mycompany.entities;
 
+import java.time.LocalDate;
+import java.util.Date;
+import javafx.scene.control.DatePicker;
+
 /**
  *
- * @author User
+ * @author Fourat Halaoua
  */
 public class User {
 
@@ -150,7 +154,7 @@ public class User {
         this.Password=Password;
     }
 //Adherent
-    public User(String Nom, String Prenom, String Mail, long Telephone_Number, String Date_Naissance, int Role, int Numero_Pack, String Date_Commance,String Password) {
+    public User(String Nom, String Prenom, String Mail, long Telephone_Number,String Date_Naissance, int Role, int Numero_Pack, String Date_Commance,String Password) {
         this.Nom = Nom;
         this.Prenom = Prenom;
         this.Mail = Mail;
