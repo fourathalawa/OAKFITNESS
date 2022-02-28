@@ -25,6 +25,8 @@ import java.util.Random;
 import java.lang.Math;
 import java.sql.Date;
 import java.time.LocalDate;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -192,9 +194,9 @@ public class UserCRUD {
 
     }
 
-    public List<User> afficherAdhérent() {
+    public ObservableList<User> afficherAdhérent() {
 
-        List<User> myList = new ArrayList();
+ObservableList<User> myList = FXCollections.observableArrayList();
 
         try {
             Statement st = cnxx.createStatement();
@@ -224,9 +226,9 @@ public class UserCRUD {
         return myList;
     }
 
-    public List<User> afficherCoach() {
+    public ObservableList<User> afficherCoach() {
 
-        List<User> myList = new ArrayList();
+        ObservableList<User> myList =  FXCollections.observableArrayList();
 
         try {
             Statement st = cnxx.createStatement();
@@ -256,9 +258,9 @@ public class UserCRUD {
         return myList;
     }
 
-    public List<User> afficherResponsable() {
+    public ObservableList<User> afficherResponsable() {
 
-        List<User> myList = new ArrayList();
+        ObservableList<User> myList = FXCollections.observableArrayList();
 
         try {
             Statement st = cnxx.createStatement();
@@ -286,7 +288,33 @@ public class UserCRUD {
         }
         return myList;
     }
+public ObservableList<User> afficherAdmin() {
 
+        ObservableList<User> myList = FXCollections.observableArrayList();
+
+        try {
+            Statement st = cnxx.createStatement();
+            String req = "SELECT * FROM user WHERE RoleUser = 0 ";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                User user = new User();
+                user.setId(rs.getInt("IdUser"));
+                user.setNom(rs.getString(2));
+                user.setPrenom(rs.getString(3));
+                user.setMail(rs.getString(4));
+                user.setTelephone_Number(rs.getLong(5));
+                user.setDate_Naissance(rs.getString(6));
+               
+                myList.add(user);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            //   return null;
+        }
+        return myList;
+    }
     public void supprimerUser(int id) {
         String req = "DELETE FROM user WHERE IdUser='" + id + "' ";
         PreparedStatement pst;
@@ -416,4 +444,6 @@ public class UserCRUD {
             System.out.println(ex);
         }
     }*/
+
+  
 }

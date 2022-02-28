@@ -49,8 +49,7 @@
          <font>
             <Font name="AcmeFont Regular" size="21.0" />
          </font></Button>
-      <TextField fx:id="idRole" disable="true" layoutX="14.0" layoutY="23.0" opacity="0.0" text="0" />
-      <AnchorPane prefHeight="579.0" prefWidth="230.0" style="-fx-background-color: #666667;">
+      <AnchorPane layoutX="-15.0" layoutY="96.0" prefHeight="579.0" prefWidth="230.0" style="-fx-background-color: #666667;">
          <children>
             <Hyperlink fx:id="idEvents" layoutX="40.0" layoutY="80.0" onAction="#eventsRedirect" prefHeight="29.0" prefWidth="187.0" text="Events" textFill="WHITE" underline="true">
                <font>

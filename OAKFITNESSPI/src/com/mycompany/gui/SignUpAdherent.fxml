@@ -47,7 +47,7 @@
             <DatePicker fx:id="idDateNaissance" layoutX="282.0" layoutY="127.0" prefHeight="31.0" prefWidth="187.0" promptText="Your Date Of Birth" />
          </children>
       </Pane>
-      <TextField fx:id="idRole1" disable="true" layoutX="14.0" layoutY="23.0" opacity="0.0" text="0" />
+      <TextField fx:id="idRole1" disable="true" layoutX="14.0" layoutY="23.0" opacity="0.0" promptText="Role" text="0" />
       <AnchorPane prefHeight="579.0" prefWidth="230.0" style="-fx-background-color: #666667;">
          <children>
             <Hyperlink fx:id="idEvents" layoutX="40.0" layoutY="80.0" onAction="#eventsRedirect" prefHeight="29.0" prefWidth="187.0" text="Events" textFill="WHITE" underline="true">
@@ -80,6 +80,7 @@
                   <Font size="27.0" />
                </font>
             </Hyperlink>
+            <TextField fx:id="idRole" layoutX="29.0" layoutY="26.0" opacity="0.0" promptText="0" text="0" />
          </children>
       </AnchorPane>
       <Label alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="418.0" layoutY="120.0" prefHeight="57.0" prefWidth="311.0" style="-fx-background-color: #858586;" text="Sign Up as a Member" textAlignment="CENTER">
