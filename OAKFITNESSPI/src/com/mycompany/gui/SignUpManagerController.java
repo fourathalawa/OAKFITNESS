@@ -7,14 +7,7 @@ package com.mycompany.gui;
 import com.mycompany.entities.User;
 import com.mycompany.services.UserCRUD;
 import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,14 +21,14 @@ import javafx.scene.control.TextField;
  *
  * @author User
  */
-public class SignUpAdherentController implements Initializable {
+public class SignUpManagerController implements Initializable {
 
+    @FXML
+    private TextField idRole;
     @FXML
     private TextField idNom;
     @FXML
     private TextField idPrenom;
-    @FXML
-    private DatePicker idDateNaissance =  new DatePicker();;
     @FXML
     private TextField idMail;
     @FXML
@@ -45,9 +38,9 @@ public class SignUpAdherentController implements Initializable {
     @FXML
     private Button idValider;
     @FXML
-    private TextField idRole;
+    private DatePicker idDateNaissance;
     @FXML
-    private TextField idRole1;
+    private TextField idTax;
     @FXML
     private Hyperlink idEvents;
     @FXML
@@ -71,18 +64,18 @@ public class SignUpAdherentController implements Initializable {
 
     @FXML
     private void Valider(ActionEvent event) {
-       
-        String Nom = idNom.getText();
+    String Nom = idNom.getText();
                 String Prenom = idPrenom.getText();
          String Date_naissance =String.valueOf(idDateNaissance.getValue());
         String Mail = idMail.getText();
         String Password = idPassword.getText();
         int role = Integer.parseInt(idRole.getText());
         long numTelephone =Integer.parseInt(idNumeroTelephone.getText()) ;
-User us =new User( Nom,  Prenom,  Mail,  numTelephone,  Date_naissance, role , Password);
+        long tax = Integer.parseInt(idTax.getText()) ;
+User us =new User( Nom,  Prenom,  Mail,  numTelephone,  Date_naissance,tax ,role , Password);
 UserCRUD user = new UserCRUD(); 
 
-user.ajouterAdhérent(us);
+user.ajouterResponsable(us);
     }
 
     @FXML

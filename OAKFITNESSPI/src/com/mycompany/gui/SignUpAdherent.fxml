@@ -80,7 +80,7 @@
                   <Font size="27.0" />
                </font>
             </Hyperlink>
-            <TextField fx:id="idRole" layoutX="29.0" layoutY="26.0" opacity="0.0" promptText="0" text="0" />
+            <TextField fx:id="idRole" layoutX="29.0" layoutY="26.0" opacity="0.0" promptText="0" text="1" />
          </children>
       </AnchorPane>
       <Label alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="418.0" layoutY="120.0" prefHeight="57.0" prefWidth="311.0" style="-fx-background-color: #858586;" text="Sign Up as a Member" textAlignment="CENTER">

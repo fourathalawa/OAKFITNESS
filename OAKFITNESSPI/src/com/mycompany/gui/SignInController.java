@@ -4,7 +4,9 @@
  */
 package com.mycompany.gui;
 
+import com.mycompany.entities.Session;
 import com.mycompany.entities.User;
+import com.mycompany.services.SessionCRUD;
 import com.mycompany.services.UserCRUD;
 import java.io.IOException;
 import java.net.URL;
@@ -57,18 +59,60 @@ public class SignInController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+SessionCRUD s = new SessionCRUD();
+s.supprimerSession();
     }    
 
     @FXML
     private void LogIn(ActionEvent event) {
         String Mail = idMail.getText();
         String Password = idPassword.getText();
-       String Role = idRole.getText();
+    //   String Role = idRole.getText();
 User us =new User( Mail,Password);
 UserCRUD user = new UserCRUD(); 
 
-user.authentification(us);
+if(user.authentification(us) !=7)
+{
+    if(user.authentification(us) == 1)
+    {
+           FXMLLoader loader= new FXMLLoader(getClass().getResource("MemberProfile.fxml"));
+            try {
+            Parent root = loader.load();
+            MemberProfileController suac = loader.getController();
+            idLoginIn.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+}
+    else  if(user.authentification(us) == 2)
+    {
+           FXMLLoader loader= new FXMLLoader(getClass().getResource("CoachProfile.fxml"));
+            try {
+            Parent root = loader.load();
+           CoachProfileController suac = loader.getController();
+            idLoginIn.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+}
+     else  if(user.authentification(us) == 3)
+    {
+           FXMLLoader loader= new FXMLLoader(getClass().getResource("ManagerProfile.fxml"));
+            try {
+            Parent root = loader.load();
+          ManagerProfileController suac = loader.getController();
+            idLoginIn.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+}
+}
     }
 
     @FXML

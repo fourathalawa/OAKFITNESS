@@ -10,13 +10,33 @@ package com.mycompany.entities;
  */
 public class SalleDeSport {
     private int Id;
+    private String Nom;
     private int IdResponsable;
+    private float PrixSeance;
     private String Adresse;
 
-    public SalleDeSport(int Id, int IdResponsable, String Adresse) {
-        this.Id = Id;
+    public SalleDeSport(int IdResponsable,String nom,float PrixSeance, String Adresse) {
+  
+        this.Nom= nom;
+        this.PrixSeance=PrixSeance;
         this.IdResponsable = IdResponsable;
         this.Adresse = Adresse;
+    }
+
+    public String getNom() {
+        return Nom;
+    }
+
+    public void setNom(String Nom) {
+        this.Nom = Nom;
+    }
+
+    public float getPrixSeance() {
+        return PrixSeance;
+    }
+
+    public void setPrixSeance(float PrixSeance) {
+        this.PrixSeance = PrixSeance;
     }
 
     public SalleDeSport() {
@@ -48,8 +68,10 @@ public class SalleDeSport {
 
     @Override
     public String toString() {
-        return "SalleDeSport{" + "Id=" + Id + ", IdResponsable=" + IdResponsable + ", Adresse=" + Adresse + '}';
+        return "SalleDeSport{" + "Id=" + Id + ", Nom=" + Nom + ", IdResponsable=" + IdResponsable + ", PrixSeance=" + PrixSeance + ", Adresse=" + Adresse + '}';
     }
+
+    
     
     
 }

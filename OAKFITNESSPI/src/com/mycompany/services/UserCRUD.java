@@ -4,6 +4,7 @@
  */
 package com.mycompany.services;
 
+import com.mycompany.entities.Session;
 import com.mycompany.entities.User;
 import com.mycompany.utils.MyConnection;
 import java.awt.Component;
@@ -168,7 +169,7 @@ public class UserCRUD {
                 count = rs.getInt("count");
 
                 if (count != 1) {
-                    String req = "INSERT INTO user (NomUser,PrenomUser,MailUser,TelephoneNumberUser,DateNaissanceUser,RoleUser,AdresseSalleSport,MatriculeFiscale,Password) VALUES (?,?,?,?,?,?,?,?,?)";
+                    String req = "INSERT INTO user (NomUser,PrenomUser,MailUser,TelephoneNumberUser,DateNaissanceUser,RoleUser,MatriculeFiscale,Password) VALUES (?,?,?,?,?,?,?,?)";
                     PreparedStatement pst;
 
                     pst = cnxx.prepareStatement(req);
@@ -178,9 +179,8 @@ public class UserCRUD {
                     pst.setLong(4, user.getTelephone_Number());
                     pst.setString(5,user.getDate_Naissance());
                     pst.setInt(6, user.getRole());
-                    pst.setString(7, user.getAdresse_Salle_Sport());
-                    pst.setLong(8, user.getMatricule_Fiscale());
-                    pst.setString(9, user.encrypt(user.getPassword()));
+                    pst.setLong(7, user.getMatricule_Fiscale());
+                    pst.setString(8, user.encrypt(user.getPassword()));
 
                     pst.executeUpdate();
                     System.out.println("Responsable ajouté avec succés");
@@ -277,7 +277,6 @@ ObservableList<User> myList = FXCollections.observableArrayList();
                 user.setTelephone_Number(rs.getLong(5));
                 user.setDate_Naissance(rs.getString(6));
                 user.setRole(rs.getInt(7));
-                user.setAdresse_Salle_Sport(rs.getString(12));
                 user.setMatricule_Fiscale(rs.getLong(13));
                 user.setPassword(user.decrypt(rs.getString(14)));
                 myList.add(user);
@@ -314,6 +313,90 @@ public ObservableList<User> afficherAdmin() {
             //   return null;
         }
         return myList;
+    }
+public User afficherMember(int id) {
+
+        
+ User us = new User();
+        try {
+            Statement st = cnxx.createStatement();
+            String req = "SELECT * FROM user WHERE IdUser ='"+id+"' ";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+               
+                us.setId(rs.getInt("IdUser"));
+                us.setNom(rs.getString(2));
+                us.setPrenom(rs.getString(3));
+                us.setMail(rs.getString(4));
+                us.setTelephone_Number(rs.getLong(5));
+                us.setDate_Naissance(rs.getString(6));
+                us.setPassword(rs.getString(14));
+              
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            //   return null;
+        }
+       return us;
+    }
+public User afficherCoach(int id) {
+
+        
+ User us = new User();
+        try {
+            Statement st = cnxx.createStatement();
+            String req = "SELECT * FROM user WHERE IdUser ='"+id+"' ";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+               
+                us.setId(rs.getInt("IdUser"));
+                us.setNom(rs.getString(2));
+                us.setPrenom(rs.getString(3));
+                us.setMail(rs.getString(4));
+                us.setTelephone_Number(rs.getLong(5));
+                us.setDate_Naissance(rs.getString(6));
+                us.setExperience(rs.getString(10));
+                us.setDiplome(rs.getString(11));
+                us.setPassword(rs.getString(14));
+              
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            //   return null;
+        }
+       return us;
+    }
+public User afficherManager(int id) {
+
+        
+ User us = new User();
+        try {
+            Statement st = cnxx.createStatement();
+            String req = "SELECT * FROM user WHERE IdUser ='"+id+"' ";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+               
+                us.setId(rs.getInt("IdUser"));
+                us.setNom(rs.getString(2));
+                us.setPrenom(rs.getString(3));
+                us.setMail(rs.getString(4));
+                us.setTelephone_Number(rs.getLong(5));
+                us.setDate_Naissance(rs.getString(6));
+                us.setMatricule_Fiscale(rs.getLong(13));
+                us.setPassword(rs.getString(14));
+              
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            //   return null;
+        }
+       return us;
     }
     public void supprimerUser(int id) {
         String req = "DELETE FROM user WHERE IdUser='" + id + "' ";
@@ -374,13 +457,34 @@ public ObservableList<User> afficherAdmin() {
         }
 
     }
+public int  retourneId(String mail)
+{
+    int id =0;
+    try {
+            Statement st = cnxx.createStatement();
+            String req = "SELECT IdUser FROM user WHERE MailUser ='"+mail+"' ";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            while (rs.next()) {
 
+               
+                id=rs.getInt("IdUser");
+              
+              
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            //   return null;
+        }
+    return id;
+}
     public int authentification(User user) {
         int role = 7;
-
+        int id=0;
+     UserCRUD us= new UserCRUD();
         try {
             Statement st = cnxx.createStatement();
-            String req = "SELECT COUNT(*) as count,RoleUser FROM USER WHERE MailUser='" + user.getMail() + "' AND Password='" + user.encrypt(user.getPassword()) + "'";
+            String req = "SELECT COUNT(*) as count,RoleUser,IdUser FROM USER WHERE MailUser='" + user.getMail() + "' AND Password='" + user.encrypt(user.getPassword()) + "'";
             ResultSet rs;
             rs = st.executeQuery(req);
             int count;
@@ -390,6 +494,10 @@ public ObservableList<User> afficherAdmin() {
                 if (count == 1) {
                     System.out.println("Log in verifié ");
                     role = rs.getInt(2);
+                    id = rs.getInt(3);
+                    Session s= new Session(id,role);
+                   SessionCRUD sc = new SessionCRUD();
+                   sc.ajouterSession(s);
                 }
             }
         } catch (SQLException ex) {

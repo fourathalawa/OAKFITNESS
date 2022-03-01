@@ -5,21 +5,19 @@
 package com.mycompany.gui;
 
 import com.mycompany.entities.User;
+import com.mycompany.services.SessionCRUD;
 import com.mycompany.services.UserCRUD;
+import java.io.IOException;
 import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 
@@ -28,14 +26,14 @@ import javafx.scene.control.TextField;
  *
  * @author User
  */
-public class SignUpAdherentController implements Initializable {
+public class ManagerProfileController implements Initializable {
 
+    @FXML
+    private TextField idRole;
     @FXML
     private TextField idNom;
     @FXML
     private TextField idPrenom;
-    @FXML
-    private DatePicker idDateNaissance =  new DatePicker();;
     @FXML
     private TextField idMail;
     @FXML
@@ -45,9 +43,9 @@ public class SignUpAdherentController implements Initializable {
     @FXML
     private Button idValider;
     @FXML
-    private TextField idRole;
+    private TextField idNaissance;
     @FXML
-    private TextField idRole1;
+    private TextField idTax;
     @FXML
     private Hyperlink idEvents;
     @FXML
@@ -60,29 +58,21 @@ public class SignUpAdherentController implements Initializable {
     private Hyperlink idForum;
     @FXML
     private Hyperlink idAboutUs;
+    @FXML
+    private Button idGym;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    SessionCRUD s = new SessionCRUD();
+        int id = s.getIdSS();
+        loadDataManager(id);
     }    
 
     @FXML
-    private void Valider(ActionEvent event) {
-       
-        String Nom = idNom.getText();
-                String Prenom = idPrenom.getText();
-         String Date_naissance =String.valueOf(idDateNaissance.getValue());
-        String Mail = idMail.getText();
-        String Password = idPassword.getText();
-        int role = Integer.parseInt(idRole.getText());
-        long numTelephone =Integer.parseInt(idNumeroTelephone.getText()) ;
-User us =new User( Nom,  Prenom,  Mail,  numTelephone,  Date_naissance, role , Password);
-UserCRUD user = new UserCRUD(); 
-
-user.ajouterAdhérent(us);
+    private void Modifier(ActionEvent event) {
     }
 
     @FXML
@@ -108,5 +98,38 @@ user.ajouterAdhérent(us);
     @FXML
     private void aboutUsRedirect(ActionEvent event) {
     }
-    
+    private void loadDataManager(int id)
+    {
+       
+        
+      UserCRUD user = new UserCRUD();
+      User us = user.afficherManager(id);
+      //  ObservableList<Reclamation> list = afficherReclamation();
+        idNom.setText(us.getNom());
+        idPrenom.setText(us.getPrenom());
+        idMail.setText(us.getMail());
+        idNaissance.setText(us.getDate_Naissance());
+        long a=(us.getTelephone_Number());
+        String s =String.valueOf(a);
+       idNumeroTelephone.setText(s);
+       String pass = us.decrypt(us.getPassword());
+       idPassword.setText(pass);
+   long b=(us.getMatricule_Fiscale());
+        String z =String.valueOf(b);
+        idTax.setText(z);
+    }
+
+    @FXML
+    private void MyGym(ActionEvent event) {
+        try {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("MyGym.fxml"));
+            
+            Parent root = loader.load();
+          MyGymController suac = loader.getController();
+            idGym.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -7,14 +7,7 @@ package com.mycompany.gui;
 import com.mycompany.entities.User;
 import com.mycompany.services.UserCRUD;
 import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,14 +21,12 @@ import javafx.scene.control.TextField;
  *
  * @author User
  */
-public class SignUpAdherentController implements Initializable {
+public class AddAdminController implements Initializable {
 
     @FXML
-    private TextField idNom;
+    private TextField idRole;
     @FXML
     private TextField idPrenom;
-    @FXML
-    private DatePicker idDateNaissance =  new DatePicker();;
     @FXML
     private TextField idMail;
     @FXML
@@ -45,21 +36,25 @@ public class SignUpAdherentController implements Initializable {
     @FXML
     private Button idValider;
     @FXML
-    private TextField idRole;
-    @FXML
-    private TextField idRole1;
+    private DatePicker idDateNaissance;
     @FXML
     private Hyperlink idEvents;
     @FXML
     private Hyperlink idNews;
     @FXML
-    private Hyperlink idGallery;
+    private Hyperlink idPrograms;
     @FXML
     private Hyperlink idShop;
     @FXML
-    private Hyperlink idForum;
+    private Hyperlink idProduct;
     @FXML
     private Hyperlink idAboutUs;
+    @FXML
+    private Hyperlink idComplaint;
+    @FXML
+    private Hyperlink idUsers;
+    @FXML
+    private TextField idNomAA;
 
     /**
      * Initializes the controller class.
@@ -71,18 +66,17 @@ public class SignUpAdherentController implements Initializable {
 
     @FXML
     private void Valider(ActionEvent event) {
-       
-        String Nom = idNom.getText();
+        String Nom = idNomAA.getText();
                 String Prenom = idPrenom.getText();
          String Date_naissance =String.valueOf(idDateNaissance.getValue());
         String Mail = idMail.getText();
         String Password = idPassword.getText();
         int role = Integer.parseInt(idRole.getText());
         long numTelephone =Integer.parseInt(idNumeroTelephone.getText()) ;
-User us =new User( Nom,  Prenom,  Mail,  numTelephone,  Date_naissance, role , Password);
+User us =new User( Nom,  Prenom,  Mail,  numTelephone,  Date_naissance, role, Password);
 UserCRUD user = new UserCRUD(); 
 
-user.ajouterAdhérent(us);
+user.ajouterAdmin(us);
     }
 
     @FXML
@@ -94,7 +88,7 @@ user.ajouterAdhérent(us);
     }
 
     @FXML
-    private void galleryRedirect(ActionEvent event) {
+    private void programRedirect(ActionEvent event) {
     }
 
     @FXML
@@ -102,11 +96,19 @@ user.ajouterAdhérent(us);
     }
 
     @FXML
-    private void forumRedirect(ActionEvent event) {
+    private void productRedirect(ActionEvent event) {
     }
 
     @FXML
     private void aboutUsRedirect(ActionEvent event) {
+    }
+
+    @FXML
+    private void complaintRedirect(ActionEvent event) {
+    }
+
+    @FXML
+    private void usersRedirect(ActionEvent event) {
     }
     
 }

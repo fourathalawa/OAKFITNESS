@@ -6,25 +6,31 @@ package com.mycompany.gui;
 
 import com.mycompany.entities.User;
 import com.mycompany.services.UserCRUD;
+import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
-import javafx.scene.control.SortEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
  *
  * @author User
  */
-public class AdminHomeController implements Initializable {
+public class UserListAdminController implements Initializable {
 
     @FXML
     private Hyperlink idEvents;
@@ -45,69 +51,74 @@ public class AdminHomeController implements Initializable {
     @FXML
     private TableView<User> idTableMember;
     @FXML
-    private TableColumn<User, String> idNom;
+    private TableColumn<User,String> idEmail;
     @FXML
-    private TableColumn<User, String> idPrenom;
-    @FXML
-    private TableColumn<User, String> idDateNaissance;
-    @FXML
-    private TableColumn<User, String> idEmail;
-    @FXML
-    private TableColumn<User, String> idPhone;
+    private TableColumn<User,String> idPhone;
     @FXML
     private TableView<User> idTableCoach;
     @FXML
-    private TableColumn<User, String>idNameC;
+    private TableColumn<User,String> idNameC;
     @FXML
-    private TableColumn<User, String>idPrenomC;
+    private TableColumn<User,String> idPrenomC;
     @FXML
-    private TableColumn<User, String>idEmailC;
+    private TableColumn<User,String> idEmailC;
     @FXML
-    private TableColumn<User, String> idDateNaissanceC;
+    private TableColumn<User,String>idDateNaissanceC;
     @FXML
-    private TableColumn<User, String>idPhoneC;
+    private TableColumn<User,String> idPhoneC;
     @FXML
-    private TableColumn<User, String> idExperienceC;
+    private TableColumn<User,String> idExperienceC;
     @FXML
-    private TableColumn<User, String> idDiplomeC;
+    private TableColumn<User,String>idDiplomeC;
     @FXML
     private TableView<User> idTableManager;
     @FXML
-    private TableColumn<User, String> idNameM;
+    private TableColumn<User,String> idNameM;
     @FXML
-    private TableColumn<User, String> idPrenomM;
+    private TableColumn<User,String> idPrenomM;
     @FXML
-    private TableColumn<User, String> idMailM;
+    private TableColumn<User,String>idMailM;
     @FXML
-    private TableColumn<User, String> idNaissanceM;
+    private TableColumn<User,String> idNaissanceM;
     @FXML
-    private TableColumn<User, String> idPhoneM;
+    private TableColumn<User,String> idPhoneM;
     @FXML
-    private TableColumn<User, String> idTaxM;
+    private TableColumn<User,String> idTaxM;
     @FXML
     private TableView<User> idTableAdmin;
     @FXML
-    private TableColumn<User, String> idNameA;
+    private TableColumn<User,String> idNameA;
     @FXML
-    private TableColumn<User, String> idPrenomA;
+    private TableColumn<User,String> idPrenomA;
     @FXML
-    private TableColumn<User, String> idMailA;
+    private TableColumn<User,String> idMailA;
     @FXML
-    private TableColumn<User, String> idNaissanceA;
+    private TableColumn<User,String> idNaissanceA;
     @FXML
-    private TableColumn<User, String> idPhoneA;
+    private TableColumn<User,String> idPhoneA;
+    @FXML
+    private TableColumn<User,String> idPrenom;
+    @FXML
+    private TableColumn<User,String> idDateNaissance;
+    @FXML
+    private TableColumn<User,String> idNom;
+    @FXML
+    private Button idAddAdmin;
+    @FXML
+    private TextField idId;
+    @FXML
+    private Button idDelete;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       loadDataAdmin();
+       loadDataMember();
+       loadDataCoach();
+       loadDataManager();
        
-        
-        loadDataMember();
-        loadDataCoach();
-        loadDataManager();
-        loadDataAdmiin();
     }    
 
     @FXML
@@ -141,7 +152,8 @@ public class AdminHomeController implements Initializable {
     @FXML
     private void usersRedirect(ActionEvent event) {
     }
-
+    
+    
     private void loadDataMember()
     {
        
@@ -190,7 +202,7 @@ public class AdminHomeController implements Initializable {
         idTableManager.setItems(list);
     }
    
-private void loadDataAdmiin()
+private void loadDataAdmin()
     {
        
         
@@ -206,5 +218,74 @@ private void loadDataAdmiin()
         idTableAdmin.setItems(list);
     }
 
+    @FXML
+    private void AddAdmin(ActionEvent event) {
+        
+           FXMLLoader loader= new FXMLLoader(getClass().getResource("AddAdmin.fxml"));
+            try {
+            Parent root = loader.load();
+            AddAdminController aad = loader.getController();
+            idAddAdmin.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
+    @FXML
+    private void Delete(MouseEvent event) {
+        UserCRUD user = new UserCRUD();
+        ObservableList<User> locataire =  idTableMember.getSelectionModel().getSelectedItems();
+        String mail = locataire.get(0).getMail();
+        int id = user.retourneId(mail);
+        System.out.println(id);
+        String i = String.valueOf(id);
+       idId.setText(i);
+    }
+
+    @FXML
+    private void DeleteUser(ActionEvent event) {
+         UserCRUD user = new UserCRUD();
+      int   id=Integer.parseInt(idId.getText());
+      user.supprimerUser(id);
+      loadDataMember();
+      loadDataCoach();
+      loadDataAdmin();
+      loadDataManager();
+    }
+
+    @FXML
+    private void DeleteCoach(MouseEvent event) {
+         UserCRUD user = new UserCRUD();
+        ObservableList<User> locataire =  idTableCoach.getSelectionModel().getSelectedItems();
+        String mail = locataire.get(0).getMail();
+        int id = user.retourneId(mail);
+        System.out.println(id);
+        String i = String.valueOf(id);
+       idId.setText(i);
+    }
+
+    @FXML
+    private void DeleteManager(MouseEvent event) {
+         UserCRUD user = new UserCRUD();
+        ObservableList<User> locataire =  idTableManager.getSelectionModel().getSelectedItems();
+        String mail = locataire.get(0).getMail();
+        int id = user.retourneId(mail);
+        System.out.println(id);
+        String i = String.valueOf(id);
+       idId.setText(i);
+    }
+
+    @FXML
+    private void DeleteAdmin(MouseEvent event) {
+         UserCRUD user = new UserCRUD();
+        ObservableList<User> locataire =  idTableAdmin.getSelectionModel().getSelectedItems();
+        String mail = locataire.get(0).getMail();
+        int id = user.retourneId(mail);
+        System.out.println(id);
+        String i = String.valueOf(id);
+       idId.setText(i);
+    }
+
+    
 }

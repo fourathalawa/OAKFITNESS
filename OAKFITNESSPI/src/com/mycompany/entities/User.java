@@ -181,14 +181,13 @@ public class User {
     }
     
 //Responsable
-      public User(String Nom, String Prenom, String Mail, long Telephone_Number, String Date_Naissance, String Adresse_Salle_Sport, long Matricule_Fiscale, int Role,String Password) {
+      public User(String Nom, String Prenom, String Mail, long Telephone_Number, String Date_Naissance, long Matricule_Fiscale, int Role,String Password) {
         this.Nom = Nom;
         this.Prenom = Prenom;
         this.Mail = Mail;
         this.Telephone_Number = Telephone_Number;
         this.Date_Naissance = Date_Naissance;
         this.Role = Role;
-        this.Adresse_Salle_Sport = Adresse_Salle_Sport;
         this.Matricule_Fiscale = Matricule_Fiscale;
         this.Password=Password;
 

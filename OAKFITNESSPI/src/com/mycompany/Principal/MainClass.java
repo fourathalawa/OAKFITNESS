@@ -52,6 +52,8 @@ public class MainClass {
   
   
   
+  //User us = new User();
+     //   System.out.println( us.decrypt("QJUBDIEY"));
   
          // ajouter des user
        // User admin = new User("kassem","benhenda","fourathalawa2000@gmail.com",54626952,"21-02-2000",0,"kassem00002");
