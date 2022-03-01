@@ -47,18 +47,17 @@ public class ChallengeCRUD {
 
     }
 
-    public List<Challenge> afficherChallenge() {
+    public Challenge afficherChallenge(int id) {
 
-        List<Challenge> myList = new ArrayList();
-
+ Challenge ch = new Challenge();
         try {
             Statement st = cnxx.createStatement();
-            String req = "SELECT * FROM challenge";
+            String req = "SELECT * FROM challenge Where idUser='"+id+"'";
             ResultSet rs;
             rs = st.executeQuery(req);
             while (rs.next()) {
 
-                Challenge ch = new Challenge();
+               
                 ch.setIdChallenge(rs.getInt("IdChallenge"));
                 ch.setDateDebut(rs.getString(2));
                 ch.setDateFin(rs.getString(3));
@@ -67,13 +66,13 @@ public class ChallengeCRUD {
                 ch.setPoidInt(rs.getFloat(6));
                 ch.setPoidInt(rs.getFloat(7));
                 ch.setIdUser(rs.getInt(8));
-                myList.add(ch);
+                
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
             //   return null;
         }
-        return myList;
+        return ch;
     }
 
     public void supprimerChallenge(int id) {

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.mycompany.gui.AddChallengeController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="579.0" prefWidth="898.0" style="-fx-background-color: #434344;" styleClass="mainFxmlClass">
+         <stylesheets>
+            <URL value="@signupadherent.css" />
+         </stylesheets>
+         <children>
+            <TextField fx:id="idRole" disable="true" layoutX="13.0" layoutY="14.0" opacity="0.0" promptText="Nom" text="0" />
+            <Pane layoutX="279.0" layoutY="158.0" prefHeight="385.0" prefWidth="567.0" style="-fx-background-color: #666667;" styleClass="mainFxmlClass">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <TextField fx:id="idOP" layoutX="284.0" layoutY="48.0" promptText="Original Weight :" />
+                  <Label layoutX="93.0" layoutY="53.0" prefHeight="31.0" prefWidth="113.0" text="Original Weight :" />
+                  <TextField fx:id="idH" layoutX="284.0" layoutY="87.0" promptText="Height :" />
+                  <Label layoutX="93.0" layoutY="92.0" prefHeight="31.0" prefWidth="105.0" text="Height :" />
+                  <Label layoutX="93.0" layoutY="132.0" prefHeight="31.0" prefWidth="136.0" text="Start Date :" />
+                  <Label layoutX="93.0" layoutY="174.0" prefHeight="31.0" prefWidth="136.0" text="End Date :" />
+                  <TextField fx:id="idT" layoutX="281.0" layoutY="216.0" promptText="Target Weight :" />
+                  <Label layoutX="93.0" layoutY="216.0" prefHeight="31.0" prefWidth="156.0" text="Target Weight :" />
+                  <Button fx:id="idValider" layoutX="198.0" layoutY="272.0" mnemonicParsing="false" onAction="#Valider" prefHeight="31.0" prefWidth="148.0" style="-fx-background-color: #c1a504;" text="Add">
+                     <font>
+                        <Font name="AcmeFont Regular" size="15.0" />
+                     </font>
+                  </Button>
+                  <DatePicker fx:id="idSD" layoutX="282.0" layoutY="127.0" prefHeight="31.0" prefWidth="187.0" promptText="Start Date :" />
+                  <DatePicker fx:id="idED" layoutX="281.0" layoutY="171.0" prefHeight="31.0" prefWidth="187.0" promptText="Start Date :" />
+               </children>
+            </Pane>
+            <TextField fx:id="idRole1" disable="true" layoutX="14.0" layoutY="23.0" opacity="0.0" promptText="Role" text="0" />
+            <AnchorPane prefHeight="579.0" prefWidth="230.0" style="-fx-background-color: #666667;">
+               <children>
+                  <Hyperlink fx:id="idEvents" layoutX="40.0" layoutY="80.0" onAction="#eventsRedirect" prefHeight="29.0" prefWidth="187.0" text="Events" textFill="WHITE" underline="true">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="idNews" layoutX="40.0" layoutY="140.0" onAction="#newsRedirect" prefHeight="29.0" prefWidth="205.0" text="News" textFill="WHITE" underline="true">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="idGallery" layoutX="40.0" layoutY="200.0" onAction="#galleryRedirect" prefHeight="29.0" prefWidth="187.0" text="Gallery" textFill="WHITE" underline="true">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="idShop" layoutX="40.0" layoutY="260.0" onAction="#shopRedirect" prefHeight="29.0" prefWidth="171.0" text="Shop" textFill="WHITE" underline="true">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="idForum" layoutX="40.0" layoutY="320.0" onAction="#forumRedirect" prefHeight="29.0" prefWidth="171.0" text="Forum" textFill="WHITE" underline="true">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="idAboutUs" layoutX="50.0" layoutY="476.0" onAction="#aboutUsRedirect" prefHeight="51.0" prefWidth="145.0" text="About Us" textFill="WHITE" underline="true">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Hyperlink>
+                  <TextField fx:id="idRole" layoutX="29.0" layoutY="26.0" opacity="0.0" promptText="0" text="1" />
+               </children>
+            </AnchorPane>
+            <Label alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="418.0" layoutY="120.0" prefHeight="57.0" prefWidth="311.0" style="-fx-background-color: #858586;" text="Add New Challenge" textAlignment="CENTER">
+               <font>
+                  <Font name="Berlin Sans FB" size="24.0" />
+               </font>
+               <effect>
+                  <Blend mode="COLOR_DODGE" opacity="0.21">
+                     <topInput>
+                        <Lighting specularConstant="2.0" specularExponent="22.44" surfaceScale="0.0">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </topInput>
+                  </Blend>
+               </effect>
+            </Label>
+            <Label layoutX="245.0" layoutY="30.0" prefHeight="66.0" prefWidth="311.0" text="OAK FITNESS" textFill="#b8ad19">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="107.0" fitWidth="108.0" layoutX="524.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../3A/2émé%20Semestre/PI/image%20src/Sans%20titre-1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
