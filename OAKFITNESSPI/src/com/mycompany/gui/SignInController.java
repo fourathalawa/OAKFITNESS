@@ -112,6 +112,19 @@ if(user.authentification(us) !=7)
         }
             
 }
+     else  if(user.authentification(us) == 0)
+    {
+           FXMLLoader loader= new FXMLLoader(getClass().getResource("UserListAdmin.fxml"));
+            try {
+            Parent root = loader.load();
+        UserListAdminController suac = loader.getController();
+            idLoginIn.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+}
 }
     }
 

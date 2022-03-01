@@ -73,6 +73,16 @@ public class ManagerProfileController implements Initializable {
 
     @FXML
     private void Modifier(ActionEvent event) {
+        try {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("ManagerUpdate.fxml"));
+            
+            Parent root = loader.load();
+          ManagerUpdateController suac = loader.getController();
+            idValider.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML

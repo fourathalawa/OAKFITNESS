@@ -414,7 +414,7 @@ public User afficherManager(int id) {
     }
 
     public void ModifierAdhrent(User user, int id) {
-        String req = "UPDATE user SET NomUser ='" + user.getNom() + "',PrenomUser ='" + user.getPrenom() + "',MailUser ='" + user.getMail() + "' ,TelephoneNumberUser ='" + user.getTelephone_Number() + "',DateNaissanceUser ='" + user.getDate_Naissance() + "' ,NumeroPackUser ='" + user.getNumero_Pack() + "' ,DateCommance ='" + user.getDate_Commance() + "' ,Password ='" + user.encrypt(user.getPassword()) + "' WHERE idUser = '" + id + "'";
+        String req = "UPDATE user SET NomUser ='" + user.getNom() + "',PrenomUser ='" + user.getPrenom() + "',DateNaissanceUser ='" + user.getDate_Naissance() + "'  ,Password ='" + user.encrypt(user.getPassword()) + "' WHERE idUser = '" + id + "'";
         PreparedStatement pst;
 
         try {
@@ -429,7 +429,7 @@ public User afficherManager(int id) {
     }
 
     public void ModifierCoach(User user, int id) {  //NomUser,PrenomUser,MailUser,TelephoneNumberUser,DateNaissanceUser,ExperienceUser,DiplomeUser
-        String req = "UPDATE user SET NomUser ='" + user.getNom() + "',PrenomUser ='" + user.getPrenom() + "',MailUser ='" + user.getMail() + "' ,TelephoneNumberUser ='" + user.getTelephone_Number() + "',DateNaissanceUser ='" + user.getDate_Naissance() + "' ,ExperienceUser ='" + user.getExperience() + "' ,DiplomeUser ='" + user.getDiplome() + "' ,Password ='" + user.encrypt(user.getPassword()) + "' WHERE idUser = '" + id + "'";
+        String req = "UPDATE user SET NomUser ='" + user.getNom() + "',PrenomUser ='" + user.getPrenom() + "',DateNaissanceUser ='" + user.getDate_Naissance() + "' ,ExperienceUser ='" + user.getExperience() + "' ,DiplomeUser ='" + user.getDiplome() + "' ,Password ='" + user.encrypt(user.getPassword()) + "' WHERE idUser = '" + id + "'";
         PreparedStatement pst;
 
         try {
@@ -444,7 +444,7 @@ public User afficherManager(int id) {
     }
 
     public void ModifierResponsable(User user, int id) {  //NomUser,PrenomUser,MailUser,TelephoneNumberUser,DateNaissanceUser,AdresseSalleSport,MatriculeFiscale
-        String req = "UPDATE user SET NomUser ='" + user.getNom() + "',PrenomUser ='" + user.getPrenom() + "',MailUser ='" + user.getMail() + "' ,TelephoneNumberUser ='" + user.getTelephone_Number() + "',DateNaissanceUser ='" + user.getDate_Naissance() + "' ,AdresseSalleSport ='" + user.getAdresse_Salle_Sport() + "' ,MatriculeFiscale ='" + user.getMatricule_Fiscale() + "' ,Password ='" + user.encrypt(user.getPassword()) + "' WHERE idUser = '" + id + "'";
+        String req = "UPDATE user SET NomUser ='" + user.getNom() + "',PrenomUser ='" + user.getPrenom() +  "',DateNaissanceUser ='" + user.getDate_Naissance() +  "' ,MatriculeFiscale ='" + user.getMatricule_Fiscale() + "' ,Password ='" + user.encrypt(user.getPassword()) + "' WHERE idUser = '" + id + "'";
         PreparedStatement pst;
 
         try {

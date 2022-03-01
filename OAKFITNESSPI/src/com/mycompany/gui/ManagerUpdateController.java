@@ -7,28 +7,22 @@ package com.mycompany.gui;
 import com.mycompany.entities.User;
 import com.mycompany.services.SessionCRUD;
 import com.mycompany.services.UserCRUD;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
  *
  * @author User
  */
-public class MemberProfileController implements Initializable {
+public class ManagerUpdateController implements Initializable {
 
     @FXML
     private TextField idRole;
@@ -37,15 +31,15 @@ public class MemberProfileController implements Initializable {
     @FXML
     private TextField idPrenom;
     @FXML
-    private TextField idMail;
-    @FXML
-    private TextField idNumeroTelephone;
-    @FXML
     private TextField idPassword;
     @FXML
     private Button idValider;
     @FXML
-    private TextField idNaissance;
+    private DatePicker idDateNaissance;
+    @FXML
+    private TextField idTax;
+    @FXML
+    private TextField idRole1;
     @FXML
     private Hyperlink idEvents;
     @FXML
@@ -64,23 +58,26 @@ public class MemberProfileController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        SessionCRUD s = new SessionCRUD();
-        int id = s.getIdSS();
-        loadDataMember(id);
-                
+        // TODO
     }    
 
     @FXML
-    private void Modifier(ActionEvent event) {
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("MemberUpdate.fxml"));
-            try{
-            Parent root = loader.load();
-          ManagerUpdateController suac = loader.getController();
-            idValider.getScene().setRoot(root);
-           
-        } catch (IOException ex) {
-            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void Valider(ActionEvent event) {
+         SessionCRUD s = new SessionCRUD();
+        int id = s.getIdSS();
+        String Nom = idNom.getText();
+                String Prenom = idPrenom.getText();
+         String Date_naissance =String.valueOf(idDateNaissance.getValue());
+        String Password = idPassword.getText();
+        long tax = Integer.parseInt(idTax.getText()) ;
+        int role = 3;
+        String Mail  = null ;
+        long numTelephone=0;
+ 
+User us =new User( Nom,  Prenom,  Mail,  numTelephone,  Date_naissance,  tax,  role, Password);
+UserCRUD user = new UserCRUD(); 
+
+user.ModifierAdhrent(us,id);
     }
 
     @FXML
@@ -106,21 +103,5 @@ public class MemberProfileController implements Initializable {
     @FXML
     private void aboutUsRedirect(ActionEvent event) {
     }
-    private void loadDataMember(int id)
-    {
-       
-        
-      UserCRUD user = new UserCRUD();
-      User us = user.afficherMember(id);
-      //  ObservableList<Reclamation> list = afficherReclamation();
-        idNom.setText(us.getNom());
-        idPrenom.setText(us.getPrenom());
-        idMail.setText(us.getMail());
-        idNaissance.setText(us.getDate_Naissance());
-        long a=(us.getTelephone_Number());
-        String s =String.valueOf(a);
-       idNumeroTelephone.setText(s);
-       String pass = us.decrypt(us.getPassword());
-       idPassword.setText(pass);
-    }
+    
 }
