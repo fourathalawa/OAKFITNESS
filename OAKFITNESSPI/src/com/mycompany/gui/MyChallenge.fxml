@@ -17,8 +17,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.mycompany.gui.MyChallengeController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.gui.MyChallengeController">
    <children>
       <AnchorPane id="AnchorPane" layoutY="5.0" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass">
          <stylesheets>
@@ -40,18 +39,17 @@
                               <URL value="@signupadherent.css" />
                            </stylesheets>
                            <children>
-                              <TextField fx:id="idRole" disable="true" layoutX="13.0" layoutY="14.0" opacity="0.0" promptText="Nom" text="0" />
                               <Pane layoutX="281.0" layoutY="155.0" prefHeight="385.0" prefWidth="695.0" style="-fx-background-color: #666667;" styleClass="mainFxmlClass">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
                                  <children>
-                                    <TextField fx:id="idOWeight" editable="false" layoutX="152.0" layoutY="39.0" opacity="0.0" style="-fx-background-color: #ffffff;" />
+                                    <TextField fx:id="idOWeight" editable="false" layoutX="152.0" layoutY="39.0" />
                                     <Label layoutX="14.0" layoutY="39.0" prefHeight="31.0" prefWidth="126.0" text="Original Weight :" />
-                                    <TextField fx:id="idHeight" editable="false" layoutX="152.0" layoutY="77.0" opacity="0.0" style="-fx-background-color: #fffffff;" />
+                                    <TextField fx:id="idHeight" editable="false" layoutX="152.0" layoutY="77.0" />
                                     <Label layoutX="14.0" layoutY="77.0" prefHeight="31.0" prefWidth="105.0" text="Height :" />
                                     <Label layoutX="362.0" layoutY="77.0" prefHeight="31.0" prefWidth="136.0" text="Start Date :" />
-                                    <TextField fx:id="idSDate" editable="false" layoutX="494.0" layoutY="77.0" opacity="0.0" style="-fx-background-color: #fffffff;" />
+                                    <TextField fx:id="idSDate" editable="false" layoutX="494.0" layoutY="77.0" />
                                     <Label layoutX="366.0" layoutY="39.0" prefHeight="31.0" prefWidth="136.0" text="Target Weight :" />
                                     <Label layoutX="14.0" layoutY="113.0" prefHeight="31.0" prefWidth="156.0" text="Progression :" />
                                     <Label layoutX="362.0" layoutY="117.0" prefHeight="31.0" prefWidth="156.0" text="End Date :" />
@@ -60,11 +58,11 @@
                                           <Font name="AcmeFont Regular" size="15.0" />
                                        </font>
                                     </Button>
-                                    <TextField fx:id="idTweight" editable="false" layoutX="494.0" layoutY="39.0" opacity="0.0" style="-fx-background-color: #ffffff;" />
+                                    <TextField fx:id="idTweight" editable="false" layoutX="494.0" layoutY="39.0" />
                                     <ProgressBar fx:id="idProgresion" layoutX="145.0" layoutY="117.0" prefWidth="200.0" progress="0.0" />
-                                    <TextField fx:id="idEDate" editable="false" layoutX="494.0" layoutY="117.0" opacity="0.0" style="-fx-background-color: #fffffff;" />
+                                    <TextField fx:id="idEDate" editable="false" layoutX="494.0" layoutY="117.0" />
                                     <Label layoutX="26.0" layoutY="193.0" prefHeight="31.0" prefWidth="156.0" text="Current Weight :" />
-                                    <TextField fx:id="idCWeight" editable="false" layoutX="173.0" layoutY="193.0" style="-fx-background-color: #fffffff;" />
+                                    <TextField fx:id="idCWeight" layoutX="173.0" layoutY="193.0" />
                                     <Button fx:id="idAddChallenge" layoutX="195.0" layoutY="309.0" mnemonicParsing="false" onAction="#Add" prefHeight="31.0" prefWidth="171.0" style="-fx-background-color: #c1a504;" text="Add Challenge">
                                        <font>
                                           <Font name="AcmeFont Regular" size="15.0" />
@@ -72,7 +70,6 @@
                                     </Button>
                                  </children>
                               </Pane>
-                              <TextField fx:id="idRole" disable="true" layoutX="14.0" layoutY="23.0" opacity="0.0" promptText="Role" text="3" />
                               <AnchorPane prefHeight="579.0" prefWidth="230.0" style="-fx-background-color: #666667;">
                                  <children>
                                     <Hyperlink fx:id="idEvents" layoutX="40.0" layoutY="80.0" onAction="#eventsRedirect" prefHeight="29.0" prefWidth="187.0" text="Events" textFill="WHITE" underline="true">

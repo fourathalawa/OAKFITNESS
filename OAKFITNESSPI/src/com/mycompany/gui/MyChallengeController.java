@@ -6,6 +6,7 @@ package com.mycompany.gui;
 
 import com.mycompany.entities.Challenge;
 import com.mycompany.services.ChallengeCRUD;
+import com.mycompany.services.SessionCRUD;
 import com.mycompany.services.UserCRUD;
 import java.io.IOException;
 import java.net.URL;
@@ -30,8 +31,6 @@ import javafx.scene.control.TextField;
  */
 public class MyChallengeController implements Initializable {
 
-    @FXML
-    private TextField idRole;
     @FXML
     private TextField idOWeight;
     @FXML
@@ -69,11 +68,20 @@ public class MyChallengeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        SessionCRUD s = new SessionCRUD();
+        int id = s.getIdSS();
+            LoadDataChallenge(id);
     }    
 
     @FXML
     private void Update(ActionEvent event) {
+         SessionCRUD s = new SessionCRUD();
+        int id = s.getIdSS();
+        
+        float h = Float.parseFloat(idCWeight.getText());
+        Challenge cha = new Challenge(h);
+        ChallengeCRUD ch = new ChallengeCRUD();
+        ch.NouveauPoid(cha,id);
     }
 
     @FXML
@@ -116,15 +124,19 @@ public class MyChallengeController implements Initializable {
     {Challenge cha= new Challenge();
         ChallengeCRUD ch = new ChallengeCRUD();
         cha=ch.afficherChallenge(id);
-        
+        System.out.println(cha);
         float p =cha.getPoidInt();
+        System.out.println(p);
         idOWeight.setText(String.valueOf(p));
+        float h =cha.getTaille();
+        idHeight.setText(String.valueOf(h));
         float p1 =cha.getPoidOb();
-        idTweight.setText(String.valueOf(p));
+        idTweight.setText(String.valueOf(p1));
         idSDate.setText(cha.getDateDebut());
         idEDate.setText(cha.getDateFin());
         float ss=ch.ProgressionChallenge(id);
-        idProgression.setText(String.valueOf(ss));
+         
+     //  idProgression.(String.valueOf(ss));
         
     }
 }

@@ -60,6 +60,8 @@ public class CoachProfileController implements Initializable {
     private Hyperlink idForum;
     @FXML
     private Hyperlink idAboutUs;
+    @FXML
+    private Button idlog;
 
     /**
      * Initializes the controller class.
@@ -125,5 +127,18 @@ public class CoachProfileController implements Initializable {
        idPassword.setText(pass);
        idExperience.setText(us.getExperience());
        idDiplome.setText(us.getDiplome());
+    }
+
+    @FXML
+    private void logout(ActionEvent event) {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("SignIn.fxml"));
+            try {
+            Parent root = loader.load();
+            SignInController aad = loader.getController();
+            idlog.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

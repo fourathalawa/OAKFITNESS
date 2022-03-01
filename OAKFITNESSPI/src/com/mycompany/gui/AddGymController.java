@@ -74,7 +74,15 @@ public class AddGymController implements Initializable {
 SalleDeSport us =new SalleDeSport( id,  Nom,  Prix,  Adresse);
 SalleDeSportCRUD salle = new SalleDeSportCRUD(); 
 salle.ajouterSalle(us);
-
+FXMLLoader loader= new FXMLLoader(getClass().getResource("ManagerProfile.fxml"));
+            try{
+            Parent root = loader.load();
+         ManagerProfileController suac = loader.getController();
+            idValider.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML

@@ -58,6 +58,10 @@ public class MemberProfileController implements Initializable {
     private Hyperlink idForum;
     @FXML
     private Hyperlink idAboutUs;
+    @FXML
+    private Button idChallenge;
+    @FXML
+    private Button idlog;
 
     /**
      * Initializes the controller class.
@@ -75,7 +79,7 @@ public class MemberProfileController implements Initializable {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("MemberUpdate.fxml"));
             try{
             Parent root = loader.load();
-          ManagerUpdateController suac = loader.getController();
+          MemberUpdateController suac = loader.getController();
             idValider.getScene().setRoot(root);
            
         } catch (IOException ex) {
@@ -122,5 +126,31 @@ public class MemberProfileController implements Initializable {
        idNumeroTelephone.setText(s);
        String pass = us.decrypt(us.getPassword());
        idPassword.setText(pass);
+    }
+
+    @FXML
+    private void challengeredirection(ActionEvent event) {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("MyChallenge.fxml"));
+            try{
+            Parent root = loader.load();
+          MyChallengeController suac = loader.getController();
+            idChallenge.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void logout(ActionEvent event) {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("SignIn.fxml"));
+            try {
+            Parent root = loader.load();
+            SignInController aad = loader.getController();
+            idlog.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

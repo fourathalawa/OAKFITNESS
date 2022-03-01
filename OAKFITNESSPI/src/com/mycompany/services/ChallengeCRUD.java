@@ -62,11 +62,11 @@ public class ChallengeCRUD {
                 ch.setDateDebut(rs.getString(2));
                 ch.setDateFin(rs.getString(3));
                 ch.setPoidInt(rs.getFloat(4));
-                ch.setPoidInt(rs.getFloat(5));
-                ch.setPoidInt(rs.getFloat(6));
-                ch.setPoidInt(rs.getFloat(7));
-                ch.setIdUser(rs.getInt(8));
-                
+                ch.setPoidOb(rs.getFloat(5));
+                              ch.setTaille(rs.getFloat(6));
+ch.setPoidNv(rs.getFloat(7));
+ch.setIdUser(rs.getInt(8));
+                System.out.println("zzzz");
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());

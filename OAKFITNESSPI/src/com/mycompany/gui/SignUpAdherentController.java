@@ -6,6 +6,7 @@ package com.mycompany.gui;
 
 import com.mycompany.entities.User;
 import com.mycompany.services.UserCRUD;
+import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,11 +18,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -60,6 +64,10 @@ public class SignUpAdherentController implements Initializable {
     private Hyperlink idForum;
     @FXML
     private Hyperlink idAboutUs;
+    @FXML
+    private Hyperlink idCoach;
+    @FXML
+    private Hyperlink idmanager;
 
     /**
      * Initializes the controller class.
@@ -83,6 +91,15 @@ User us =new User( Nom,  Prenom,  Mail,  numTelephone,  Date_naissance, role , P
 UserCRUD user = new UserCRUD(); 
 
 user.ajouterAdhérent(us);
+FXMLLoader loader= new FXMLLoader(getClass().getResource("SignIn.fxml"));
+            try{
+            Parent root = loader.load();
+        SignInController suac = loader.getController();
+            idValider.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -107,6 +124,34 @@ user.ajouterAdhérent(us);
 
     @FXML
     private void aboutUsRedirect(ActionEvent event) {
+    }
+
+   
+
+    @FXML
+    private void ManagerRedirect(ActionEvent event) {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("SignUpManager.fxml"));
+            try{
+            Parent root = loader.load();
+         SignUpManagerController suac = loader.getController();
+            idmanager.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void coachredirection(ActionEvent event) {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("SignUpCoach.fxml"));
+            try{
+            Parent root = loader.load();
+         SignUpCoachController suac = loader.getController();
+            idCoach.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

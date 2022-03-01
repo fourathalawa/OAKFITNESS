@@ -9,11 +9,16 @@ import com.mycompany.entities.SalleDeSport;
 import com.mycompany.services.ChallengeCRUD;
 import com.mycompany.services.SalleDeSportCRUD;
 import com.mycompany.services.SessionCRUD;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
@@ -75,7 +80,17 @@ public class AddChallengeController implements Initializable {
         
 Challenge us =new Challenge(Date_S,Date_F,   OP,  TP,  H,id);
 ChallengeCRUD salle = new ChallengeCRUD(); 
+salle.supprimerChallenge(id);
 salle.ajouterChallenge(us);
+FXMLLoader loader= new FXMLLoader(getClass().getResource("MemberProfile.fxml"));
+            try{
+            Parent root = loader.load();
+         MemberProfileController suac = loader.getController();
+            idValider.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 

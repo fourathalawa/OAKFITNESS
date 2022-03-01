@@ -108,6 +108,8 @@ public class UserListAdminController implements Initializable {
     private TextField idId;
     @FXML
     private Button idDelete;
+    @FXML
+    private Button idlog;
 
     /**
      * Initializes the controller class.
@@ -285,6 +287,19 @@ private void loadDataAdmin()
         System.out.println(id);
         String i = String.valueOf(id);
        idId.setText(i);
+    }
+
+    @FXML
+    private void logout(ActionEvent event) {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("SignIn.fxml"));
+            try {
+            Parent root = loader.load();
+            SignInController aad = loader.getController();
+            idlog.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     

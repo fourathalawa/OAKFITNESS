@@ -157,10 +157,15 @@
                   <Font name="AcmeFont Regular" size="15.0" />
                </font>
             </Button>
-            <TextField fx:id="idId" editable="false" layoutX="459.0" layoutY="587.0" />
+            <TextField fx:id="idId" editable="false" layoutX="459.0" layoutY="587.0" opacity="0.0" />
             <Button fx:id="idDelete" layoutX="679.0" layoutY="587.0" mnemonicParsing="false" onAction="#DeleteUser" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: #c1a504;" text="Delete">
                <font>
                   <Font name="AcmeFont Regular" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="idlog" layoutX="840.0" layoutY="583.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="136.0" style="-fx-background-color: #c1a504;" text="Log out">
+               <font>
+                  <Font name="AcmeFont Regular" size="16.0" />
                </font>
             </Button>
          </children>

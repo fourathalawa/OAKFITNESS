@@ -45,6 +45,16 @@
                </font>
             </Button>
             <DatePicker fx:id="idDateNaissance" layoutX="282.0" layoutY="127.0" prefHeight="31.0" prefWidth="187.0" promptText="Your Date Of Birth" />
+            <Hyperlink fx:id="idCoach" layoutX="14.0" layoutY="292.0" onAction="#coachredirection" prefHeight="29.0" prefWidth="171.0" text="Are You  coach ?" textFill="WHITE" underline="true">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="idmanager" layoutX="14.0" layoutY="331.0" onAction="#ManagerRedirect" prefHeight="35.0" prefWidth="220.0" text="Are you Gym Manager?" textFill="WHITE" underline="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Hyperlink>
          </children>
       </Pane>
       <TextField fx:id="idRole1" disable="true" layoutX="14.0" layoutY="23.0" opacity="0.0" promptText="Role" text="0" />

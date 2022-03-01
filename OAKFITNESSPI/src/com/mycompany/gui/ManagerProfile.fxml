@@ -70,6 +70,11 @@
                                                 <Font name="AcmeFont Regular" size="15.0" />
                                              </font>
                                           </Button>
+                                          <Button fx:id="idlog" layoutX="472.0" layoutY="341.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="136.0" style="-fx-background-color: #c1a504;" text="Log out">
+                                             <font>
+                                                <Font name="AcmeFont Regular" size="16.0" />
+                                             </font>
+                                          </Button>
                                        </children>
                                     </Pane>
                                     <TextField fx:id="idRole" disable="true" layoutX="14.0" layoutY="23.0" opacity="0.0" promptText="Role" text="3" />

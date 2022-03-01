@@ -60,6 +60,8 @@ public class ManagerProfileController implements Initializable {
     private Hyperlink idAboutUs;
     @FXML
     private Button idGym;
+    @FXML
+    private Button idlog;
 
     /**
      * Initializes the controller class.
@@ -137,6 +139,19 @@ public class ManagerProfileController implements Initializable {
             Parent root = loader.load();
           MyGymController suac = loader.getController();
             idGym.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void logout(ActionEvent event) {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("SignIn.fxml"));
+            try {
+            Parent root = loader.load();
+            SignInController aad = loader.getController();
+            idlog.getScene().setRoot(root);
            
         } catch (IOException ex) {
             Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
