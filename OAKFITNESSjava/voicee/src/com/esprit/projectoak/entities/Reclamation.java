@@ -16,24 +16,59 @@ public class Reclamation {
     private String DescrReclam;
     private String DateReclam;
     private int EtatReclamation;
-    private String pourcentageReclam; 
+    private int idCommentReclam;
 
-    public Reclamation(int IDUserReclamation, int CategReclam, String DescrReclam) {
+    public int getIdCommentReclam() {
+        return idCommentReclam;
+    }
+
+    public void setIdCommentReclam(int idCommentReclam) {
+        this.idCommentReclam = idCommentReclam;
+    }
+    
+
+    public int getEtatReclamation() {
+        return EtatReclamation;
+    }
+
+    public void setEtatReclamation(int EtatReclamation) {
+        this.EtatReclamation = EtatReclamation;
+    }
+    private String pourcentageReclam; 
+    private String CommentaireRec;
+    private String PubRec;
+
+    public String getCommentaireRec() {
+        return CommentaireRec;
+    }
+
+    public String getPubRec() {
+        return PubRec;
+    }
+
+    public void setCommentaireRec(String CommentaireRec) {
+        this.CommentaireRec = CommentaireRec;
+    }
+
+    public void setPubRec(String PubRec) {
+        this.PubRec = PubRec;
+    }
+
+    public Reclamation(int IDUserReclamation, int CategReclam, String DescrReclam, String CommentaireRec, String PubRec ,int idCommentReclam) {
         this.IDUserReclamation = IDUserReclamation;
+        this.CategReclam = CategReclam;
+        this.DescrReclam = DescrReclam;
+        this.CommentaireRec = CommentaireRec;
+        this.PubRec = PubRec;
+        this.idCommentReclam = idCommentReclam;
+    }
+    
+
+    public Reclamation( int CategReclam, String DescrReclam) {
         this.CategReclam = CategReclam;
         this.DescrReclam = DescrReclam;
     }
 
-  
-    
-
-    public void setEtat(int EtatReclamation) {
-        this.EtatReclamation = EtatReclamation;
-    }
-
-    public int getEtat() {
-        return EtatReclamation;
-    }
 
     public String getPourcentageReclam() {
         return pourcentageReclam;

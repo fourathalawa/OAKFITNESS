@@ -6,5 +6,5 @@
 
 grammar grammar;
 
-public <feelings>  = (one);
+public <feelings>  = (one | close | free);
 

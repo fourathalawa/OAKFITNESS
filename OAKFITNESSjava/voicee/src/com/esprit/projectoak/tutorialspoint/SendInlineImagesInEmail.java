@@ -19,7 +19,7 @@ import javax.mail.internet.MimeMultipart;
 
 public class SendInlineImagesInEmail {
 
-    public static void main(String[] args) {
+    public void mail() {
         String to = "oakfitness.noreply@gmail.com";
         String from = "oakfitness.noreply@gmail.com";
         String password = "OakAdmin9238@yA8(";

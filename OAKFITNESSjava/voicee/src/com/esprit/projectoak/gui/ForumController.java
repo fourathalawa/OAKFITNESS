@@ -5,7 +5,10 @@
  */
 package com.esprit.projectoak.gui;
 
+import com.esprit.projectoak.entities.Commentaire;
 import com.esprit.projectoak.entities.Publication;
+import com.esprit.projectoak.services.CommentaireCRUD;
+import com.esprit.projectoak.services.PublicationCRUD;
 import com.esprit.projectoak.utils.MyConnection;
 import java.io.IOException;
 import java.net.URL;
@@ -40,12 +43,18 @@ import javafx.util.Callback;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import edu.cmu.sphinx.api.SpeechResult;
+import javafx.application.Platform;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
+import javafx.stage.Window;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Port;
 
@@ -55,7 +64,8 @@ import javax.sound.sampled.Port;
  * @author user
  */
 public class ForumController implements Initializable {
-
+        int f =0;
+    public int id =1;
     Publication publication = null;
     Connection cnxx;
     @FXML
@@ -64,7 +74,12 @@ public class ForumController implements Initializable {
     private ImageView image;
     @FXML
     private Button ask;
-public static int b =0;
+    public static int b = 0;
+    @FXML
+    private Button listen;
+    @FXML
+    private TextField quest;
+
     public ForumController() {
         cnxx = MyConnection.getInstance().getCnx();
     }
@@ -91,12 +106,13 @@ public static int b =0;
         image.setImage(image2);
         showPublication();
         afficherChercher();
-        SpeechRecognizerMain c = new SpeechRecognizerMain();
-        if (b==1){
-            ask2();
-        }
-      //  ask2();
-       //  SpeechRecognizerMain s = new SpeechRecognizerMain();
+      //   SpeechRecognizerMain c = new SpeechRecognizerMain();
+      //  voice();
+        //   SpeechRecognizerMain c = new SpeechRecognizerMain();
+        //   SpeechRecognizerMain c = new SpeechRecognizerMain();
+
+        //  ask2();
+        //  SpeechRecognizerMain s = new SpeechRecognizerMain();
 // SpeechRecognizerMain s = new SpeechRecognizerMain();
 // s.speechRecognizerThreadRunning = true;
 //                    while (s.speechRecognizerThreadRunning) {
@@ -117,20 +133,12 @@ public static int b =0;
 //                        
 //
 //                    }
-               
+    }
 
-
-            
-        }
-        
-      //  System.out.println(s.speechRecognitionResult+"jjjjjjjjjj");
-           // System.out.println(s.speechRecognitionResult+"hjjjjj");
-    
-         //   ask2();
+    //  System.out.println(s.speechRecognitionResult+"jjjjjjjjjj");
+    // System.out.println(s.speechRecognitionResult+"hjjjjj");
+    //   ask2();
     //    }
-
-    
-
     public ObservableList<Publication> afficherPulication() {
         ObservableList<Publication> myList = FXCollections.observableArrayList();
 
@@ -267,42 +275,49 @@ public static int b =0;
     }
 
     @FXML
-    private void ask(ActionEvent event) {
-        SpeechRecognizerMain s = new SpeechRecognizerMain();
-    
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("AjouterPublication.fxml"));
-        try {
-            loader.load();
-        } catch (IOException ex) {
-            Logger.getLogger(CommentaireController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Parent parent = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(parent));
-        stage.initStyle(StageStyle.UTILITY);
-        stage.show();
-        afficherPulication();
+    private void ask(ActionEvent event) {  
+        TestWord testWord = new TestWord();
+        testWord.loadConfigs();
+        String pubb = quest.getText();
+        if(testWord.filterText(pubb, "") == true)
+        {
+             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("This message was blocked because a bad word was found. If you believe this word should not be blocked, please message support.");
+            alert.showAndWait();
+        } 
+        else  if (pubb.isEmpty() ) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please Fill All DATA");
+            alert.showAndWait();
+            }
+            else {
+        Publication p = new Publication(id, pubb);
+        PublicationCRUD pc = new PublicationCRUD();
+        pc.ajouterPulication22(p);
+            }
+           showPublication();
     }
-    
-      public void ask2() {
 
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("AjouterPublication.fxml"));
-        try {
-            loader.load();
-        } catch (IOException ex) {
-            Logger.getLogger(CommentaireController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Parent parent = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(parent));
-        stage.initStyle(StageStyle.UTILITY);
-        stage.show();
-        afficherPulication();
+    public void ask2() {
+
+//        FXMLLoader loader = new FXMLLoader();
+//        loader.setLocation(getClass().getResource("AjouterPublication.fxml"));
+//        try {
+//            loader.load();
+//        } catch (IOException ex) {
+//            Logger.getLogger(CommentaireController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        Parent parent = loader.getRoot();
+//        Stage stage = new Stage();
+//        stage.setScene(new Scene(parent));
+//        stage.initStyle(StageStyle.UTILITY);
+//        stage.show();
+//        afficherPulication();
+        
+         Platform.exit();
     }
-      
 
     public ObservableList<Publication> chercher() {
         ObservableList<Publication> myList = FXCollections.observableArrayList();
@@ -358,6 +373,29 @@ public static int b =0;
         SortedList<Publication> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(tvPublication.comparatorProperty());
         tvPublication.setItems(sortedData);
+    }
+
+//    public synchronized void voice() {
+//        int aa = 0;
+//        b = 0;
+//       
+//        while (true) {
+//            if (c.a == 1){
+//                ask2();
+//                b++;
+//
+//                aa = 1;
+//
+//            }
+//        }
+//
+//    }
+
+    @FXML
+    private void listen(ActionEvent event) {
+       SpeechRecognizerMain c = new SpeechRecognizerMain();
+
+
     }
 
 }

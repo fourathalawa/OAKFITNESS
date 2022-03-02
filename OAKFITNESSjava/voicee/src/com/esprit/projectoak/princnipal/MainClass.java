@@ -26,8 +26,8 @@ public class MainClass {
 ////MyConnection mc =  MyConnection.getInstance();
         ReclamationCRUD ps = new ReclamationCRUD();
 //ps.ajouterReclamation();
-        Reclamation p = new Reclamation(1, 1, "test du mise ajour ");
-         ps.ajouterReclamation2(p);
+   //     Reclamation p = new Reclamation(1, 1, "test du mise ajour ");
+       //  ps.ajouterReclamation2(p);
 //        // System.out.println(p.getIDReclamation());
 //        //ps.supprimerReclamation(26);
 //        ps.modifierReclamation(25, p);

@@ -4,32 +4,36 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.projectoak.gui.ReclamationController">
    <children>
-      <Button fx:id="btn_AjouterReclamation" layoutX="650.0" layoutY="516.0" mnemonicParsing="false" onAction="#ft_valider" prefHeight="25.0" prefWidth="80.0" text="Submit" />
-      <VBox layoutX="54.0" layoutY="73.0" prefHeight="521.0" prefWidth="163.0" spacing="200.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2a2e34" height="567.0" layoutX="-2.0" layoutY="72.0" stroke="BLACK" strokeType="INSIDE" width="862.0" />
+      <Button fx:id="btn_AjouterReclamation" layoutX="659.0" layoutY="584.0" mnemonicParsing="false" onAction="#ft_valider" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #3b3f46;" text="Submit" textFill="WHITE" />
+      <VBox layoutX="120.0" layoutY="197.0" prefHeight="368.0" prefWidth="620.0" spacing="40.0">
          <children>
-            <Label text="Descreption">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label text="Category">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
-      <VBox layoutX="217.0" layoutY="73.0" prefHeight="354.0" prefWidth="506.0" spacing="40.0">
-         <children>
-            <TextField fx:id="tf_descreptionReclamation" prefHeight="180.0" prefWidth="506.0" />
+            <TextField fx:id="tf_descreptionReclamation" prefHeight="136.0" prefWidth="418.0" promptText="What's wrong" />
             <ChoiceBox fx:id="ch_Category" prefWidth="150.0" />
          </children>
       </VBox>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3b3f46" height="74.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="860.0" />
+      <Text layoutX="27.0" layoutY="46.0" nodeOrientation="LEFT_TO_RIGHT" opacity="0.76" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" text="Report">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+      </Text>
+      <Label fx:id="nomDuPub" layoutX="120.0" layoutY="148.0" text="What can we help you with?" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

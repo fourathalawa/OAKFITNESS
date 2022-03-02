@@ -14,6 +14,12 @@ import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import edu.cmu.sphinx.api.SpeechResult;
 import edu.cmu.sphinx.result.WordResult;
+import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class SpeechRecognizerMain {
 
@@ -106,7 +112,7 @@ public class SpeechRecognizerMain {
     /**
      * Starts the Speech Recognition Thread
      */
-    public synchronized int startSpeechRecognition() {
+    public int startSpeechRecognition() {
         //Check lock
         if (speechRecognizerThreadRunning) {
             logger.log(Level.INFO, "Speech Recognition Thread already running...\n");
@@ -147,26 +153,52 @@ public class SpeechRecognizerMain {
                                 if ("one".equals(speechRecognitionResult)) {
                                     ForumController c = new ForumController();
                                     System.out.println("ooonnnnnnneeeee");
-                                    ForumController.b = 1;
-                                    //   c.ask2();
+                                    //     ForumController.b = 1;
+                                    Platform.runLater(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            FXMLLoader loader = new FXMLLoader();
+                                            loader.setLocation(getClass().getResource("AjouterPublication.fxml"));
+                                            try {
+                                                loader.load();
+                                            } catch (IOException ex) {
+                                                Logger.getLogger(CommentaireController.class.getName()).log(Level.SEVERE, null, ex);
+                                            }
+                                            Parent parent = loader.getRoot();
+                                            Stage stage = new Stage();
+                                            stage.setScene(new Scene(parent));
+                                            stage.initStyle(StageStyle.UTILITY);
+                                            stage.show();
+                                        }
+// do your GUI stuff here
+                                    });
+                                    a = 1;
+                                    //  speechRecognizerThreadRunning = false;
+                                }
+                                if ("free".equals(speechRecognitionResult)) {
+                                    speechRecognizerThreadRunning = false;
 
+                                }
+                                if ("close".equals(speechRecognitionResult)) {
+                                    ForumController c = new ForumController();
+                                    System.out.println("close");
+                                    //     ForumController.b = 1;
+                                    Platform.runLater(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Platform.exit();
+                                            System.exit(0);
+                                        }
+// do your GUI stuff here
+                                    });
                                     a = 1;
                                     //  speechRecognizerThreadRunning = false;
                                 }
 
+                                //     speechRecognizerThreadRunning = false;
                                 //Call the appropriate method 
                                 makeDecision(speechRecognitionResult, speechResult.getWords());
 
-                                if ("one".equals(speechRecognitionResult)) {
-                                    ForumController c = new ForumController();
-                                    System.out.println("ooonnnnnnneeeee");
-                                                                        ForumController.b = 1;
-
-                                    //    c.ask2();
-                                    //    speechRecognizerThreadRunning = false;
-                                    a = 1;
-
-                                }
                             }
                         } else {
                             logger.log(Level.INFO, "Ingoring Speech Recognition Results...");

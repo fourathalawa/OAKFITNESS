@@ -8,17 +8,16 @@
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="683.0" prefWidth="932.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.projectoak.gui.ForumController">
+<AnchorPane id="AnchorPane" prefHeight="707.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.projectoak.gui.ForumController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f4b301" height="622.0" layoutY="62.0" stroke="BLACK" strokeType="INSIDE" width="955.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3b3f46" height="67.0" layoutX="-9.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" width="964.0" />
-      <Line endX="793.0" endY="1.52587890625E-5" layoutX="147.0" layoutY="62.0" startX="-147.0" />
-      <Text layoutX="55.0" layoutY="43.0" nodeOrientation="LEFT_TO_RIGHT" opacity="0.76" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" text="Forum">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2a2e34" height="648.0" layoutX="-2.0" layoutY="64.0" stroke="BLACK" strokeType="INSIDE" width="447.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f4b301" height="661.0" layoutX="413.0" layoutY="51.0" stroke="BLACK" strokeType="INSIDE" width="795.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3b3f46" height="67.0" stroke="BLACK" strokeType="INSIDE" width="1208.0" />
+      <Text layoutX="47.0" layoutY="44.0" nodeOrientation="LEFT_TO_RIGHT" opacity="0.76" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" text="Forum">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>
@@ -26,13 +25,9 @@
             <Glow />
          </effect>
       </Text>
-      <Label layoutX="137.0" layoutY="95.0" text="Search " />
-      <TextField fx:id="search" layoutX="221.0" layoutY="91.0" onAction="#seach" prefHeight="25.0" prefWidth="472.0" promptText="Keywords..." />
-      <ImageView fx:id="image" accessibleRole="LIST_VIEW" fitHeight="44.0" fitWidth="49.0" layoutX="734.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-     
-          
-  </ImageView>
-      <Text layoutX="785.0" layoutY="41.0" nodeOrientation="LEFT_TO_RIGHT" opacity="0.76" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" text="OAKFitness" wrappingWidth="151.35792219638824">
+      <Label layoutX="572.0" layoutY="162.0" text="Search " />
+      <TextField fx:id="search" layoutX="640.0" layoutY="158.0" onAction="#seach" prefHeight="25.0" prefWidth="472.0" promptText="Keywords..." />
+      <Text layoutX="1006.0" layoutY="43.0" nodeOrientation="LEFT_TO_RIGHT" opacity="0.76" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" text="OAKFitness" wrappingWidth="151.35792219638824">
          <font>
             <Font name="Agency FB" size="24.0" />
          </font>
@@ -40,8 +35,8 @@
             <Glow />
          </effect>
       </Text>
-      <Button fx:id="ask" layoutX="715.0" layoutY="91.0" mnemonicParsing="false" onAction="#ask" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: #3b3f46;" text="Ask a question" textFill="WHITE" />
-      <TableView fx:id="tvPublication" editable="true" layoutX="90.0" layoutY="128.0" prefHeight="527.0" prefWidth="760.0" style="-fx-background-color: #f4b301; -fx-border-color: #f4b301;">
+      <Button fx:id="ask" layoutX="237.0" layoutY="459.0" mnemonicParsing="false" onAction="#ask" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: #3b3f46;" text="Ask a question" textFill="WHITE" />
+      <TableView fx:id="tvPublication" editable="true" layoutX="428.0" layoutY="217.0" prefHeight="375.0" prefWidth="766.0" style="-fx-background-color: #f4b301; -fx-border-color: #f4b301;">
         <columns>
           <TableColumn fx:id="NomPublication" prefWidth="114.0" text="User" />
             <TableColumn fx:id="Publication" prefWidth="367.0" text="Publication" />
@@ -50,5 +45,11 @@
             <TableColumn fx:id="View" prefWidth="175.0" />
         </columns>
       </TableView>
+      <ImageView fx:id="image" accessibleRole="LIST_VIEW" fitHeight="44.0" fitWidth="49.0" layoutX="935.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+     
+          
+  </ImageView>
+      <TextField fx:id="quest" layoutX="33.0" layoutY="295.0" prefHeight="123.0" prefWidth="339.0" promptText="Your question..." />
+      <Button fx:id="listen" layoutX="428.0" layoutY="78.0" mnemonicParsing="false" onAction="#listen" style="-fx-background-color: #3b3f46;" text="listen" textFill="WHITE" />
    </children>
 </AnchorPane>

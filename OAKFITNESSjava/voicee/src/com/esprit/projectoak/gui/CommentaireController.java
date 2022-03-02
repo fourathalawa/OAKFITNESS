@@ -62,6 +62,7 @@ public class CommentaireController implements Initializable {
     Connection cnxx;
     @FXML
     private Button listen;
+
    
 
     public CommentaireController() {
@@ -135,6 +136,8 @@ public class CommentaireController implements Initializable {
     private TableColumn<Commentaire, Integer> ft_noteValue;
      @FXML
     private TableColumn<Commentaire, Integer> ft_idUser;
+         @FXML
+    private TableColumn<Commentaire, String> ft_edit1;
 
     /**
      * Initializes the controller class.
@@ -327,7 +330,68 @@ public class CommentaireController implements Initializable {
             return cell;
         };
         ft_note.setCellFactory(cellFoctory2);
+              Callback<TableColumn<Commentaire, String>, TableCell<Commentaire, String>> cellFoctory3 = (TableColumn<Commentaire, String> param) -> {
+            // make cell containing buttons
+            final TableCell<Commentaire, String> cell = new TableCell<Commentaire, String>() {
+                @Override
+                public void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    //that cell created only on non-empty rows
+                    if (empty) {
+                        setGraphic(null);
+                        setText(null);
 
+                    } else {
+
+                        FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.BAN);
+
+                        deleteIcon.setStyle(
+                                " -fx-cursor: hand ;"
+                                + "-glyph-size:15px;"
+                                + "-fx-fill:#000000;"
+                        );
+                      
+                        deleteIcon.setOnMouseClicked((MouseEvent event) -> {
+                            commentaire = tvCommentaire.getSelectionModel().getSelectedItem();
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(getClass().getResource("ReclamationComment.fxml"));
+                            try {
+                                loader.load();
+                            } catch (IOException ex) {
+                                Logger.getLogger(CommentaireController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+//                            
+                            ReclamationCommentController reclamationCommentController = loader.getController();
+                            reclamationCommentController.setPub( pub.getText(), commentaire.getCommentaire(),Integer.toString(commentaire.getIDUser()),Integer.toString(commentaire.getIDCommentaire()));
+//                            String a = "" + commentaire.getIDCommentaire();
+//                            modifierCommentControllert.setTextField(commentaire.getCommentaire(), a);
+//                            modifierCommentControllert.modifierPulication(commentaire.getIDCommentaire(), commentaire.getCommentaire());
+
+                            Parent parent = loader.getRoot();
+                            Stage stage = new Stage();
+                            stage.setScene(new Scene(parent));
+                            stage.initStyle(StageStyle.UTILITY);
+                            stage.show();
+                            showReclamation(id);
+                        });
+                 
+
+                        HBox managebtn = new HBox(deleteIcon);
+                        managebtn.setStyle("-fx-alignment:center");
+                        HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
+
+                        setGraphic(managebtn);
+
+                        setText(null);
+
+                    }
+                }
+
+            };
+
+            return cell;
+        };
+ft_edit1.setCellFactory(cellFoctory3);
     }
 
     private void insertCommentaire() {

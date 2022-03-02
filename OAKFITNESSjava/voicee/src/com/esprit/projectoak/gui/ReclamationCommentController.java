@@ -7,9 +7,7 @@ package com.esprit.projectoak.gui;
 
 import com.esprit.projectoak.entities.Reclamation;
 import com.esprit.projectoak.services.ReclamationCRUD;
-import com.esprit.projectoak.utils.MyConnection;
 import java.net.URL;
-import java.sql.Connection;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,22 +23,32 @@ import javafx.scene.control.TextField;
  *
  * @author user
  */
-public class ReclamationController implements Initializable {
-    Connection cnxx;
-    @FXML
-    private ChoiceBox<String> ch_Category;
-    private String[] category = {"Commentaire","publication","utulisateur"};
-    @FXML
-    private Label nomDuPub;
-
-    public ReclamationController() {
-        cnxx = MyConnection.getInstance().getCnx();
-    }
+public class ReclamationCommentController implements Initializable {
 
     @FXML
     private Button btn_AjouterReclamation;
     @FXML
     private TextField tf_descreptionReclamation;
+    @FXML
+    private ChoiceBox<String> ch_Category;
+    private String[] category = {"Harrasment", "Hate speech", "Spam"};
+    @FXML
+    private Label nomDuPub;
+    @FXML
+    private Label pubRec;
+    @FXML
+    private Label CommentRec;
+    @FXML
+    private Label idUserOfPub;
+    @FXML
+    private Label idcommentReclam;
+
+    void setPub(String pubb, String recc , String iddd , String idc) {
+        pubRec.setText(pubb);
+        CommentRec.setText(recc);
+        idUserOfPub.setText(iddd);
+        idcommentReclam.setText(idc);
+    }
 
     /**
      * Initializes the controller class.
@@ -48,22 +56,21 @@ public class ReclamationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-            ch_Category.getItems().addAll(category);
-
-    }    
+        ch_Category.getItems().addAll(category);
+    }
 
     @FXML
     private void ft_valider(ActionEvent event) {
-        insertReclamtion();
-    }
-    
-    private void insertReclamtion(){
-        int cat=0;
+             int cat=0;
         String DescrReclam = tf_descreptionReclamation.getText();
         String CategReclam =ch_Category.getValue();
+        String pub = pubRec.getText();
+        String com = CommentRec.getText();
+        int id = Integer.parseInt(idUserOfPub.getText());
+        int idcc = Integer.parseInt(idcommentReclam.getText());
         
-        String pub = tf_descreptionReclamation.getText();
-         if (pub.isEmpty() ) {
+        String pub2 = tf_descreptionReclamation.getText();
+         if (pub2.isEmpty() ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("Please Fill All DATA");
@@ -80,15 +87,16 @@ public class ReclamationController implements Initializable {
             
          cat = 3;
         }
-        int IDUserReclamation = 1;
-        Reclamation p = new Reclamation(cat, DescrReclam);
+       // int IDUserReclamation = 1;
+        Reclamation p = new Reclamation(id, cat, DescrReclam , pub , com , idcc);
+       // Reclamation p = new Reclamation(IDUserReclamation, cat, DescrReclam);
         ReclamationCRUD rc = new ReclamationCRUD();
-        rc.ajouterReclamation2(p);
+        rc.ReclamerComment(p);
        
         
         
     }
 
     }
-    
+
 }

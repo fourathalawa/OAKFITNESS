@@ -37,4 +37,7 @@ public class userCRUD {
             System.err.println(ex.getMessage());
         }
     }
+    public void supprimerUser(int id){
+        System.out.println("i deleted this user");
+    }
 }
