@@ -4,7 +4,7 @@
  */
 package com.mycompany.services;
 
-import com.mycompany.entities.Session;
+import com.mycompany.entities.SessionUser;
 import com.mycompany.entities.User;
 import com.mycompany.utils.MyConnection;
 import java.awt.Component;
@@ -28,6 +28,11 @@ import java.sql.Date;
 import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  *
@@ -495,7 +500,7 @@ public int  retourneId(String mail)
                     System.out.println("Log in verifié ");
                     role = rs.getInt(2);
                     id = rs.getInt(3);
-                    Session s= new Session(id,role);
+                    SessionUser s= new SessionUser(id,role);
                    SessionCRUD sc = new SessionCRUD();
                    sc.ajouterSession(s);
                 }
@@ -507,23 +512,68 @@ public int  retourneId(String mail)
         System.out.println(role);
         return role;
     }
-
-    /*public void ResetPassword(User us) {
-        int randomCode;
-        Random rand = new Random();
+public String checkMail(String mail) {
+        String nom="";
         try {
-            randomCode = rand.nextInt(999999);
+            Statement st = cnxx.createStatement();
+            String req = "SELECT COUNT(*) as count,NomUser FROM USER WHERE MailUser='"+mail+"'";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            int count;
+            while (rs.next()) {
+                count = rs.getInt("count");
+
+                if (count == 1) {
+                    nom= rs.getString(2);
+                  
+                }
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+
+        }
+        return nom;
+    }
+public String GetPassword(String mail) {
+        String password="";
+        String a="";
+        User us= new User();
+        try {
+            Statement st = cnxx.createStatement();
+            String req = "SELECT COUNT(*) as count,Password FROM USER WHERE MailUser='"+mail+"'";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            int count;
+            while (rs.next()) {
+                count = rs.getInt("count");
+
+                if (count == 1) {
+                    a= rs.getString(2);
+                  password=us.decrypt(a);
+                }
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+
+        }
+        return password;
+    }
+   public void ResetPassword(String mail) {
+       UserCRUD us=new UserCRUD();
+        String password=us.GetPassword(mail);
+        try {
+            
             String host = "smtp.gmail.com";
             String user = "fourat.halaoua@esprit.tn";
             String pass = "191JMT1029**";
-            String to = us.getMail();
-            String subject = "Reseting Code";
-            String message = "Your reset code is " + randomCode;
+            String to = mail;
+            String subject = "OAK Fitness Password";
+            String message = "Your passwrd is " + password;
             boolean sessionDebug = false;
             Properties pros = System.getProperties();
             pros.put("mail.smtp.starttls.enable", "true");
             pros.put("mail.smtp.host", "host");
-            pros.put("mail.smtp.port", "587");
+            pros.put("mail.smtp.port", "25");
             pros.put("mail.smtp.auth", "true");
             pros.put("mail.smtp.starttls.required", "true");
             java.security.Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
@@ -531,27 +581,21 @@ public int  retourneId(String mail)
             mailSession.setDebug(sessionDebug);
             Message msg = new MimeMessage(mailSession);
             msg.setFrom(new InternetAddress(user));
-            System.out.println("aaaaaaa");
             InternetAddress[] address = {new InternetAddress(to)};
-            System.out.println("aaaaaaa");
             msg.setRecipients(Message.RecipientType.TO, address);
-            System.out.println("aaaaaaa");
             msg.setSubject(subject);
             msg.setText(message);
-            System.out.println("aaaaaaa");
             Transport transport = mailSession.getTransport("smtp");
             transport.connect(host, user, pass);
-            System.out.println("aaaaaaa");
             transport.sendMessage(msg, msg.getAllRecipients());
-            System.out.println("aaaaaaa");
+            
             transport.close();
-            JOptionPane.showMessageDialog(null, "code has been send to the email");
         } catch (Exception ex) {
             Component rootPane = null;
             JOptionPane.showMessageDialog(rootPane, ex);
             System.out.println(ex);
         }
-    }*/
+    }
 
   
 }

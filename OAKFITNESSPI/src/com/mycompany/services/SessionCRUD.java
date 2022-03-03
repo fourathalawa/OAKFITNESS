@@ -4,7 +4,7 @@
  */
 package com.mycompany.services;
 
-import com.mycompany.entities.Session;
+import com.mycompany.entities.SessionUser;
 import com.mycompany.entities.User;
 import com.mycompany.utils.MyConnection;
 import java.sql.Connection;
@@ -29,7 +29,7 @@ public class SessionCRUD {
     SessionCRUD(int id, int role) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
- public void ajouterSession(Session ch) {
+ public void ajouterSession(SessionUser ch) {
 
         String req = "INSERT INTO session (idUser,roleUser) VALUES (?,?)";
         PreparedStatement pst;

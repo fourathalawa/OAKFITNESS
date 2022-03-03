@@ -23,11 +23,12 @@
    <children>
       <Pane layoutX="350.0" layoutY="152.0" prefHeight="304.0" prefWidth="579.0" style="-fx-background-color: #666667;" styleClass="mainFxmlClass">
          <children>
-            <Hyperlink fx:id="idSignUp" alignment="CENTER" layoutX="222.0" layoutY="252.0" onAction="#SignUp" prefHeight="29.0" prefWidth="136.0" text="Sign Up" textAlignment="CENTER" textFill="WHITE" underline="true">
+            <Hyperlink fx:id="idSignUp" alignment="CENTER" layoutX="222.0" layoutY="245.0" onAction="#SignUp" prefHeight="29.0" prefWidth="136.0" text="Sign Up" textAlignment="CENTER" textFill="WHITE" underline="true">
                <font>
                   <Font size="24.0" />
                </font>
             </Hyperlink>
+            <Hyperlink fx:id="Password" layoutX="394.0" layoutY="205.0" onAction="#ForgetPassword" text="Forgot your password" textFill="WHITE" underline="true" />
          </children>
          <opaqueInsets>
             <Insets />

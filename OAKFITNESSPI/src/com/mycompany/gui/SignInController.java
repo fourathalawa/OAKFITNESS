@@ -4,7 +4,7 @@
  */
 package com.mycompany.gui;
 
-import com.mycompany.entities.Session;
+import com.mycompany.entities.SessionUser;
 import com.mycompany.entities.User;
 import com.mycompany.services.SessionCRUD;
 import com.mycompany.services.UserCRUD;
@@ -40,8 +40,6 @@ public class SignInController implements Initializable {
     @FXML
     private Hyperlink idSignUp;
     @FXML
-    private TextField idRole;
-    @FXML
     private Hyperlink idEvents;
     @FXML
     private Hyperlink idNews;
@@ -53,6 +51,8 @@ public class SignInController implements Initializable {
     private Hyperlink idForum;
     @FXML
     private Hyperlink idAboutUs;
+    @FXML
+    private Hyperlink Password;
 
     /**
      * Initializes the controller class.
@@ -70,10 +70,10 @@ s.supprimerSession();
     //   String Role = idRole.getText();
 User us =new User( Mail,Password);
 UserCRUD user = new UserCRUD(); 
-
-if(user.authentification(us) !=7)
+int id= user.authentification(us);
+if( id !=7)
 {
-    if(user.authentification(us) == 1)
+    if(id == 1)
     {
            FXMLLoader loader= new FXMLLoader(getClass().getResource("MemberProfile.fxml"));
             try {
@@ -86,7 +86,7 @@ if(user.authentification(us) !=7)
         }
             
 }
-    else  if(user.authentification(us) == 2)
+    else  if(id == 2)
     {
            FXMLLoader loader= new FXMLLoader(getClass().getResource("CoachProfile.fxml"));
             try {
@@ -99,7 +99,7 @@ if(user.authentification(us) !=7)
         }
             
 }
-     else  if(user.authentification(us) == 3)
+     else  if(id == 3)
     {
            FXMLLoader loader= new FXMLLoader(getClass().getResource("ManagerProfile.fxml"));
             try {
@@ -112,7 +112,7 @@ if(user.authentification(us) !=7)
         }
             
 }
-     else  if(user.authentification(us) == 0)
+     else  if(id == 0)
     {
            FXMLLoader loader= new FXMLLoader(getClass().getResource("UserListAdmin.fxml"));
             try {
@@ -164,6 +164,20 @@ if(user.authentification(us) !=7)
 
     @FXML
     private void aboutUsRedirect(ActionEvent event) {
+    }
+
+    @FXML
+    private void ForgetPassword(ActionEvent event) {
+        
+           FXMLLoader loader= new FXMLLoader(getClass().getResource("ForgetPassword.fxml"));
+            try {
+            Parent root = loader.load();
+            ForgetPasswordController suac = loader.getController();
+            Password.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

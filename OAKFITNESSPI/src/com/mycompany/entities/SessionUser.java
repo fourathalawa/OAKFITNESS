@@ -8,16 +8,16 @@ package com.mycompany.entities;
  *
  * @author User
  */
-public class Session {
+public class SessionUser {
     private int id;
     private int role;
 
-    public Session(int id, int role) {
+    public SessionUser(int id, int role) {
         this.id = id;
         this.role = role;
     }
 
-    public Session() {
+    public SessionUser() {
     }
 
     public int getId() {
