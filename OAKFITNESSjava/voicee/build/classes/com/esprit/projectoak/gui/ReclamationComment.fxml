@@ -47,7 +47,7 @@
          </font>
       </Label>
       <Label layoutX="146.0" layoutY="247.0" text="Of the publication" textFill="WHITE" />
-      <Label fx:id="idUserOfPub" layoutX="738.0" layoutY="93.0" text="Label" textFill="WHITE" />
-      <Label fx:id="idcommentReclam" layoutX="738.0" layoutY="117.0" text="Label" textFill="WHITE" />
+      <Label fx:id="idUserOfPub" layoutX="738.0" layoutY="93.0" text="Label" textFill="WHITE" visible="false" />
+      <Label fx:id="idcommentReclam" layoutX="738.0" layoutY="117.0" text="Label" textFill="WHITE" visible="false" />
    </children>
 </AnchorPane>

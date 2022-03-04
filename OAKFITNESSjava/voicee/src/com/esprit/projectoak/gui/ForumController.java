@@ -296,6 +296,10 @@ public class ForumController implements Initializable {
         Publication p = new Publication(id, pubb);
         PublicationCRUD pc = new PublicationCRUD();
         pc.ajouterPulication22(p);
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                alert.setHeaderText(null);
+                                alert.setContentText("Publication added");
+                                alert.showAndWait();
             }
            showPublication();
     }
@@ -394,6 +398,10 @@ public class ForumController implements Initializable {
     @FXML
     private void listen(ActionEvent event) {
        SpeechRecognizerMain c = new SpeechRecognizerMain();
+         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                alert.setHeaderText(null);
+                                alert.setContentText("Speak for commands");
+                                alert.showAndWait();
 
 
     }

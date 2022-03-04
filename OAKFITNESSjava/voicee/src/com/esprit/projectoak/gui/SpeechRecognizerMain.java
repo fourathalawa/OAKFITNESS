@@ -158,7 +158,7 @@ public class SpeechRecognizerMain {
                                         @Override
                                         public void run() {
                                             FXMLLoader loader = new FXMLLoader();
-                                            loader.setLocation(getClass().getResource("AjouterPublication.fxml"));
+                                            loader.setLocation(getClass().getResource("Reclamation.fxml"));
                                             try {
                                                 loader.load();
                                             } catch (IOException ex) {

@@ -239,7 +239,7 @@ public class ReclamationCRUD {
             //   return null;
         }
         System.out.println("total"+total);
-        if (total >= 3) {
+        if (total >= 2) {
             check = true;
         }
         return check;

@@ -398,17 +398,32 @@ ft_edit1.setCellFactory(cellFoctory3);
 
         String Commentairee = Commentaire.getText();
         String idPub = idPublication.getText();
-            if (Commentairee.isEmpty() ) {
+        
+          TestWord testWord = new TestWord();
+        testWord.loadConfigs();
+        if(testWord.filterText(Commentairee, "") == true)
+        {
+             Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("This message was blocked because a bad word was found. If you believe this word should not be blocked, please message support.");
+            alert.showAndWait();
+        } 
+        
+        else  if (Commentairee.isEmpty() ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("Please Fill All DATA");
             alert.showAndWait();
             }
-            else if (! Commentairee.isEmpty() ) {
+            else  {
         int idp = Integer.parseInt(idPub);
         Commentaire c = new Commentaire(idp, 1, Commentairee);
         CommentaireCRUD cc = new CommentaireCRUD();
         cc.ajouterCommentaire2(c);
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                alert.setHeaderText(null);
+                                alert.setContentText("Comment added");
+                                alert.showAndWait();
             }
     }
 

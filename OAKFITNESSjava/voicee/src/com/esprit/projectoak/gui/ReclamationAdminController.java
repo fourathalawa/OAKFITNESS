@@ -124,7 +124,7 @@ public class ReclamationAdminController implements Initializable {
 
                         deleteIcon.setStyle(
                                 " -fx-cursor: hand ;"
-                                + "-glyph-size:28px;"
+                                + "-glyph-size:35px;"
                                 + "-fx-fill:#3b3f46;"
                         );
 

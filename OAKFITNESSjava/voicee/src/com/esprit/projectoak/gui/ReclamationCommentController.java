@@ -92,7 +92,10 @@ public class ReclamationCommentController implements Initializable {
        // Reclamation p = new Reclamation(IDUserReclamation, cat, DescrReclam);
         ReclamationCRUD rc = new ReclamationCRUD();
         rc.ReclamerComment(p);
-       
+         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                alert.setHeaderText(null);
+                                alert.setContentText("Report added");
+                                alert.showAndWait();
         
         
     }

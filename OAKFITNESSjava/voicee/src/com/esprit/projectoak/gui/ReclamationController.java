@@ -29,7 +29,7 @@ public class ReclamationController implements Initializable {
     Connection cnxx;
     @FXML
     private ChoiceBox<String> ch_Category;
-    private String[] category = {"Commentaire","publication","utulisateur"};
+    private String[] category = {"Event","Login in","Other"};
     @FXML
     private Label nomDuPub;
 
@@ -84,7 +84,10 @@ public class ReclamationController implements Initializable {
         Reclamation p = new Reclamation(cat, DescrReclam);
         ReclamationCRUD rc = new ReclamationCRUD();
         rc.ajouterReclamation2(p);
-       
+         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                alert.setHeaderText(null);
+                                alert.setContentText("Report added");
+                                alert.showAndWait();
         
         
     }

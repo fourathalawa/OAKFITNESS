@@ -6,7 +6,9 @@
 package com.esprit.projectoak.gui;
 
 import com.esprit.projectoak.entities.Commentaire;
+import com.esprit.projectoak.entities.Publication;
 import com.esprit.projectoak.services.CommentaireCRUD;
+import com.esprit.projectoak.services.PublicationCRUD;
 import com.esprit.projectoak.utils.MyConnection;
 import java.net.URL;
 import java.sql.Connection;
@@ -16,6 +18,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -69,7 +72,6 @@ public class ModifierCommentController implements Initializable {
 //        System.out.println("iddddd" + id);
 //        modifierPulication(number, Commentairee);
 //    }
-
     public void modifierPulication(int id, String comment) {
 
         String req = "UPDATE commentaire set Commentaire=? WHERE IDCommentaire = ?";
@@ -97,13 +99,27 @@ public class ModifierCommentController implements Initializable {
 
     @FXML
     private void submit(ActionEvent event) {
-                String Commentairee = ft_comment.getText();
+        String Commentairee = ft_comment.getText();
         String idj = update_id.getText();
         int number = Integer.parseInt(idj);
         System.out.println("iddddd" + idj);
-                System.out.println("iddddd" + Commentairee);
+        System.out.println("iddddd" + Commentairee);
+        if (Commentairee.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please Fill All DATA");
+            alert.showAndWait();
+        } else {
 
-        modifierPulication(number, Commentairee);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("Comment modified");
+            alert.showAndWait();
+            modifierPulication(number, Commentairee);
+            
+
+        }
+
     }
 
 }
