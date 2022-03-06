@@ -6,33 +6,43 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="473.0" prefWidth="844.0" style="-fx-background-color: #3B3F46;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.gui.NewReservationController">
+<AnchorPane id="AnchorPane" prefHeight="473.0" prefWidth="844.0" style="-fx-background-color: #3B3F46;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ReservationController">
    <children>
-      <Button fx:id="goBackBtn" layoutX="681.0" layoutY="398.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: #ac0000;" text="&lt; page précédente" textFill="WHITE" />
+      <Button layoutX="681.0" layoutY="398.0" mnemonicParsing="false" style="-fx-background-color: #ac0000;" text="&lt; page précédente" textFill="WHITE" />
       <Label layoutX="14.0" layoutY="108.0" text="date de reservation" textFill="#fdf6f6" />
-      <DatePicker fx:id="dateId" layoutX="159.0" layoutY="103.0" prefHeight="26.0" prefWidth="159.0" />
+      <DatePicker fx:id="DateReservation" layoutX="159.0" layoutY="103.0" prefHeight="26.0" prefWidth="159.0" />
       <Label layoutX="317.0" layoutY="33.0" prefHeight="26.0" prefWidth="211.0" text="Reservation" textAlignment="CENTER" textFill="#f5e202">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="30.0" />
          </font>
       </Label>
       <Label layoutX="14.0" layoutY="186.0" text="nom de la salle" textFill="WHITE" />
-      <ChoiceBox layoutX="159.0" layoutY="182.0" prefWidth="150.0" />
-      <TableView layoutX="355.0" layoutY="97.0" prefHeight="223.0" prefWidth="381.0" stylesheets="@../../../../../Desktop/272176651_2277009005770267_3678149845588212784_n-removebg.css">
+      <ChoiceBox fx:id="NomSalle" layoutX="159.0" layoutY="182.0" prefWidth="150.0" />
+      <TableView fx:id="tvRes" layoutX="355.0" layoutY="97.0" onMouseClicked="#fnSelected" prefHeight="223.0" prefWidth="381.0" stylesheets="@../../../../../Desktop/272176651_2277009005770267_3678149845588212784_n-removebg.css">
         <columns>
-          <TableColumn prefWidth="126.0" text="mes reservations" />
-          <TableColumn prefWidth="75.0" text="nom salle" />
-            <TableColumn prefWidth="126.0" text="date de reservation" />
+          <TableColumn fx:id="ColID" prefWidth="126.0" text="mes reservations" />
+          <TableColumn fx:id="ColNom" prefWidth="75.0" text="nom salle" />
+            <TableColumn fx:id="ColDate" prefWidth="126.0" text="date de reservation" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="505.0" layoutY="339.0" mnemonicParsing="false" style="-fx-background-color: F5B301;" text="supprimer reservation" />
-      <Button layoutX="361.0" layoutY="339.0" mnemonicParsing="false" style="-fx-background-color: F5B301;" text="modifier reservation" />
-      <Button layoutX="36.0" layoutY="339.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: F5B301;" text="ajouter reservation" />
+      <Button fx:id="btnSupprimer" layoutX="505.0" layoutY="339.0" mnemonicParsing="false" onAction="#supprimerRes" style="-fx-background-color: F5B301;" text="supprimer reservation" />
+      <Button fx:id="btnModifier" layoutX="361.0" layoutY="339.0" mnemonicParsing="false" onAction="#modifierRes" style="-fx-background-color: F5B301;" text="modifier reservation" />
+      <Button fx:id="btnAjouter" layoutX="36.0" layoutY="339.0" mnemonicParsing="false" onAction="#ajouterRes" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: F5B301;" text="ajouter reservation" />
+      <Label fx:id="lbid" layoutX="578.0" layoutY="25.0" visible="false" />
+      <Label layoutX="514.0" layoutY="51.0" text="Rechercher : " textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfSearch" layoutX="637.0" layoutY="54.0" prefHeight="25.0" prefWidth="191.0" />
+      <Label layoutX="14.0" layoutY="228.0" text="cité " textFill="WHITE" />
+      <TextField fx:id="tfCity" layoutX="160.0" layoutY="224.0" />
    </children>
 </AnchorPane>

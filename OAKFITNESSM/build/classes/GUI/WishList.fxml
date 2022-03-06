@@ -4,18 +4,19 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
 
-<AnchorPane id="AnchorPane" prefHeight="473.0" prefWidth="844.0" style="-fx-background-color: #3B3F46;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.gui.NewReservationController">
+<AnchorPane id="AnchorPane" prefHeight="473.0" prefWidth="844.0" style="-fx-background-color: #3B3F46;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.WishListController">
    <children>
-      <Button fx:id="goBackBtn" layoutX="601.0" layoutY="380.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: #ac0000;" text="&lt; page précédente" textFill="WHITE" />
       <Label layoutX="309.0" layoutY="33.0" prefHeight="34.0" prefWidth="237.0" text="Liste des Favoris" textAlignment="CENTER" textFill="#f5d302" textOverrun="CLIP">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="29.0" />
          </font>
       </Label>
-      <TableView layoutX="52.0" layoutY="98.0" prefHeight="224.0" prefWidth="722.0">
+      <TableView layoutX="33.0" layoutY="88.0" prefHeight="185.0" prefWidth="722.0">
         <columns>
           <TableColumn prefWidth="126.0" text="produit" />
           <TableColumn prefWidth="75.0" text="categorie " />
@@ -23,14 +24,18 @@
             <TableColumn prefWidth="75.0" text="prix" />
             <TableColumn prefWidth="75.0" text="image" />
             <TableColumn prefWidth="84.0" text="validité" />
-            <TableColumn prefWidth="121.0" text="commentaire" />
+            <TableColumn fx:id="ColCmnt" prefWidth="121.0" text="commentaire" />
+            <TableColumn fx:id="ColCmnt1" prefWidth="121.0" text="note" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="52.0" layoutY="392.0" mnemonicParsing="false" style="-fx-background-color: F5B301;" text="supprimer ce produit " />
-      <Button layoutX="201.0" layoutY="340.0" mnemonicParsing="false" style="-fx-background-color: F5B301;" text="modifier commentaire" />
-      <Button layoutX="52.0" layoutY="340.0" mnemonicParsing="false" style="-fx-background-color: F5B301;" text="ajouter commentaire" />
+      <Button fx:id="btnSupprimer" layoutX="615.0" layoutY="426.0" mnemonicParsing="false" onAction="#supprimerProduit" style="-fx-background-color: F5B301;" text="supprimer ce produit " />
+      <Button fx:id="btnModifier" layoutX="394.0" layoutY="363.0" mnemonicParsing="false" onAction="#modifierCmnt" style="-fx-background-color: F5B301;" text="modifier commentaire" />
+      <Button fx:id="btnAjoutercmnt" layoutX="394.0" layoutY="323.0" mnemonicParsing="false" onAction="#ajouterCmnt" style="-fx-background-color: F5B301;" text="ajouter commentaire" />
+      <Label layoutX="33.0" layoutY="289.0" text="nouveau commentaire" textFill="WHITE" />
+      <TextArea fx:id="Cmnt" layoutX="33.0" layoutY="323.0" prefHeight="128.0" prefWidth="347.0" />
+      <Rating fx:id="RatingStars" layoutX="579.0" layoutY="282.0" prefHeight="17.0" prefWidth="112.0" rating="5.0" />
    </children>
 </AnchorPane>

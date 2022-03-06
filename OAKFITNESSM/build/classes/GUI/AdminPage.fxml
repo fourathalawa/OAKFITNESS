@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="anckorPaneRoot" prefHeight="554.0" prefWidth="844.0" style="-fx-background-color: #3B3F46;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminPageController">
+   <children>
+      <Label layoutX="41.0" layoutY="27.0" text="Afficher tou les reservation:" textFill="#faf5f5">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="41.0" layoutY="76.0" text="Ou bien , chercher par :" textFill="#e2dede">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="choiceBox" layoutX="218.0" layoutY="73.0" onDragDone="#serachBy" prefWidth="150.0" />
+      <TextField fx:id="valeurRechercher" layoutX="394.0" layoutY="73.0" promptText="valeur a rechercher" />
+      <Button fx:id="rechercher" layoutX="647.0" layoutY="73.0" mnemonicParsing="false" onAction="#rechercher" text="chercher" />
+      <AnchorPane layoutX="57.0" layoutY="155.0" prefHeight="300.0" prefWidth="730.0" style="-fx-background-color: #ffd7d7;">
+         <children>
+            <TableView fx:id="tableView" prefHeight="300.0" prefWidth="730.0">
+              <columns>
+                <TableColumn fx:id="id" prefWidth="90.0" text="Id" />
+                <TableColumn fx:id="clientid" prefWidth="90.0" text="Client Id" />
+                  <TableColumn fx:id="coachid" prefWidth="90.0" text="Coach Id" />
+                  <TableColumn fx:id="date" prefWidth="90.0" text="Date" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
+      <Button fx:id="supprimerTtBtn" layoutX="696.0" layoutY="481.0" mnemonicParsing="false" onAction="#supprimerTt" text="Supprimer tout" />
+      <Button fx:id="afficherTt" layoutX="228.0" layoutY="22.0" mnemonicParsing="false" onAction="#afficherTout" text="afficher tout">
+         <font>
+            
+         </font>
+      </Button>
+      <Button fx:id="ModifierSelectionnerBtn" layoutX="293.0" layoutY="481.0" mnemonicParsing="false" onAction="#modifierSelectionner" text="Modifier l'element selectionner." />
+      <Button fx:id="supprimerSelectionnerBtn" layoutX="496.0" layoutY="481.0" mnemonicParsing="false" onAction="#supprimerSelectionner" text="Supprimer l'element selectionner" />
+      <Label layoutX="342.0" layoutY="115.0" text="List des Reservation." textFill="#f8ff3a">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
