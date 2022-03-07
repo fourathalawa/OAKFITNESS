@@ -6,6 +6,8 @@ package com.mycompany.Principal;
 
 import com.mycompany.entities.Challenge;
 import com.mycompany.entities.User;
+import com.mycompany.entities.Mapa;
+
 import com.mycompany.services.ChallengeCRUD;
 import com.mycompany.services.UserCRUD;
 import com.mycompany.utils.MyConnection;
@@ -17,6 +19,10 @@ import com.mycompany.utils.MyConnection;
 public class MainClass {
 
     public static void main(String[] args) {
+      
+        
+        
+        
 //MyConnection mc =  MyConnection.getInstance();
         UserCRUD userC = new UserCRUD();
         ChallengeCRUD challengeC = new ChallengeCRUD();

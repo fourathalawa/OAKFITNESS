@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.gui.TestmapController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutY="5.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <WebView fx:id="webview" layoutY="50.0" onMouseClicked="#ajoutLocation" prefHeight="353.0" prefWidth="600.0" />
+            <ToolBar layoutY="-1.0" prefHeight="52.0" prefWidth="600.0">
+               <items>
+                  <TextField fx:id="dep" promptText="Votre localisation" />
+               </items>
+            </ToolBar>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

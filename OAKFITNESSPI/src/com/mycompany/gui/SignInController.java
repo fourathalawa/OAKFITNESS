@@ -160,6 +160,15 @@ if( id !=7)
 
     @FXML
     private void forumRedirect(ActionEvent event) {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("ForgetPassword.fxml"));
+            try {
+            Parent root = loader.load();
+            ForgetPasswordController suac = loader.getController();
+            Password.getScene().setRoot(root);
+           
+        } catch (IOException ex) {
+            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML

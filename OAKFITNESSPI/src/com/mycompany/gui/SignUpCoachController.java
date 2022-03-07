@@ -4,6 +4,7 @@
  */
 package com.mycompany.gui;
 
+import com.mycompany.entities.Mapa;
 import com.mycompany.entities.User;
 import com.mycompany.services.UserCRUD;
 import java.io.IOException;
@@ -100,6 +101,8 @@ FXMLLoader loader= new FXMLLoader(getClass().getResource("SignIn.fxml"));
 
     @FXML
     private void eventsRedirect(ActionEvent event) {
+        final Mapa example = new Mapa("test");
+		example.darMap();
     }
 
     @FXML
