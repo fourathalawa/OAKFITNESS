@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="tfimageproduitclient" prefHeight="545.0" prefWidth="841.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaces.FXMLProduitClientController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f4b301" height="309.0" layoutX="-12.0" layoutY="291.0" stroke="BLACK" strokeType="INSIDE" width="878.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3b3f46" height="299.0" layoutX="-2.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" width="866.0" />
+      <TextField fx:id="tfimageproduitcl" layoutX="347.0" layoutY="43.0" opacity="0.0" />
+      <TableView fx:id="tvclientProduit" layoutX="28.0" layoutY="103.0" onMouseClicked="#ProduitClientgetitem" prefHeight="200.0" prefWidth="785.0">
+        <columns>
+          <TableColumn fx:id="colIdProduitC" prefWidth="112.79999160766602" text="ID Product" />
+          <TableColumn fx:id="colNomProduitC" prefWidth="131.99998474121094" text="Product Name" />
+            <TableColumn fx:id="colCategProduitC" prefWidth="143.20001220703125" text="Product Category" />
+            <TableColumn fx:id="colPrixProduitC" prefWidth="107.20001220703125" text="Product Price" />
+            <TableColumn fx:id="colStockProduitC" minWidth="8.0" prefWidth="121.60003662109375" text="Product Stock" />
+            <TableColumn fx:id="colDescrProduitC" prefWidth="171.20001220703125" text="Product Descreption" />
+            <TableColumn fx:id="colImageProduitC" minWidth="0.0" prefWidth="0.0" text="Image" />
+            <TableColumn fx:id="colAvailabilityProduitC" prefWidth="71.2000732421875" text="Available" />
+        </columns>
+      </TableView>
+      <ImageView fx:id="produitimageviewclient" fitHeight="172.0" fitWidth="260.0" layoutX="292.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true" />
+      <Text layoutX="246.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To Our Shop">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="ourlogoImageProduitClient" fitHeight="68.0" fitWidth="150.0" layoutX="677.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

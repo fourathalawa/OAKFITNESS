@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package entities;
 
@@ -21,7 +22,7 @@ public class Transformation {
     private int Tlikes;
     private int IdUser;
 
-    public Transformation(int IdImage, String TitreImage, String DescreptionImage, String ImageAvant, String ImageApres, float PoidAvant, float PoidApres, float TailleAvant, float TailleApres, int IdUser) {
+    public Transformation(int IdImage, String TitreImage, String DescreptionImage, String ImageAvant, String ImageApres ,float PoidAvant, float PoidApres, float TailleAvant, float TailleApres, int IdUser,int Tlikes) {
         this.IdImage = IdImage;
         this.TitreImage = TitreImage;
         this.DescreptionImage = DescreptionImage;
@@ -31,7 +32,7 @@ public class Transformation {
         this.PoidApres = PoidApres;
         this.TailleAvant = TailleAvant;
         this.TailleApres = TailleApres;
-        this.Tlikes = 0;
+        this.Tlikes = Tlikes;
         this.IdUser = IdUser;
     }
 
@@ -44,16 +45,38 @@ public class Transformation {
         this.PoidApres = PoidApres;
         this.TailleAvant = TailleAvant;
         this.TailleApres = TailleApres;
-        this.Tlikes = 0;
         this.IdUser = IdUser;
     }
 
-    public Transformation(int Tlikes) {
-        this.Tlikes = 0;
+    public Transformation(String TitreImage, String DescreptionImage, String ImageAvant, String ImageApres, float PoidAvant, float PoidApres, float TailleAvant, float TailleApres, int IdUser,int Tlikes) {
+        this.TitreImage = TitreImage;
+        this.DescreptionImage = DescreptionImage;
+        this.ImageAvant = ImageAvant;
+        this.ImageApres = ImageApres;
+        this.PoidAvant = PoidAvant;
+        this.PoidApres = PoidApres;
+        this.TailleAvant = TailleAvant;
+        this.TailleApres = TailleApres;
+        this.Tlikes = Tlikes;
+        this.IdUser = IdUser;
     }
+
     public Transformation() {
-       this.Tlikes = 0;
+      
     }
+
+    public Transformation(int IdImage, String DescreptionImage, String ImageAvant, String ImageApres, float PoidAvant, float PoidApres, float TailleAvant, float TailleApres, int IdUser) {
+        this.IdImage = IdImage;
+        this.DescreptionImage = DescreptionImage;
+        this.ImageAvant = ImageAvant;
+        this.ImageApres = ImageApres;
+        this.PoidAvant = PoidAvant;
+        this.PoidApres = PoidApres;
+        this.TailleAvant = TailleAvant;
+        this.TailleApres = TailleApres;
+        this.IdUser = IdUser;
+    }
+
 
 
 
@@ -153,4 +176,3 @@ public class Transformation {
     }
     
 }
-

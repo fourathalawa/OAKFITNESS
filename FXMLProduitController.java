@@ -6,9 +6,15 @@
 package interfaces;
 
 import com.itextpdf.text.DocumentException;
+import com.lowagie.text.Element;
+import com.lowagie.text.FontFactory;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import entities.Produit;
+import java.awt.Desktop;
 import java.awt.Image;
 import static java.awt.PageAttributes.MediaType.C;
 import java.awt.event.MouseEvent;
@@ -26,6 +32,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -41,8 +49,12 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import static javafx.print.Paper.C;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -77,7 +89,7 @@ import javax.swing.text.Document;
  * @author kriaa
  */
 public class FXMLProduitController implements Initializable {
-    
+
     @FXML
     private TextField tfNomProduit;
     @FXML
@@ -132,6 +144,8 @@ public class FXMLProduitController implements Initializable {
     private Button btngeneratepdfProduit;
     @FXML
     private ImageView imageProduit;
+    @FXML
+    private Button graphproduitbtn;
 
     /**
      * Initializes the controller class.
@@ -145,80 +159,129 @@ public class FXMLProduitController implements Initializable {
         tfStockProduit.setDisable(true);
         lbalerteProduit.setText("");
         TextFields.bindAutoCompletion(tfCategProduit, "whey", "whey isolate", "whey premium", "mass gainer", "mass gainer anabolic ", "kreatine", "bca");
-               javafx.scene.image.Image test = new javafx.scene.image.Image("file:"+tfImageProduit.getText());
-        imageProduit.setImage(test); 
-        
+        javafx.scene.image.Image test = new javafx.scene.image.Image("file:" + tfImageProduit.getText());
+        imageProduit.setImage(test);
+
     }
-    
+
     @FXML
     private void clickoninsertProduit(ActionEvent event) {
-        //
-        //tfIsAvailable.isSelected(true);
+        String Titre = tfNomProduit.getText();
+
+        String Descrep = tfCategProduit.getText();
+
+        String imga = tfPrixProduit.getText();
+
+        String imgap = tfImageProduit.getText();
+
+        String poidap = tfDescreProduit.getText();
+
         int opt = JOptionPane.showConfirmDialog(null, "Are you sure to Insert ", "Insert", JOptionPane.YES_NO_OPTION);
-        
-        if(opt==0){String NomProduit = tfNomProduit.getText();
-        String CategProduit = tfCategProduit.getText();
-        String DescrProduit = tfDescreProduit.getText();
-        float PrixProduit = Float.parseFloat(tfPrixProduit.getText());
-        int IsAvailable = Integer.parseInt(tfIsAvailable.getText());
-        String ImageProduit = tfImageProduit.getText();
-        int StockProduit = Integer.parseInt(tfStockProduit.getText());
-        Produit p = new Produit(NomProduit, CategProduit, DescrProduit, PrixProduit, IsAvailable, ImageProduit, StockProduit);
-        ProduitCRUD ps = new ProduitCRUD();
-        ps.ajouterProduit(p);
-        afficherProduitTv();
-        afficherChiffreAffaire();
-        tfIsAvailable.setText("0");
-        javafx.scene.image.Image test = new javafx.scene.image.Image("file:"+tfImageProduit.getText());
-        imageProduit.setImage(test); 
+        if (Titre.isEmpty() || Descrep.isEmpty() || imga.isEmpty() || imgap.isEmpty() || poidap.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please Fill All DATA");
+            alert.showAndWait();
+
+        } else {
+
+            if (opt == 0) {
+                String NomProduit = tfNomProduit.getText();
+                String CategProduit = tfCategProduit.getText();
+                String DescrProduit = tfDescreProduit.getText();
+                float PrixProduit = Float.parseFloat(tfPrixProduit.getText());
+                int IsAvailable = Integer.parseInt(tfIsAvailable.getText());
+                String ImageProduit = tfImageProduit.getText();
+                int StockProduit = Integer.parseInt(tfStockProduit.getText());
+                Produit p = new Produit(NomProduit, CategProduit, DescrProduit, PrixProduit, IsAvailable, ImageProduit, StockProduit);
+                ProduitCRUD ps = new ProduitCRUD();
+                ps.ajouterProduit(p);
+                afficherProduitTv();
+                afficherChiffreAffaire();
+                tfIsAvailable.setText("0");
+                javafx.scene.image.Image test = new javafx.scene.image.Image("file:" + tfImageProduit.getText());
+                imageProduit.setImage(test);
+            }
         }
     }
-    
+
     @FXML
     private void onclickdeleteproduit(ActionEvent event) {
+
+        String id = tfIdProduit.getText();
         int opt = JOptionPane.showConfirmDialog(null, "Are you sure to Delete ", "Delete", JOptionPane.YES_NO_OPTION);
-        if(opt==0){int IdProduit = Integer.parseInt(tfIdProduit.getText());
-        ProduitCRUD ps = new ProduitCRUD();
-        ps.supprimerProduit(IdProduit);
-        afficherProduitTv();
-        afficherChiffreAffaire();
-        tfIsAvailable.setText("0");}
-        
-    }
-    
-    @FXML
-    private void onclickupdateproduit(ActionEvent event) {
-        int opt = JOptionPane.showConfirmDialog(null, "Are you sure to Update ", "Update", JOptionPane.YES_NO_OPTION);
-        if(opt==0){int IdProduit = Integer.parseInt(tfIdProduit.getText());
-        String NomProduit = tfNomProduit.getText();
-        String CategProduit = tfCategProduit.getText();
-        String DescrProduit = tfDescreProduit.getText();
-        float PrixProduit = Float.parseFloat(tfPrixProduit.getText());
-        int IsAvailable = Integer.parseInt(tfIsAvailable.getText());
-        String ImageProduit = tfImageProduit.getText();
-        int StockProduit = Integer.parseInt(tfStockProduit.getText());
-        Produit p = new Produit(NomProduit, CategProduit, DescrProduit, PrixProduit, IsAvailable, ImageProduit, StockProduit);
-        ProduitCRUD ps = new ProduitCRUD();
-        ps.modifierProduit(p, IdProduit);
-        afficherProduitTv();
-        afficherChiffreAffaire();
+        if (id.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please Fill All DATA");
+            alert.showAndWait();
+
+        } else {
+            if (opt == 0) {
+                int IdProduit = Integer.parseInt(tfIdProduit.getText());
+                ProduitCRUD ps = new ProduitCRUD();
+                ps.supprimerProduit(IdProduit);
+                afficherProduitTv();
+                afficherChiffreAffaire();
+                tfIsAvailable.setText("0");
+            }
 
         }
     }
-    
+
+    @FXML
+    private void onclickupdateproduit(ActionEvent event) {
+        String id = tfIdProduit.getText();
+        String Titre = tfNomProduit.getText();
+
+        String Descrep = tfCategProduit.getText();
+
+        String imga = tfPrixProduit.getText();
+
+        String imgap = tfImageProduit.getText();
+
+        String poidap = tfDescreProduit.getText();
+
+        int opt = JOptionPane.showConfirmDialog(null, "Are you sure to Update ", "Update", JOptionPane.YES_NO_OPTION);
+        if (id.isEmpty() || Titre.isEmpty() || Descrep.isEmpty() || imga.isEmpty() || imgap.isEmpty() || poidap.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please Fill All DATA");
+            alert.showAndWait();
+
+        } else {
+            if (opt == 0) {
+                int IdProduit = Integer.parseInt(tfIdProduit.getText());
+                String NomProduit = tfNomProduit.getText();
+                String CategProduit = tfCategProduit.getText();
+                String DescrProduit = tfDescreProduit.getText();
+                float PrixProduit = Float.parseFloat(tfPrixProduit.getText());
+                int IsAvailable = Integer.parseInt(tfIsAvailable.getText());
+                String ImageProduit = tfImageProduit.getText();
+                int StockProduit = Integer.parseInt(tfStockProduit.getText());
+                Produit p = new Produit(NomProduit, CategProduit, DescrProduit, PrixProduit, IsAvailable, ImageProduit, StockProduit);
+                ProduitCRUD ps = new ProduitCRUD();
+                ps.modifierProduit(p, IdProduit);
+                afficherProduitTv();
+                afficherChiffreAffaire();
+
+            }
+        }
+    }
+
     @FXML
     private void getAvailable(ActionEvent event) {
         if (tfIsAvailable.isSelected()) {
             tfIsAvailable.setText("1");
             tfStockProduit.setDisable(false);
-            
+
         } else {
             tfIsAvailable.setText("0");
             tfStockProduit.setDisable(true);
             tfStockProduit.setText("0");
         }
     }
-    
+
     @FXML
     private void get_selected_items(javafx.scene.input.MouseEvent event) {
         Produit p = tvProduit.getSelectionModel().getSelectedItem();
@@ -237,13 +300,12 @@ public class FXMLProduitController implements Initializable {
         tfImageProduit.setText(p.getImageProduit());
         tfStockProduit.setText(String.valueOf(p.getStockProduit()));
         tfDescreProduit.setText(p.getDescrProduit());
-        
-       javafx.scene.image.Image test = new javafx.scene.image.Image("file:"+tfImageProduit.getText());
-        imageProduit.setImage(test); 
-       
-              
+
+        javafx.scene.image.Image test = new javafx.scene.image.Image("file:" + tfImageProduit.getText());
+        imageProduit.setImage(test);
+
     }
-    
+
     @FXML
     private void vider_text_field(javafx.scene.input.MouseEvent event) {
         tfIdProduit.setText("");
@@ -257,23 +319,23 @@ public class FXMLProduitController implements Initializable {
         tfStockProduit.setText("0");
         tfDescreProduit.setText("");
         lbalerteProduit.setText("");
-        javafx.scene.image.Image test = new javafx.scene.image.Image("file:"+tfImageProduit.getText());
-        imageProduit.setImage(test); 
+        javafx.scene.image.Image test = new javafx.scene.image.Image("file:" + tfImageProduit.getText());
+        imageProduit.setImage(test);
     }
-    
+
     @FXML
     private void onclicktrierNameProduit(ActionEvent event) {
         rbTriPrixProduit.setSelected(false);
         afficherProduitTrierNomTv();
-        
+
     }
-    
+
     @FXML
     private void onclicktrierPrixProduit(ActionEvent event) {
         rbTriNomProduit.setSelected(false);
         afficherProduitTrierPrixTv();
     }
-    
+
     @FXML
     private void ontypestockProduit(KeyEvent event) {
         String s = event.getCharacter();
@@ -282,13 +344,13 @@ public class FXMLProduitController implements Initializable {
             event.consume();
         }
     }
-    
+
     @FXML
     private void OnMouseClickedStock(javafx.scene.input.MouseEvent event) {
-        
+
         lbalerteProduit.setText(" Stock Must Be A Number !");
     }
-    
+
     @FXML
     private void ontypedprixproduit(KeyEvent event) {
         String s = event.getCharacter();
@@ -298,13 +360,13 @@ public class FXMLProduitController implements Initializable {
             event.consume();
         }
     }
-    
+
     @FXML
     private void OnMouseClickedPrixProduit(javafx.scene.input.MouseEvent event) {
         lbalerteProduit.setText(" Price Must Be A Number !");
-        
+
     }
-    
+
     @FXML
     private void OnMouseClickedDescreptionProduit(javafx.scene.input.MouseEvent event) {
         lbalerteProduit.setText(" Do not exceed 25 characters, including spaces and punctuation!");
@@ -317,34 +379,34 @@ public class FXMLProduitController implements Initializable {
         if (s.length() > 24) {
             event.consume();
         }
-        
+
     }
 
     @FXML
     private void OnMouseClickedNomProduit(javafx.scene.input.MouseEvent event) {
         lbalerteProduit.setText(" Product Name Must Be UPCASE and CONCAT!");
     }
-    
+
     @FXML
-    private void OnKeyTypedNomProduit(KeyEvent event) {  
+    private void OnKeyTypedNomProduit(KeyEvent event) {
         String s = event.getCharacter();
         char c = s.charAt(0);
         if (!Character.isUpperCase(c)) {
             event.consume();
         }
     }
-    
-       @FXML
+
+    @FXML
     private void OnMouseClickedCategProduit(javafx.scene.input.MouseEvent event) {
         lbalerteProduit.setText("");
     }
-    
-        @FXML
+
+    @FXML
     private void OnMouseClickedImageProduit(javafx.scene.input.MouseEvent event) {
         lbalerteProduit.setText("");
-       
+
     }
-    
+
     @FXML
     private void onclickchoosefileProduit(ActionEvent event) {
         Stage stage = null;
@@ -359,11 +421,11 @@ public class FXMLProduitController implements Initializable {
         }
     }
     Connection cnxx;
-    
+
     public FXMLProduitController() {
         cnxx = MyConnection.getInstance().getCnx();
     }
-    
+
     public void afficherProduitTv() {
         ProduitCRUD ps = new ProduitCRUD();
         List<Produit> list = ps.afficherProduit();
@@ -382,14 +444,14 @@ public class FXMLProduitController implements Initializable {
         colDescreptionProduit.setCellValueFactory(new PropertyValueFactory<>("DescrProduit"));
         tvProduit.setItems((ObservableList<Produit>) list);
     }
-    
+
     public void afficherChiffreAffaire() {
         ProduitCRUD ps = new ProduitCRUD();
         float ca = ps.calculerChiffreAffaire();
         labelca.setText(String.valueOf(ca));
 
     }
-    
+
     public void afficherProduitTrierNomTv() {
         ProduitCRUD ps = new ProduitCRUD();
         List<Produit> list = ps.afficherProduitTrier1();
@@ -403,7 +465,7 @@ public class FXMLProduitController implements Initializable {
         colDescreptionProduit.setCellValueFactory(new PropertyValueFactory<>("DescrProduit"));
         tvProduit.setItems((ObservableList<Produit>) list);
     }
-    
+
     public void afficherProduitTrierPrixTv() {
         ProduitCRUD ps = new ProduitCRUD();
         List<Produit> list = ps.afficherProduitTrierPrix();
@@ -419,62 +481,81 @@ public class FXMLProduitController implements Initializable {
     }
 
     @FXML
-    private void onclickedgeneratepdfProduit(javafx.scene.input.MouseEvent event) throws com.lowagie.text.DocumentException {
-        String path="";
-        JFileChooser j =new JFileChooser();
+    private void onclickedgeneratepdfProduit(javafx.scene.input.MouseEvent event) throws com.lowagie.text.DocumentException, IOException {
+        String path = "";
+        JFileChooser j = new JFileChooser();
         j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int x=j.showSaveDialog(j);
-        if(x==JFileChooser.APPROVE_OPTION)
-        {
-        path = j.getSelectedFile().getPath();
-        } 
-        
-        com.lowagie.text.Document doc = new com.lowagie.text.Document();
-         try{
-         PdfWriter.getInstance(doc, new FileOutputStream(path+".pdf"));
-         doc.open();
-        
-         PdfPTable tbl= new PdfPTable(7);
-        
-         tbl.addCell("ID Product");
-         tbl.addCell("Product Name");
-         tbl.addCell("Product Category");
-         tbl.addCell("Product Price");
-         tbl.addCell("Product Availability");
-         tbl.addCell("Product Stock");
-         tbl.addCell("Product Descreption");
-         for(int i=0 ; i < tvProduit.getItems().size() ;i++ )
-         {
-         Produit p =tvProduit.getItems().get(i);
-         String  idProduit  =String.valueOf( p.getIdProduit());
-         String  nameProduit  =String.valueOf( p.getNomProduit());
-         String  CategoryProduit  =String.valueOf( p.getCategProduit());
-         String  PriceProduit  =String.valueOf( p.getPrixProduit());
-         String  AvailabilityProduit  =String.valueOf( p.getIsAvailable());
-         String  StockProduit  =String.valueOf( p.getStockProduit());
-         String  DescreptionProduit  =String.valueOf( p.getDescrProduit());
-        
-         tbl.addCell(idProduit);
-         tbl.addCell(nameProduit);
-         tbl.addCell(CategoryProduit);
-         tbl.addCell(PriceProduit);
-         tbl.addCell(AvailabilityProduit);
-         tbl.addCell(StockProduit );
-         tbl.addCell(DescreptionProduit);
-         
-        
-         }
-         
-          doc.add(tbl);
-         }catch(FileNotFoundException ex){Logger.getLogger(ProduitMain.class.getName()).log(Level.SEVERE,null,ex);
-         }
+        int x = j.showSaveDialog(j);
+        if (x == JFileChooser.APPROVE_OPTION) {
+            path = j.getSelectedFile().getPath();
+        }
 
+        com.lowagie.text.Document doc = new com.lowagie.text.Document();
+        try {
+            PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream(path + ".pdf"));
+            doc.open();
+            //javafx.scene.image.Image test = new javafx.scene.image.Image("file:" + tfImageProduit.getText());
+            //doc.
+            PdfPTable tbl = new PdfPTable(7);
+
+            tbl.addCell("ID Product");
+            tbl.addCell("Product Name");
+            tbl.addCell("Product Category");
+            tbl.addCell("Product Price");
+            tbl.addCell("Product Availability");
+            tbl.addCell("Product Stock");
+            tbl.addCell("Product Descreption");
+            for (int i = 0; i < tvProduit.getItems().size(); i++) {
+                Produit p = tvProduit.getItems().get(i);
+                String idProduit = String.valueOf(p.getIdProduit());
+                String nameProduit = String.valueOf(p.getNomProduit());
+                String CategoryProduit = String.valueOf(p.getCategProduit());
+                String PriceProduit = String.valueOf(p.getPrixProduit());
+                String AvailabilityProduit = String.valueOf(p.getIsAvailable());
+                String StockProduit = String.valueOf(p.getStockProduit());
+                String DescreptionProduit = String.valueOf(p.getDescrProduit());
+
+                tbl.addCell(idProduit);
+                tbl.addCell(nameProduit);
+                tbl.addCell(CategoryProduit);
+                tbl.addCell(PriceProduit);
+                tbl.addCell(AvailabilityProduit);
+                tbl.addCell(StockProduit);
+                tbl.addCell(DescreptionProduit);
+
+            }
+            //javafx.scene.image.Image p = new javafx.scene.image.Image("file:C:\\Users\\kriaa\\Desktop\\produit\\ok.png");
+            Paragraph preface1 = new Paragraph("OAKFITNESS", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 15f));
+            preface1.setAlignment(Element.ALIGN_CENTER);
+            Paragraph preface2 = new Paragraph("Product List", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 15f));
+            preface2.setAlignment(Element.ALIGN_LEFT);
+            doc.add(preface1);
+            doc.add(preface2);
+
+            tbl.setSpacingBefore(50);
+            doc.add(tbl);
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ProduitMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         doc.close();
-        
+        Desktop.getDesktop().open(new File(path + ".pdf"));
+
     }
 
+    @FXML
+    private void onclickedgraphproduit(javafx.scene.input.MouseEvent event) throws IOException {
+        
+         Stage stage = new Stage();
+   Parent root = FXMLLoader.load(getClass().getResource("FXMLProduitGraph.fxml"));
+        
+        Scene scene = new Scene(root);
+        
+        stage.setScene(scene);
+        stage.show();
+           
 
+    }
 
- 
 }

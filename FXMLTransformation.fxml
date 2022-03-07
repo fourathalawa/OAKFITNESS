@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="490.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaces.FXMLTransformationController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f4b301" height="234.0" layoutY="259.0" stroke="BLACK" strokeType="INSIDE" width="1114.0" />
+      <ImageView fx:id="imageavanttrans" fitHeight="150.0" fitWidth="200.0" layoutX="379.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageaprestrans" fitHeight="150.0" fitWidth="200.0" layoutX="579.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true" />
+      <TableView fx:id="tvTransfadmin" layoutY="58.0" onMouseClicked="#slectitemtransadmin" prefHeight="200.0" prefWidth="1114.0">
+        <columns>
+          <TableColumn fx:id="colIDTransformation" prefWidth="112.79992520809174" text="ID Transformation" />
+          <TableColumn fx:id="colTitle" prefWidth="72.79999542236328" text="Title" />
+            <TableColumn fx:id="colDescreption" prefWidth="99.199951171875" text="Descreption" />
+            <TableColumn fx:id="colImageBefore" prefWidth="99.199951171875" text="Image Before" />
+            <TableColumn fx:id="colImageAfter" prefWidth="99.199951171875" text="Image After" />
+            <TableColumn fx:id="colWeightBefore" prefWidth="99.199951171875" text="Weight Before" />
+            <TableColumn fx:id="colWeightAfter" prefWidth="99.199951171875" text="Weight After" />
+            <TableColumn fx:id="colHeightBefore" prefWidth="109.5999755859375" text="Height Before" />
+            <TableColumn fx:id="colHeightAfter" prefWidth="108.0" text="Height After" />
+            <TableColumn fx:id="colVotes" prefWidth="118.4000244140625" text="Votes" />
+            <TableColumn fx:id="colIDUSERtrans" prefWidth="96.7999267578125" text="ID USER" />
+        </columns>
+      </TableView>
+      <TextField fx:id="tfimav" layoutX="14.0" layoutY="448.0" opacity="0.0" prefHeight="26.0" prefWidth="62.0" />
+      <TextField fx:id="tfimap" layoutX="14.0" layoutY="423.0" opacity="0.0" prefHeight="26.0" prefWidth="62.0" />
+      <TextField fx:id="tfvotes" layoutX="14.0" layoutY="398.0" opacity="0.0" prefHeight="26.0" prefWidth="62.0" />
+      <Text layoutX="534.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="votes" />
+      <Text fx:id="txtvotes" layoutX="579.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="12.79998779296875" />
+      <Button layoutX="1049.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#Deletetransformation" text="Delete " />
+      <TextField fx:id="idTrans" layoutX="14.0" layoutY="359.0" opacity="0.0" prefHeight="26.0" prefWidth="62.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3b3f46" height="59.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="1114.0" />
+      <Pane fx:id="paneanimationtrans" layoutX="429.0" layoutY="6.0" prefHeight="48.0" prefWidth="265.0">
+         <children>
+            <Label layoutX="33.0" layoutY="14.0" prefHeight="21.0" prefWidth="200.0" text="TRANSFORMATION HUB" textFill="#f4b301">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -10,18 +10,21 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane id="AnchorPane" prefHeight="451.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaces.FXMLProduitController">
+<AnchorPane id="AnchorPane" prefHeight="451.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaces.FXMLProduitController">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3b3f46" height="310.0" layoutX="-9.0" layoutY="-22.0" stroke="BLACK" strokeType="INSIDE" width="1015.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f4b301" height="165.0" layoutY="286.0" stroke="BLACK" strokeType="INSIDE" width="1006.0" />
       <VBox layoutX="14.0" layoutY="25.0" prefHeight="246.0" prefWidth="126.0">
          <children>
-            <Label prefHeight="25.0" prefWidth="126.0" text="Product Name :" />
-            <Label layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="126.0" text="Category :" />
-            <Label layoutX="10.0" layoutY="58.0" prefHeight="29.0" prefWidth="126.0" text="Price :" />
-            <Label layoutX="10.0" layoutY="82.0" prefHeight="30.0" prefWidth="126.0" text="Is Available  :" />
-            <Label layoutX="10.0" layoutY="106.0" prefHeight="28.0" prefWidth="126.0" text="Image  :" />
-            <Label layoutX="10.0" layoutY="130.0" prefHeight="28.0" prefWidth="126.0" text="Stock :" />
-            <Label layoutX="10.0" layoutY="34.0" prefHeight="43.0" prefWidth="100.0" text="Descreption :" />
+            <Label prefHeight="25.0" prefWidth="126.0" text="Product Name :" textFill="WHITE" />
+            <Label layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="126.0" text="Category :" textFill="WHITE" />
+            <Label layoutX="10.0" layoutY="58.0" prefHeight="29.0" prefWidth="126.0" text="Price :" textFill="WHITE" />
+            <Label layoutX="10.0" layoutY="82.0" prefHeight="30.0" prefWidth="126.0" text="Is Available  :" textFill="WHITE" />
+            <Label layoutX="10.0" layoutY="106.0" prefHeight="28.0" prefWidth="126.0" text="Image  :" textFill="WHITE" />
+            <Label layoutX="10.0" layoutY="130.0" prefHeight="28.0" prefWidth="126.0" text="Stock :" textFill="WHITE" />
+            <Label layoutX="10.0" layoutY="34.0" prefHeight="43.0" prefWidth="100.0" text="Descreption :" textFill="WHITE" />
          </children>
       </VBox>
       <VBox layoutX="143.0" layoutY="25.0" prefHeight="206.0" prefWidth="126.0">
@@ -29,13 +32,13 @@
             <TextField fx:id="tfNomProduit" onKeyTyped="#OnKeyTypedNomProduit" onMouseClicked="#OnMouseClickedNomProduit" prefHeight="18.0" prefWidth="126.0" />
             <TextField fx:id="tfCategProduit" layoutX="10.0" layoutY="10.0" onMouseClicked="#OnMouseClickedCategProduit" prefHeight="18.0" prefWidth="126.0" />
             <TextField fx:id="tfPrixProduit" layoutX="10.0" layoutY="36.0" onKeyTyped="#ontypedprixproduit" onMouseClicked="#OnMouseClickedPrixProduit" prefHeight="18.0" prefWidth="126.0" />
-            <RadioButton fx:id="tfIsAvailable" mnemonicParsing="false" onAction="#getAvailable" text="RadioButton" />
+            <RadioButton fx:id="tfIsAvailable" mnemonicParsing="false" onAction="#getAvailable" text="RadioButton" textFill="WHITE" />
             <TextField fx:id="tfImageProduit" layoutX="10.0" layoutY="87.0" onMouseClicked="#OnMouseClickedImageProduit" prefHeight="18.0" prefWidth="126.0" promptText="Manually" />
             <TextField fx:id="tfStockProduit" layoutX="10.0" layoutY="112.0" onKeyTyped="#ontypestockProduit" onMouseClicked="#OnMouseClickedStock" prefHeight="6.0" prefWidth="126.0" />
             <TextField fx:id="tfDescreProduit" layoutX="10.0" layoutY="138.0" onKeyTyped="#OnKeyTypedDescreption" onMouseClicked="#OnMouseClickedDescreptionProduit" prefHeight="54.0" prefWidth="100.0" />
          </children>
       </VBox>
-      <TableView fx:id="tvProduit" layoutX="296.0" layoutY="26.0" onMouseClicked="#get_selected_items" prefHeight="262.0" prefWidth="632.0">
+      <TableView fx:id="tvProduit" layoutX="294.0" layoutY="26.0" onMouseClicked="#get_selected_items" prefHeight="262.0" prefWidth="632.0">
         <columns>
           <TableColumn fx:id="colIdProduit" prefWidth="37.60003662109375" text="ID" />
           <TableColumn fx:id="colNameProduit" prefWidth="84.0" text="Name" />
@@ -50,21 +53,22 @@
       <Button fx:id="btnInsertproduit" layoutX="14.0" layoutY="315.0" mnemonicParsing="false" onAction="#clickoninsertProduit" prefHeight="26.0" prefWidth="72.0" text="Insert" />
       <Button fx:id="btndeleteproduit" layoutX="98.0" layoutY="315.0" mnemonicParsing="false" onAction="#onclickdeleteproduit" prefHeight="26.0" prefWidth="72.0" text="Delete" />
       <Button fx:id="btnupdateproduit" layoutX="180.0" layoutY="315.0" mnemonicParsing="false" onAction="#onclickupdateproduit" prefHeight="26.0" prefWidth="72.0" text="Update" />
-      <Label layoutX="14.0" layoutY="5.0" text="ID" />
+      <Label layoutX="14.0" layoutY="5.0" text="ID" textFill="WHITE" />
       <TextField fx:id="tfIdProduit" layoutX="140.0" layoutY="-8.0" prefHeight="13.0" prefWidth="60.0" />
       <Button layoutX="200.0" layoutY="-8.0" mnemonicParsing="false" onMouseClicked="#vider_text_field" prefHeight="18.0" prefWidth="30.0" text="&quot; &quot;" />
       <Label layoutX="509.0" layoutY="319.0" text="Sales revenue :" />
       <Label fx:id="labelca" layoutX="626.0" layoutY="319.0" prefHeight="18.0" prefWidth="47.0" text="Label" />
-      <Label layoutX="704.0" layoutY="5.0" text="Tri :" />
-      <RadioButton fx:id="rbTriNomProduit" layoutX="739.0" layoutY="5.0" mnemonicParsing="false" onAction="#onclicktrierNameProduit" text="Name" />
-      <RadioButton fx:id="rbTriPrixProduit" layoutX="813.0" layoutY="5.0" mnemonicParsing="false" onAction="#onclicktrierPrixProduit" text="Price" />
+      <Label layoutX="704.0" layoutY="5.0" text="Tri :" textFill="WHITE" />
+      <RadioButton fx:id="rbTriNomProduit" layoutX="739.0" layoutY="5.0" mnemonicParsing="false" onAction="#onclicktrierNameProduit" text="Name" textFill="WHITE" />
+      <RadioButton fx:id="rbTriPrixProduit" layoutX="813.0" layoutY="5.0" mnemonicParsing="false" onAction="#onclicktrierPrixProduit" text="Price" textFill="WHITE" />
       <Button fx:id="btnchooseProduit" layoutX="269.0" layoutY="144.0" mnemonicParsing="false" onAction="#onclickchoosefileProduit" prefHeight="26.0" prefWidth="30.0" text="..." />
       <Label fx:id="lbalerteProduit" layoutX="4.0" layoutY="263.0" prefHeight="18.0" prefWidth="290.0" textFill="#08a61d" />
       <ButtonBar layoutX="728.0" layoutY="397.0" prefHeight="40.0" prefWidth="200.0">
         <buttons>
-          <Button fx:id="btngeneratepdfProduit" graphicTextGap="9.0" mnemonicParsing="false" onMouseClicked="#onclickedgeneratepdfProduit" prefHeight="26.0" prefWidth="100.0" text="Generate PDF" textAlignment="CENTER" textFill="#058414" underline="true" />
+          <Button fx:id="btngeneratepdfProduit" graphicTextGap="9.0" mnemonicParsing="false" onMouseClicked="#onclickedgeneratepdfProduit" prefHeight="26.0" prefWidth="100.0" text="Generate PDF" textAlignment="CENTER" underline="true" />
         </buttons>
       </ButtonBar>
-      <ImageView fx:id="imageProduit" fitHeight="165.0" fitWidth="234.0" layoutX="259.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageProduit" fitHeight="156.0" fitWidth="234.0" layoutX="259.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="graphproduitbtn" layoutX="672.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#onclickedgraphproduit" text="Graph" />
    </children>
 </AnchorPane>

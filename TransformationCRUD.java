@@ -1,11 +1,11 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package services;
 
 import entities.Transformation;
-import utils.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,8 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import utils.MyConnection;
 
 /**
  *
@@ -30,7 +30,7 @@ public class TransformationCRUD {
 
     public void ajouterTransformation(Transformation t) {
 
-        String req = "INSERT INTO transformation (TitreImage,DescreptionImage,ImageAvant,ImageApres,PoidAvant,PoidApres,TailleAvant,TailleApres,IdUser) VALUES (?,?,?,?,?,?,?,?,?)";
+        String req = "INSERT INTO transformation (TitreImage,DescreptionImage,ImageAvant,ImageApres,PoidAvant,PoidApres,TailleAvant,TailleApres,IdUser,Tlike) VALUES (?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement pst;
         try {
             pst = cnxx.prepareStatement(req);
@@ -43,6 +43,7 @@ public class TransformationCRUD {
             pst.setFloat(7, t.getTailleAvant());
             pst.setFloat(8, t.getTailleApres());
             pst.setInt(9, t.getIdUser());
+            pst.setInt(10, t.getTlikes());
             pst.executeUpdate();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -52,7 +53,7 @@ public class TransformationCRUD {
 
     public List<Transformation> afficherTransformation() {
 
-        List<Transformation> myList = new ArrayList();
+        List<Transformation> myList = FXCollections.observableArrayList();
 
         try {
             Statement st = cnxx.createStatement();
@@ -67,12 +68,12 @@ public class TransformationCRUD {
                 per.setDescreptionImage(rs.getString("DescreptionImage"));
                 per.setImageAvant(rs.getString("ImageAvant"));
                 per.setImageApres(rs.getString("ImageApres"));
-                per.setImageAvant(rs.getString("PoidAvant"));
-                per.setImageApres(rs.getString("PoidApres"));
-                per.setImageAvant(rs.getString("TailleAvant"));
-                per.setImageApres(rs.getString("TailleApres"));
-                per.setTlikes(rs.getInt("Tlike"));
+                per.setPoidAvant(rs.getFloat("PoidAvant"));
+                per.setPoidApres(rs.getFloat("PoidApres"));
+                per.setTailleAvant(rs.getFloat("TailleAvant"));
+                per.setTailleApres(rs.getFloat("TailleApres"));
                 per.setIdUser(rs.getInt("IdUser"));
+                per.setTlikes(rs.getInt("Tlike"));
                 myList.add(per);
             }
         } catch (SQLException ex) {
@@ -114,7 +115,7 @@ public class TransformationCRUD {
 
 public List<Transformation> afficherTransformationTrier1() {
 
-        List<Transformation> myList = new ArrayList();
+        List<Transformation> myList = FXCollections.observableArrayList();
 
         try {
             Statement st = cnxx.createStatement();
@@ -133,8 +134,8 @@ public List<Transformation> afficherTransformationTrier1() {
                 per.setPoidApres(rs.getFloat("PoidApres"));
                 per.setTailleAvant(rs.getFloat("TailleAvant"));
                 per.setTailleApres(rs.getFloat("TailleApres"));
-                per.setTlikes(rs.getInt("Tlike"));
                 per.setIdUser(rs.getInt("IdUser"));
+                per.setTlikes(rs.getInt("Tlike"));
                 myList.add(per);
             }
         } catch (SQLException ex) {
@@ -171,7 +172,7 @@ public float calculerApresIMC(int IdImage) {
 
 		float reponse=0;
 		
-		String requete="SELECT (PoidApres/(TailleApres*TailleApres)) As Imc FROM transformation WHERE IdImage = '" + IdImage + "'";//limit 1
+		String requete="SELECT (PoidApres/(TailleApres*TailleApres)) As Imca FROM transformation WHERE IdImage = '" + IdImage + "'";//limit 1
 		
 		
 		
@@ -181,7 +182,7 @@ public float calculerApresIMC(int IdImage) {
 			Statement st = cnxx.createStatement();
 			res = st.executeQuery(requete);
 			if(res.next()) {
-				reponse = res.getFloat("Imc");
+				reponse = res.getFloat("Imca");
 			}
 		} catch (SQLException ex) {
 			// TODO Auto-generated catch block
@@ -221,7 +222,7 @@ public void unLikeTransformation(int IdImage) {
 //
 public List<Transformation> afficherTransformationLike() {
 
-        List<Transformation> myList = new ArrayList();
+        List<Transformation> myList = FXCollections.observableArrayList();
 
         try {
             Statement st = cnxx.createStatement();
@@ -239,9 +240,9 @@ public List<Transformation> afficherTransformationLike() {
                 per.setPoidAvant(rs.getFloat("PoidAvant"));
                 per.setPoidApres(rs.getFloat("PoidApres"));
                 per.setTailleAvant(rs.getFloat("TailleAvant"));
-                per.setTailleApres(rs.getFloat("TailleApres"));
-                per.setTlikes(rs.getInt("Tlike"));
+                per.setTailleApres(rs.getFloat("TailleApres"));              
                 per.setIdUser(rs.getInt("IdUser"));
+                per.setTlikes(rs.getInt("Tlike"));
                 myList.add(per);
             }
         } catch (SQLException ex) {
@@ -251,4 +252,3 @@ public List<Transformation> afficherTransformationLike() {
         return myList;
     }
 }
-

@@ -1,10 +1,11 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package services;
+
 import entities.Produit;
-import utils.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,8 +13,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import utils.MyConnection;
+
 /**
  *
  * @author kriaa
@@ -44,7 +46,7 @@ public class ProduitCRUD {
     }
     public List<Produit> afficherProduit() {
 
-        List<Produit> myList = new ArrayList();
+        List<Produit> myList = FXCollections.observableArrayList();
 
         try {
             Statement st = cnxx.createStatement();
@@ -103,7 +105,7 @@ try {
     }
 public List<Produit> afficherProduitTrier1() {
 
-        List<Produit> myList = new ArrayList();
+        List<Produit> myList = FXCollections.observableArrayList();
 
         try {
             Statement st = cnxx.createStatement();
@@ -129,7 +131,34 @@ public List<Produit> afficherProduitTrier1() {
         }
         return myList;
     }
+public List<Produit> afficherProduitTrierPrix() {
 
+        List<Produit> myList = FXCollections.observableArrayList();
+
+        try {
+            Statement st = cnxx.createStatement();
+            String req = "SELECT * FROM produit ORDER BY PrixProduit";
+            ResultSet rs;
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                Produit per = new Produit();
+                per.setIdProduit(rs.getInt("IdProduit"));
+                per.setNomProduit(rs.getString("NomProduit"));
+                per.setCategProduit(rs.getString("CategProduit"));
+                per.setDescrProduit(rs.getString("DescrProduit"));
+                per.setPrixProduit(rs.getFloat("PrixProduit"));
+                per.setIsAvailable(rs.getInt("IsAvailable"));
+                per.setImageProduit(rs.getString("ImageProduit"));
+                per.setStockProduit(rs.getInt("StockProduit")); 
+                myList.add(per);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            //   return null;
+        }
+        return myList;
+    }
 public float calculerChiffreAffaire() {
 		float reponse=0;
 		
@@ -155,4 +184,3 @@ public float calculerChiffreAffaire() {
 //rechereche critére 
 
 }
-

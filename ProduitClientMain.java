@@ -19,11 +19,11 @@ import javafx.stage.Stage;
  *
  * @author kriaa
  */
-public class ProduitMain extends Application {
+public class ProduitClientMain extends Application {
     
     @Override
    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLProduit.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLProduitClient.fxml"));
         
         Scene scene = new Scene(root);
         

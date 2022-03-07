@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="690.0" prefWidth="1187.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaces.FXMLTransformationClientController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3b3f46" height="432.0" layoutY="-4.0" stroke="BLACK" strokeType="INSIDE" width="1359.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f4b301" height="279.0" layoutX="-16.0" layoutY="423.0" stroke="BLACK" strokeType="INSIDE" width="1375.0" />
+      <VBox layoutX="14.0" layoutY="33.0" prefHeight="298.0" prefWidth="127.0">
+         <children>
+            <Label prefHeight="28.0" prefWidth="127.0" text="ID Transformation" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="36.0" prefWidth="122.0" text="Title" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="36.0" prefWidth="124.0" text="Descreption" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="38.0" prefWidth="124.0" text="Image Before" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="35.0" prefWidth="124.0" text="Image After" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="124.0" text="weight Before" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="34.0" prefWidth="124.0" text="weight After" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="34.0" prefWidth="124.0" text="height Before" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="33.0" prefWidth="124.0" text="height After" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <TableView fx:id="tvtrans" layoutX="306.0" layoutY="20.0" onMouseClicked="#selectitemsTranscl" prefHeight="406.0" prefWidth="753.0">
+        <columns>
+          <TableColumn fx:id="colidtrans" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="coltitretrans" prefWidth="75.0" text="Title" />
+            <TableColumn fx:id="coldescreptrans" prefWidth="75.0" text="Descreption" />
+            <TableColumn fx:id="colimagebeftrans" prefWidth="75.0" text=" Imagebef" />
+            <TableColumn fx:id="colimageaftrans" prefWidth="75.0" text="imageAf" />
+            <TableColumn fx:id="colpoidbeftrans" prefWidth="75.0" text="WeightBef" />
+            <TableColumn fx:id="colpoidaftrans" prefWidth="75.0" text="weightAf" />
+            <TableColumn fx:id="coltaillebeftran" prefWidth="75.0" text="HeightBef" />
+            <TableColumn fx:id="coltailleaftran" prefWidth="75.0" text="HeightAf" />
+            <TableColumn fx:id="colIdUsertran" prefWidth="75.0" text="USER" />
+            <TableColumn fx:id="colliketran" prefWidth="75.0" sortType="DESCENDING" text="upVotes" />
+        </columns>
+      </TableView>
+      <VBox layoutX="162.0" layoutY="33.0" prefHeight="335.0" prefWidth="100.0">
+         <children>
+            <TextField fx:id="tfTransClId" prefHeight="34.0" prefWidth="100.0" />
+            <TextField fx:id="tfTransClTitre" onKeyTyped="#TitreTransCS" onMouseClicked="#alerteTitreTrans" prefHeight="32.0" prefWidth="100.0" />
+            <TextField fx:id="tfTransClDescreption" onKeyTyped="#DescreptionTransCS" onMouseClicked="#alerteDescTrans" prefHeight="33.0" prefWidth="100.0" />
+            <TextField fx:id="tfTransClImageAv" onKeyTyped="#OnkeypressedImagebef" onMouseClicked="#alerteimagebefore" prefHeight="33.0" prefWidth="100.0" promptText="Manually" />
+            <TextField fx:id="tfTransClImageAp" onKeyTyped="#OnkeypressedImageAf" onMouseClicked="#alerteimageafter" prefHeight="34.0" prefWidth="100.0" promptText="Manually" />
+            <TextField fx:id="tfTransClPoidav" layoutX="10.0" layoutY="144.0" onKeyTyped="#poidavTransCS" onMouseClicked="#alertepoidav" prefHeight="34.0" prefWidth="100.0" />
+            <TextField fx:id="tfTransClPoidAp" layoutX="10.0" layoutY="178.0" onKeyTyped="#poidapTransCS" onMouseClicked="#alertepoidapres" prefHeight="34.0" prefWidth="100.0" />
+            <TextField fx:id="tfTransClTailleAv" layoutX="10.0" layoutY="212.0" onKeyTyped="#tailleavCS" onMouseClicked="#alertetailleav" prefHeight="34.0" prefWidth="100.0" />
+            <TextField fx:id="tfTransClTailleAp" layoutX="10.0" layoutY="247.0" onKeyTyped="#tailleapCS" onMouseClicked="#alertetailleapres" prefHeight="34.0" prefWidth="100.0" />
+            <TextField fx:id="tfTransClIdUser" />
+         </children>
+      </VBox>
+      <Button fx:id="btnInsertTrans" layoutX="14.0" layoutY="368.0" mnemonicParsing="false" onMouseClicked="#InsertTrans" prefHeight="26.0" prefWidth="63.0" text="Insert" />
+      <Button fx:id="btndeleteTrans" layoutX="86.0" layoutY="368.0" mnemonicParsing="false" onMouseClicked="#deleteTrans" prefHeight="26.0" prefWidth="63.0" text="Delete" />
+      <Button fx:id="btnupdateTrans" layoutX="162.0" layoutY="368.0" mnemonicParsing="false" onMouseClicked="#updateTrans" prefHeight="26.0" prefWidth="86.0" text="Update" />
+      <Button layoutX="236.0" layoutY="7.0" mnemonicParsing="false" onMouseClicked="#vidertransformationClient" prefHeight="26.0" prefWidth="18.0" text="&quot;&quot;" />
+      <TextField fx:id="tfApvoideTrans" layoutX="12.0" layoutY="452.0" opacity="0.0" />
+      <Button fx:id="voteupbutton" layoutX="603.0" layoutY="439.0" mnemonicParsing="false" onMouseClicked="#votetrans" text="up Vote" />
+      <Button fx:id="voteDownbutton" layoutX="682.0" layoutY="439.0" mnemonicParsing="false" onMouseClicked="#voteDowntrans" text="Down Vote" />
+      <Label fx:id="showlikesTrans" layoutX="540.0" layoutY="444.0" text="Label" />
+      <Label layoutX="486.0" layoutY="444.0" text="Vote(s):" />
+      <Button fx:id="imgTrans1" layoutX="262.0" layoutY="138.0" mnemonicParsing="false" onMouseClicked="#imgTrans1filechooser" prefHeight="26.0" prefWidth="17.0" text="Button" />
+      <Button fx:id="imgtrans2" layoutX="262.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#imgTrans2filechooser" prefHeight="26.0" prefWidth="17.0" text="Button" />
+      <ImageView fx:id="imageav" fitHeight="150.0" fitWidth="200.0" layoutX="406.0" layoutY="478.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageap" fitHeight="150.0" fitWidth="200.0" layoutX="632.0" layoutY="478.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="imcTav" layoutX="511.0" layoutY="648.0" prefHeight="18.0" prefWidth="85.0" />
+      <Text layoutX="420.0" layoutY="661.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IMC Before:" />
+      <Text layoutX="647.0" layoutY="661.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IMC After:" />
+      <Label fx:id="imcTap" layoutX="720.0" layoutY="648.0" prefHeight="18.0" prefWidth="86.0" />
+      <Text fx:id="alertr" fill="RED" layoutX="46.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="112.89453125">
+         <font>
+            <Font size="20.0" />
+         </font></Text>
+      <ImageView fx:id="ronnieimage" fitHeight="640.0" fitWidth="252.0" layoutX="1107.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="1073.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#screenshottrans" prefHeight="26.0" prefWidth="86.0" text="Screen shot " />
+      <ImageView fx:id="imagecapTrans" fitHeight="308.0" fitWidth="214.0" layoutX="1131.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
