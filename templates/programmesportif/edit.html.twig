@@ -1,0 +1,13 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Edit Programmesportif{% endblock %}
+
+{% block body %}
+    <h1>Edit Programmesportif</h1>
+
+    {{ include('programmesportif/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_programmesportif_index') }}">back to list</a>
+
+    {{ include('programmesportif/_delete_form.html.twig') }}
+{% endblock %}

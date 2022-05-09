@@ -1,0 +1,73 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Panier index{% endblock %}
+
+{% block body %}
+<style>
+
+    .total-amount{
+             font-size: 36px;
+             font-family: ‘Open Sans’;
+             font-weight: 900;
+             color: #941c24;
+        padding-left:1200px;
+         }
+
+</style>
+    <h1>Panier index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>image produit</th>
+                <th>prix produit</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {%set totalP=0 %}
+        {% for produit in produits %}
+        {% for panier in paniers %}
+            {% if panier.idProduit == produit %}
+                <tr>
+                    <td>{{ produit.imageproduit }}</td>
+                    <td>{{ produit.prixproduit }}</td>
+
+                <td>{{ panier.quantity }}</td>
+                <td>{{ panier.total }}</td>
+
+                    {% set  totalP=  totalP +panier.total   %}
+
+                <td>
+                    <a href="{{path("app_panier_editQuantity",{'idClient':52,'idProduit':panier.idProduit.idProduit})}}"  class="btn btn-success"> ajouter quantité
+                        <i class="bi bi-cart-plus"></i>
+                    </a>
+                    <a href="{{path("app_panier_demQuantity",{'idClient':52,'idProduit':panier.idProduit.idProduit})}}"  class="btn btn-warning"> dem quantité
+                        <i class="bi bi-cart-plus"></i>
+                    </a>
+                    </a>
+                    <a href="{{path("app_panier_delete",{'idPanier':panier.id,'idClient':52})}}"  class="btn btn-danger"> supprimer
+                        <i class="bi bi-cart-plus"></i>
+                    </a>
+                </td>
+            </tr>
+
+
+            {% endif %}
+        {% endfor %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('app_panier_add_product', {'idClient': 62 , 'idProduct': 82 ,'quantity':2}) }}">add product to panier</a>
+    <a href="{{ path('app_panier_vider_panier', {'idClient': 62}) }}">viderpanier</a>
+    <a href="{{ path('app_panier_validerpanier', {'idClient':52}) }}">valider panier</a>
+    <a href="{{ path('app_panier_sendEmail') }}">mail</a>
+
+    <div  class = "total-amount" >total={{ totalP }}dt</div >
+
+
+{% endblock %}

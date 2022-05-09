@@ -1,0 +1,41 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Programmenutritionnel index{% endblock %}
+
+{% block body %}
+    <h1>Programmenutritionnel index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idprogrammenutritionnel</th>
+                <th>Idcoach</th>
+                <th>Idadherent</th>
+                <th>Calorie</th>
+                <th>Typeprogrammenutritionnel</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for programmenutritionnel in programmenutritionnels %}
+            <tr>
+                <td>{{ programmenutritionnel.idprogrammenutritionnel }}</td>
+                <td>{{ programmenutritionnel.idcoach }}</td>
+                <td>{{ programmenutritionnel.idadherent }}</td>
+                <td>{{ programmenutritionnel.calorie }}</td>
+                <td>{{ programmenutritionnel.typeprogrammenutritionnel }}</td>
+                <td>
+                    <a href="{{ path('app_programmenutritionnel_show', {'idprogrammenutritionnel': programmenutritionnel.idprogrammenutritionnel}) }}">show</a>
+                    <a href="{{ path('app_programmenutritionnel_edit', {'idprogrammenutritionnel': programmenutritionnel.idprogrammenutritionnel}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_programmenutritionnel_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}New Programmesportif{% endblock %}
+
+{% block body %}
+    <h1>Create new Programmesportif</h1>
+
+    {{ include('programmesportif/_form.html.twig') }}
+
+    <a href="{{ path('app_programmesportif_index') }}">back to list</a>
+{% endblock %}

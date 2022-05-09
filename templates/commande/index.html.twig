@@ -1,0 +1,67 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Commande index{% endblock %}
+
+{% block body %}
+
+    <style>
+
+        .total-amount{
+
+            background-color: #c4babb;
+
+        }
+
+    </style>
+    <h1>Commande index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Num commande</th>
+                <th>Date commande</th>
+                <th>Total</th>
+                <th>Etat</th>
+                <th>Avis</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande in commandes %}
+            <tr>
+                <td>{{ commande.id }}</td>
+                <td>{{ commande.datecommande ? commande.datecommande|date('Y-m-d H:i:s') }}</td>
+                <td>{{ commande.total }}</td>
+                {%  if commande.etat==1 %}
+                <td>confirmée</td>
+                {% endif %}
+                {%  if commande.etat==2 %}
+                    <td>envoyée</td>
+                {% endif %}
+                {%  if commande.etat==3 %}
+                    <td>livrée</td>
+                {% endif %}
+                {%  if commande.etat==4 %}
+                    <td>finalisée</td>
+                {% endif %}
+                {%  if commande.etat==5 %}
+                    <td>annulée</td>
+                {% endif %}
+                <td>{{ commande.avisclient }}</td>
+                <td>
+                    <form method="POST" >
+                        <input type ="text" name="ajouteravis">
+                        </input type ="submit",value="ajouteravis">
+                    </form>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

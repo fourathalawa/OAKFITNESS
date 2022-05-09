@@ -1,0 +1,46 @@
+{% block body %}
+    <style>
+
+        .total-amount{
+            font-size: 36px;
+            font-family: ‘Open Sans’;
+            font-weight: 900;
+            color: #941c24;
+            padding-left:1200px;
+        }
+
+    </style>
+    <h1 align="center">Facture</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>image produit</th>
+            <th>prix produit</th>
+            <th>Quantity</th>
+            <th>Total</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {%set totalP=0 %}
+        {% for produit in produits %}
+            {% for panier in paniers %}
+                {% if panier.idProduit == produit %}
+                    <tr>
+                        <td>{{ produit.imageproduit }}</td>
+                        <td>{{ produit.prixproduit }}</td>
+                        <td>{{ panier.quantity }}</td>
+                        <td>{{ panier.total }}</td>
+                        {% set  totalP=  totalP +panier.total   %}
+                    </tr>
+
+
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        <h1>subtotal={{ totalP }}dt</h1>
+        </tbody>
+    </table>
+
+{% endblock %}

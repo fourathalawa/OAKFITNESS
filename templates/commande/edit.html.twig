@@ -1,0 +1,12 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Edit Commande{% endblock %}
+
+{% block body %}
+    <h1>ajouter un avis</h1>
+
+    {{ form_widget(form) }}
+    {{ form_row(form.avisClient,{'attr':{'class':'form-control' , 'placeholder': "votre avis"}}) }}
+    <button type= "submit" class="btn btn-warning d-block mb-2">ajouter</button>
+    {{ form_end(form) }}
+{% endblock %}

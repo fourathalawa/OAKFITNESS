@@ -1,0 +1,38 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Programmenutritionnel{% endblock %}
+
+{% block body %}
+    <h1>Programmenutritionnel</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idprogrammenutritionnel</th>
+                <td>{{ programmenutritionnel.idprogrammenutritionnel }}</td>
+            </tr>
+            <tr>
+                <th>Idcoach</th>
+                <td>{{ programmenutritionnel.idcoach }}</td>
+            </tr>
+            <tr>
+                <th>Idadherent</th>
+                <td>{{ programmenutritionnel.idadherent }}</td>
+            </tr>
+            <tr>
+                <th>Calorie</th>
+                <td>{{ programmenutritionnel.calorie }}</td>
+            </tr>
+            <tr>
+                <th>Typeprogrammenutritionnel</th>
+                <td>{{ programmenutritionnel.typeprogrammenutritionnel }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_programmenutritionnel_index') }}">back to list</a>
+
+    <a href="{{ path('app_programmenutritionnel_edit', {'idprogrammenutritionnel': programmenutritionnel.idprogrammenutritionnel}) }}">edit</a>
+
+    {{ include('programmenutritionnel/_delete_form.html.twig') }}
+{% endblock %}

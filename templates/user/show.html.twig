@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+    <h1>User</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Iduser</th>
+                <td>{{ user.iduser }}</td>
+            </tr>
+            <tr>
+                <th>Nomuser</th>
+                <td>{{ user.nomuser }}</td>
+            </tr>
+            <tr>
+                <th>Prenomuser</th>
+                <td>{{ user.prenomuser }}</td>
+            </tr>
+            <tr>
+                <th>Mailuser</th>
+                <td>{{ user.mailuser }}</td>
+            </tr>
+            <tr>
+                <th>Telephonenumberuser</th>
+                <td>{{ user.telephonenumberuser }}</td>
+            </tr>
+            <tr>
+                <th>Datenaissanceuser</th>
+                <td>{{ user.datenaissanceuser ? user.datenaissanceuser|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Roleuser</th>
+                <td>{{ user.roleuser }}</td>
+            </tr>
+            <tr>
+                <th>Numeropackuser</th>
+                <td>{{ user.numeropackuser }}</td>
+            </tr>
+            <tr>
+                <th>Datecommence</th>
+                <td>{{ user.datecommence ? user.datecommence|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Experienceuser</th>
+                <td>{{ user.experienceuser }}</td>
+            </tr>
+            <tr>
+                <th>Diplomeuser</th>
+                <td>{{ user.diplomeuser }}</td>
+            </tr>
+            <tr>
+                <th>Adressesallesport</th>
+                <td>{{ user.adressesallesport }}</td>
+            </tr>
+            <tr>
+                <th>Matriculefiscale</th>
+                <td>{{ user.matriculefiscale }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ user.password }}</td>
+            </tr>
+            <tr>
+                <th>Codeverification</th>
+                <td>{{ user.codeverification }}</td>
+            </tr>
+            <tr>
+                <th>Imageuser</th>
+                <td>{{ user.imageuser }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_user_index') }}">back to list</a>
+
+    <a href="{{ path('app_user_edit', {'iduser': user.iduser}) }}">edit</a>
+
+    {{ include('user/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Repas index{% endblock %}
+
+{% block body %}
+    <h1>Repas index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idrepas</th>
+                <th>Pdej</th>
+                <th>Dej</th>
+                <th>Dinn</th>
+                <th>Calorie</th>
+                <th>Restoractive</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for repa in repas %}
+            <tr>
+                <td>{{ repa.idrepas }}</td>
+                <td>{{ repa.pdej }}</td>
+                <td>{{ repa.dej }}</td>
+                <td>{{ repa.dinn }}</td>
+                <td>{{ repa.calorie }}</td>
+                <td>{{ repa.restoractive }}</td>
+                <td>{{ repa.image }}</td>
+                <td>
+                    <a href="{{ path('app_repas_show', {'idrepas': repa.idrepas}) }}">show</a>
+                    <a href="{{ path('app_repas_edit', {'idrepas': repa.idrepas}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_repas_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Consultation des paniers{% endblock %}
+
+{% block body %}
+
+    <h1>Consultation des paniers</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Identifiant Client</th>
+            <th>Identifiant produit</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for panier in panier %}
+        <tr>
+
+            <td>{{ panier.idClient.iduser }}</td>
+            <td>{{ panier.idProduit.idproduit}}</td>
+            <td>{{ panier.quantity }}</td>
+            <td>{{ panier.total }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

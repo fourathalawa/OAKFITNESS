@@ -1,0 +1,41 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Programmesportif index{% endblock %}
+
+{% block body %}
+    <h1>Programmesportif index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idprogrammesportif</th>
+                <th>Idcoach</th>
+                <th>Idadherent</th>
+                <th>Dureemois</th>
+                <th>Typeprogrammesportif</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for programmesportif in programmesportifs %}
+            <tr>
+                <td>{{ programmesportif.idprogrammesportif }}</td>
+                <td>{{ programmesportif.idcoach }}</td>
+                <td>{{ programmesportif.idadherent }}</td>
+                <td>{{ programmesportif.dureemois }}</td>
+                <td>{{ programmesportif.typeprogrammesportif }}</td>
+                <td>
+                    <a href="{{ path('app_programmesportif_show', {'idprogrammesportif': programmesportif.idprogrammesportif}) }}">show</a>
+                    <a href="{{ path('app_programmesportif_edit', {'idprogrammesportif': programmesportif.idprogrammesportif}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_programmesportif_new') }}">Create new</a>
+{% endblock %}
